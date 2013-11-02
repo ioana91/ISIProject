@@ -21,7 +21,7 @@ namespace ISIProject.Migrations
                 "DefaultConnection",
                 "Employee",
                 "EmployeeId",
-                "FirstMidName", autoCreateTables: true);
+                "UserName", autoCreateTables: true);
 
             if (!Roles.RoleExists("Administrator"))
                 Roles.CreateRole("Administrator");
@@ -50,23 +50,6 @@ namespace ISIProject.Migrations
                     new { FirstMidName = "Radu", LastName = "Tapus" });
             if (!Roles.GetRolesForUser("rtapus").Contains("Employee"))
                 Roles.AddUserToRole("rtapus", "Employee");
-
-            //if (!WebSecurity.UserExists("lelong37"))
-            //    WebSecurity.CreateUserAndAccount(
-            //        "lelong37",
-            //        "password",
-            //        new { FirstName = "A"});
-
-            //if (!Roles.GetRolesForUser("lelong37").Contains("Administrator"))
-            //    Roles.AddUsersToRoles(new[] { "lelong37" }, new[] { "Administrator" });
-
-            //if (!WebSecurity.UserExists("rtapus"))
-            //    WebSecurity.CreateUserAndAccount(
-            //        "rtapus",
-            //        "password",
-            //        new { FirstName = "Radu"});
-            //if (!Roles.GetRolesForUser("rtapus").Contains("Employee"))
-            //    Roles.AddUserToRole("rtapus", "Employee");
         }
     }
 }

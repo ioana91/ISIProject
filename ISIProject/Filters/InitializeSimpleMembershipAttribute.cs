@@ -38,7 +38,7 @@ namespace ISIProject.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "Employee", "EmployeeId", "FirstMidName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "Employee", "EmployeeId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {

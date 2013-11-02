@@ -17,8 +17,8 @@ namespace ISIProject.Models
         public int DepartmentManagerId { get; set; }
 
         public virtual Division Division { get; set; }
-        [ForeignKey("DepartmentManagerId")]
-        public virtual Employee DepartmentManager { get; set; }
+        //[ForeignKey("DepartmentManagerId")]
+        //public virtual Employee DepartmentManager { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }
     }
 }
