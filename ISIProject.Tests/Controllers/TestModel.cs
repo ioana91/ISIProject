@@ -16,6 +16,7 @@ namespace ISIProject.Tests.Controllers
         public void SetUp()
         {
             mContext = new CompanyContext();
+            
         }
 
         [TestMethod]
