@@ -12,9 +12,9 @@ namespace ISIProject.Models
     {
         public int DivisionId { get; set; }
         public string Name { get; set; }
-        [ForeignKey("DivisionManagerId")]
         public int DivisionManagerId { get; set; }
 
+        [ForeignKey("DivisionManagerId")]
         public virtual Employee DivisionManager { get; set; }
         public virtual ICollection<Department> Departments { get; set; }
     }
