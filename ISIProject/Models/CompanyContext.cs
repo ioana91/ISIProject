@@ -14,5 +14,10 @@ namespace ISIProject.Models
         }
 
         public DbSet<Employee> Employees { get; set; }
+        //public DbSet<Activity> Activities { get; set; }
+        //public DbSet<Department> Departments { get; set; }
+        //public DbSet<Client> Clients { get; set; }
+        //public DbSet<Division> Divisions { get; set; }
+        //public DbSet<Project> Projects { get; set; }
     }
 }

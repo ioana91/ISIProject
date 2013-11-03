@@ -10,9 +10,11 @@ namespace ISIProject.Models
 {
     public class Division
     {
+        [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int DivisionId { get; set; }
         public string Name { get; set; }
-        public int DivisionManagerId { get; set; }
+        //public int DivisionManagerId { get; set; }
 
         //[ForeignKey("DivisionManagerId")]
         //public virtual Employee DivisionManager { get; set; }

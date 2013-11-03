@@ -23,6 +23,7 @@ namespace ISIProject.Migrations
                 "EmployeeId",
                 "UserName", autoCreateTables: true);
 
+            #region Roles
             if (!Roles.RoleExists("Administrator"))
                 Roles.CreateRole("Administrator");
             if (!Roles.RoleExists("Director"))
@@ -33,15 +34,7 @@ namespace ISIProject.Migrations
                 Roles.CreateRole("DivisionManager");
             if (!Roles.RoleExists("DepartmentManager"))
                 Roles.CreateRole("DepartmentManager");
-
-            if (!WebSecurity.UserExists("lelong37"))
-                WebSecurity.CreateUserAndAccount(
-                    "lelong37",
-                    "password",
-                    new { FirstMidName = "A", LastName = "A" });
-
-            if (!Roles.GetRolesForUser("lelong37").Contains("Administrator"))
-                Roles.AddUsersToRoles(new[] { "lelong37" }, new[] { "Administrator" });
+            #endregion
 
             if (!WebSecurity.UserExists("rtapus"))
                 WebSecurity.CreateUserAndAccount(
