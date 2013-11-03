@@ -16,8 +16,12 @@
         <legend>Registration Form</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+                @Html.LabelFor(m => m.FirstMidName)
+                @Html.TextBoxFor(m => m.FirstMidName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName)
             </li>
             <li>
                 @Html.LabelFor(m => m.Password)

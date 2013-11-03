@@ -17,8 +17,9 @@ namespace ISIProject.Models
         public string UserName { get; set; }
         public string FirstMidName { get; set; }
         public string LastName { get; set; }
-        //public int DepartmentId { get; set; }
+        //TODO: This should be modified when Department table contains data
+        public int? DepartmentId { get; set; }
 
-        //public virtual Department Department { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

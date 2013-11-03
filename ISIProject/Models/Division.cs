@@ -8,6 +8,7 @@ using System.Data.Entity;
 
 namespace ISIProject.Models
 {
+    [Table("Division")]
     public class Division
     {
         [Key]
