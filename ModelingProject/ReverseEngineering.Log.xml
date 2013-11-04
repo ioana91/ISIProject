@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2013-11-04T16:28:10" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject' -  (Package)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models' -  (Package)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Medium" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity' -  (Class)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity::Activity' -  (Operation)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity::ActivityId' -  (Property)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity::Name' -  (Property)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="High" Text="(1) type(s) fully reverse engineered." />
+  <Message Timestamp="2013-11-04T16:28:12" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+</Log>
