@@ -80,7 +80,9 @@ namespace ISIProject.Controllers
                 try
                 {
                     model.UserName = (model.FirstMidName[0] + model.LastName).ToLower();
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { model.FirstMidName, model.LastName});
+                    model.Name = model.FirstMidName + " " + model.LastName;
+
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { model.Name});
                     Roles.AddUserToRole(model.UserName, "Employee");
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");

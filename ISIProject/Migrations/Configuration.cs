@@ -40,7 +40,7 @@ namespace ISIProject.Migrations
                 WebSecurity.CreateUserAndAccount(
                     "rtapus",
                     "password",
-                    new { FirstMidName = "Radu", LastName = "Tapus" });
+                    new { Name = "Radu Tapus" });
             if (!Roles.GetRolesForUser("rtapus").Contains("Employee"))
                 Roles.AddUserToRole("rtapus", "Employee");
         }

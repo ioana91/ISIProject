@@ -24,13 +24,12 @@ namespace ISIProject.Tests.Controllers
         {           
             mContext.Employees.Add(new Employee
             {
-                FirstMidName = "Radu",
-                LastName = "Tapus",
+                Name = "Radu Tapus"
             });
 
             mContext.SaveChanges();
 
-            var employee = mContext.Employees.Where(a => a.LastName == "Tapus").FirstOrDefault();
+            var employee = mContext.Employees.Where(a => a.Name == "Radu Tapus").FirstOrDefault();
 
             Assert.IsNotNull(employee);
         }
