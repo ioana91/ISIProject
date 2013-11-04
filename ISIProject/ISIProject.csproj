@@ -182,6 +182,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DepartmentManagerController.cs" />
     <Compile Include="Controllers\DivisionManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -317,6 +318,11 @@
     <Content Include="Views\DivisionManager\Create.cshtml" />
     <Content Include="Views\DivisionManager\Edit.cshtml" />
     <Content Include="Views\DivisionManager\Delete.cshtml" />
+    <Content Include="Views\DepartmentManager\Index.cshtml" />
+    <Content Include="Views\DepartmentManager\Details.cshtml" />
+    <Content Include="Views\DepartmentManager\Create.cshtml" />
+    <Content Include="Views\DepartmentManager\Edit.cshtml" />
+    <Content Include="Views\DepartmentManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
