@@ -9,12 +9,12 @@ using ISIProject.Models;
 
 namespace ISIProject.Controllers
 {
-    public class DivisionMangerController : Controller
+    public class DivisionManagerController : Controller
     {
         private CompanyContext db = new CompanyContext();
 
         //
-        // GET: /DivisionManger/
+        // GET: /DivisionManager/
 
         public ActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace ISIProject.Controllers
         }
 
         //
-        // GET: /DivisionManger/Details/5
+        // GET: /DivisionManager/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -36,7 +36,7 @@ namespace ISIProject.Controllers
         }
 
         //
-        // GET: /DivisionManger/Create
+        // GET: /DivisionManager/Create
 
         public ActionResult Create()
         {
@@ -45,7 +45,7 @@ namespace ISIProject.Controllers
         }
 
         //
-        // POST: /DivisionManger/Create
+        // POST: /DivisionManager/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -58,12 +58,12 @@ namespace ISIProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "UserName", division.DivisionManagerId);
+            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
             return View(division);
         }
 
         //
-        // GET: /DivisionManger/Edit/5
+        // GET: /DivisionManager/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
@@ -72,12 +72,12 @@ namespace ISIProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "UserName", division.DivisionManagerId);
+            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
             return View(division);
         }
 
         //
-        // POST: /DivisionManger/Edit/5
+        // POST: /DivisionManager/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -89,12 +89,12 @@ namespace ISIProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "UserName", division.DivisionManagerId);
+            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
             return View(division);
         }
 
         //
-        // GET: /DivisionManger/Delete/5
+        // GET: /DivisionManager/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
@@ -107,7 +107,7 @@ namespace ISIProject.Controllers
         }
 
         //
-        // POST: /DivisionManger/Delete/5
+        // POST: /DivisionManager/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
