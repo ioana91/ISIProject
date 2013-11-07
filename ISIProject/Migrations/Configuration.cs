@@ -43,6 +43,13 @@ namespace ISIProject.Migrations
                     new { Name = "Radu Tapus" });
             if (!Roles.GetRolesForUser("rtapus").Contains("Employee"))
                 Roles.AddUserToRole("rtapus", "Employee");
+
+            if (!WebSecurity.UserExists("admin"))
+                WebSecurity.CreateUserAndAccount(
+                    "admin",
+                    "password");
+            if (!Roles.GetRolesForUser("admin").Contains("Administrator"))
+                Roles.AddUserToRole("admin", "Administrator");
         }
     }
 }

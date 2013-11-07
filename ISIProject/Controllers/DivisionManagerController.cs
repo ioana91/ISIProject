@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ISIProject.Models;
+using System.Web.Security;
 
 namespace ISIProject.Controllers
 {
+    //[Authorize(Roles="Administrator")]
     public class DivisionManagerController : Controller
     {
         private CompanyContext db = new CompanyContext();
@@ -55,6 +57,10 @@ namespace ISIProject.Controllers
             {
                 db.Divisions.Add(division);
                 db.SaveChanges();
+
+                var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+                Roles.AddUserToRole(manager.UserName, "DivisionManager");
+
                 return RedirectToAction("Index");
             }
 
@@ -72,6 +78,10 @@ namespace ISIProject.Controllers
             {
                 return HttpNotFound();
             }
+
+            var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+            Roles.RemoveUserFromRole(manager.UserName, "DivisionManager");
+
             ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
             return View(division);
         }
@@ -87,6 +97,10 @@ namespace ISIProject.Controllers
             {
                 db.Entry(division).State = EntityState.Modified;
                 db.SaveChanges();
+
+                var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+                Roles.AddUserToRole(manager.UserName, "DivisionManager");
+
                 return RedirectToAction("Index");
             }
             ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
@@ -116,6 +130,10 @@ namespace ISIProject.Controllers
             Division division = db.Divisions.Find(id);
             db.Divisions.Remove(division);
             db.SaveChanges();
+
+            var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+            Roles.RemoveUserFromRole(manager.UserName, "DivisionManager");
+
             return RedirectToAction("Index");
         }
 
