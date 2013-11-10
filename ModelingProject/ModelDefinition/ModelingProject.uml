@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="875341e7-d610-4ddf-85ea-dc278c6b7c14"
   name="ModelingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -35,6 +35,224 @@
         Id="f2fbb5bc-96f7-4004-91e9-7fa121709cb2"
         LastKnownName="System"
         LastKnownLocation="Package2_1619.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="f88d79ca-6a07-4320-966f-73ba3a9b71ff"
+        name="Administrator"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="5c988235-f4da-4235-9ed3-b64aff2a37e4"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="f2fba15c-69e3-4434-8f9f-6b2f01cf7792"
+              LastKnownName="User"
+              LastKnownLocation="ModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="6b43ea58-375c-429f-b999-ebeaf55c7dde"
+            isDerived="false"
+            sourceEndRoleName="Administrator"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a16af339-3184-4c72-91fe-9b3c8233acc8"
+              LastKnownName="Adds Employees"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="62d83a92-d64d-469d-8ec9-af95272583e9"
+                  name="Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2370b659-ed6c-407b-9616-dc21621f6e07"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1565034b-3f46-40c3-a564-6b2107999dda"
+            isDerived="false"
+            sourceEndRoleName="Administrator"
+            targetEndRoleName="Adds Departaments"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="65eaeb95-240f-46a4-b1a2-0e721bc34118"
+              LastKnownName="Adds Departaments"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="db9f8999-a34e-4d38-9c2d-8a0a97c3d431"
+                  name="Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="317c3e70-2b9b-462e-917e-0f1c83d16dcc"
+                  name="Adds Departaments"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="736ebb62-958e-4f4c-ba98-f03ba09cf31f"
+            isDerived="false"
+            sourceEndRoleName="Administrator"
+            targetEndRoleName="Adds Divisions"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3db9a9dc-ae7a-4f5b-b7bf-61b154c9270e"
+              LastKnownName="Adds Divisions"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e7a1d8a8-7c9b-442f-aae4-48401edd9bb5"
+                  name="Administrator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1e29525a-6588-4700-a83f-1213d112cdf0"
+                  name="Adds Divisions"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a16af339-3184-4c72-91fe-9b3c8233acc8"
+        name="Adds Employees"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3db9a9dc-ae7a-4f5b-b7bf-61b154c9270e"
+        name="Adds Divisions"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="28ed4018-14b1-42d1-919c-c6c67c348b06"
+        name="UseCase2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="42eaa737-13fb-4980-ab54-cd4af1e1ed00"
+        name="UseCase3"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="65eaeb95-240f-46a4-b1a2-0e721bc34118"
+        name="Adds Departaments"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="341b2b0e-5180-4633-9af0-8fc861a7cd0e"
+        name="UseCase5"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="978aeb2f-ed33-42ec-8f5b-0b50fa2c4b57"
+        name="UseCase6"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6bb39223-8d7e-4445-92e5-c48d715a5e04"
+        name="UseCase7"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="f2fba15c-69e3-4434-8f9f-6b2f01cf7792"
+        name="User"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="c2400304-1c55-4f11-857b-928e80fddb8c"
+        name="Employee"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="80e6bca2-3607-472d-8e58-8cca4d41a7a3"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="f2fba15c-69e3-4434-8f9f-6b2f01cf7792"
+              LastKnownName="User"
+              LastKnownLocation="ModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
