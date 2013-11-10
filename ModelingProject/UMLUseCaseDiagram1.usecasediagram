@@ -85,16 +85,25 @@
     <useCaseModelRootHasTypes>
       <useCase Id="139e3fe9-2212-4ed8-a350-d97835190c1b" name="Adds Employees" isAbstract="false" isLeaf="false">
         <elementDefinition Id="a16af339-3184-4c72-91fe-9b3c8233acc8" />
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="79aa1709-6586-4181-997d-73c9e57a608a" name="Adds Divisions" isAbstract="false" isLeaf="false">
         <elementDefinition Id="3db9a9dc-ae7a-4f5b-b7bf-61b154c9270e" />
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="d3ce662f-024c-4713-85fe-9e4532841a9f" name="Adds Departaments" isAbstract="false" isLeaf="false">
         <elementDefinition Id="65eaeb95-240f-46a4-b1a2-0e721bc34118" />
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
@@ -111,7 +120,74 @@
             <elementDefinition Id="80e6bca2-3607-472d-8e58-8cca4d41a7a3" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="07ee33ed-d230-44e8-86b7-34d6877e8902" isDerived="false" sourceEndRoleName="Employee" targetEndRoleName="Completes monthly timesheet" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="680eac1c-87f1-4311-85f9-8b661598ff35" LastKnownName="Completes monthly timesheet" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fb7dba41-38f0-485e-974e-d712acbc8602" name="Employee" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b078eaf5-ada5-4c77-afbd-3ff7486497be" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a167f94a-b1c2-4fd5-ad13-4101f77f6f96" name="Completes monthly timesheet" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="82c74032-ae87-4413-bab2-045deac27b33" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="acc5d464-4cd7-41a6-a1c5-844123c1b1d4" />
+          </association>
+        </targetEnds>
       </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="90e412d1-0387-4467-941c-6681cbe13b6d" name="Completes daily timesheet" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ee5c832d-fa52-44c9-be3e-2d90b27ee78d" />
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="a82c1739-effe-41aa-88cc-9ed2a8042615" name="Division Manager" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bbefc443-f183-416d-9658-783b02f94070" />
+        <generalsInternal>
+          <generalization Id="ffa3f79a-08eb-4aa8-baa3-e3028240a523" isSubstitutable="false">
+            <actorMoniker Id="05b5e55c-da87-4376-be80-dc78e4f82b71" LastKnownName="Employee" />
+            <elementDefinition Id="e4ef53ce-cb68-47e4-ab1a-f0eb574d4279" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="36006a0d-1164-4f7a-99bd-7a741e4bc368" name="Department Manager" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2b84eefc-b4e0-4cd8-8fed-6cde0a4d9b94" />
+        <generalsInternal>
+          <generalization Id="f5169f9f-1e02-4e20-aa5c-15614828a23c" isSubstitutable="false">
+            <actorMoniker Id="05b5e55c-da87-4376-be80-dc78e4f82b71" LastKnownName="Employee" />
+            <elementDefinition Id="bf042401-03d3-4e6c-b598-fc430a4ba9cf" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="680eac1c-87f1-4311-85f9-8b661598ff35" name="Completes monthly timesheet" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cc485246-4c4b-4f46-b340-e74216b15b13" />
+        <additions>
+          <include Id="c17041a2-7a02-4b2b-98cd-ee20d5ff6003">
+            <useCaseMoniker Id="90e412d1-0387-4467-941c-6681cbe13b6d" LastKnownName="Completes daily timesheet" />
+            <elementDefinition Id="6e60b595-906e-4af7-b912-4ce33bbfe327" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" name="Timesheet Aplication" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83" />
+      </subsystem>
     </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="de65b712-b7d1-4197-94fa-e04ac9f76022" name="ModelingProject">

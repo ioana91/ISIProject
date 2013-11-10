@@ -178,14 +178,28 @@
         Id="a16af339-3184-4c72-91fe-9b3c8233acc8"
         name="Adds Employees"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83"
+            LastKnownName="Timesheet Aplication"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="3db9a9dc-ae7a-4f5b-b7bf-61b154c9270e"
         name="Adds Divisions"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83"
+            LastKnownName="Timesheet Aplication"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -206,7 +220,14 @@
         Id="65eaeb95-240f-46a4-b1a2-0e721bc34118"
         name="Adds Departaments"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83"
+            LastKnownName="Timesheet Aplication"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -252,7 +273,129 @@
               LastKnownLocation="ModelingProject.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="acc5d464-4cd7-41a6-a1c5-844123c1b1d4"
+            isDerived="false"
+            sourceEndRoleName="Employee"
+            targetEndRoleName="Completes monthly timesheet"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cc485246-4c4b-4f46-b340-e74216b15b13"
+              LastKnownName="Completes monthly timesheet"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b078eaf5-ada5-4c77-afbd-3ff7486497be"
+                  name="Employee"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="82c74032-ae87-4413-bab2-045deac27b33"
+                  name="Completes monthly timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
       </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ee5c832d-fa52-44c9-be3e-2d90b27ee78d"
+        name="Completes daily timesheet"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83"
+            LastKnownName="Timesheet Aplication"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="bbefc443-f183-416d-9658-783b02f94070"
+        name="Division Manager"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="e4ef53ce-cb68-47e4-ab1a-f0eb574d4279"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="c2400304-1c55-4f11-857b-928e80fddb8c"
+              LastKnownName="Employee"
+              LastKnownLocation="ModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="2b84eefc-b4e0-4cd8-8fed-6cde0a4d9b94"
+        name="Department Manager"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="bf042401-03d3-4e6c-b598-fc430a4ba9cf"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="c2400304-1c55-4f11-857b-928e80fddb8c"
+              LastKnownName="Employee"
+              LastKnownLocation="ModelingProject.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cc485246-4c4b-4f46-b340-e74216b15b13"
+        name="Completes monthly timesheet"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="6e60b595-906e-4af7-b912-4ce33bbfe327">
+            <useCaseMoniker
+              Id="ee5c832d-fa52-44c9-be3e-2d90b27ee78d"
+              LastKnownName="Completes daily timesheet"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83"
+            LastKnownName="Timesheet Aplication"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83"
+        name="Timesheet Aplication"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
