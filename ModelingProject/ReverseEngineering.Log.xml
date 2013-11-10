@@ -6,15 +6,43 @@
   <MessageClass Name="Error" Label="Error" Option="Show errors" />
   <MessageClass Name="Property" Label="Property" Option="Show metadata" />
   <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
-  <Message Timestamp="2013-11-04T16:28:10" Importance="High" Text="Reverse Engineering Started." />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject' -  (Package)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models' -  (Package)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Medium" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity' -  (Class)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity::Activity' -  (Operation)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity::ActivityId' -  (Property)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity::Name' -  (Property)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="High" Text="(1) type(s) fully reverse engineered." />
-  <Message Timestamp="2013-11-04T16:28:12" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+  <Message Timestamp="2013-11-10T15:26:45" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '6073db37-46d2-4de3-9f4f-4ad0e1822636' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject' -  (Package)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models' -  (Package)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Activity' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Client' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Employee' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Project' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Medium" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet' -  (Class)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::Activity' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::ActivityId' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::Client' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::ClientId' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::Date' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::Employee' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::EmployeeId' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::EndTime' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::Project' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::ProjectId' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::StartTime' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::Timesheet' -  (Operation)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::ISIProject::Models::Timesheet::TimesheetId' -  (Property)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::System' -  (Package)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::System::DateTime' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::System::Nullable' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject::System::Nullable&lt;Int32‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::System::DateTime (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::System::DateTime (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::System::DateTime (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::System::Nullable&lt;Int32‎&gt; (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::System::Nullable&lt;Int32‎&gt; (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::ISIProject::Models::Activity (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::ISIProject::Models::Employee (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::ISIProject::Models::Project (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject::ISIProject::Models::Timesheet to ModelingProject::ISIProject::Models::Client (Association)" />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="High" Text="(1) type(s) fully reverse engineered." />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="High" Text="(7) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2013-11-10T15:26:48" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
 </Log>

@@ -249,5 +249,56 @@
         </signatures>
       </class>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1725f6ff-0c99-479a-a982-7ef3a285fa37"
+        name="DateTime"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="560a31a5-47dc-46c7-b614-20c9d9f06c7f"
+            handle="viewcode://./CodeSchema_Struct?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DDateTime"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="0057f3a0-8afc-4690-bbbb-f7bc0d2ae103"
+            name="struct"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="70d3c879-8e1e-4866-95e6-878a6fab8d38">
+                <propertyInstance
+                  Id="89bdc77f-51b9-4679-a284-25ab4c548d25"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d234c4be-90b2-44ec-acd1-c6da89ec0e75">
+                <propertyInstance
+                  Id="eff1421c-10ea-4860-8300-b58b0819a429"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a0bee473-5504-4705-b806-2afb64df185f">
+                <propertyInstance
+                  Id="dbdeff09-3bc1-4c83-be13-ae85a2ec0a61"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3d53d6a7-be13-42ed-977d-1b08413084e7">
+                <propertyInstance
+                  Id="ab4f205e-6af5-4c9b-97b4-92d5f56876c5"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
   </packagedElements>
 </package>

@@ -1857,13 +1857,13 @@
                     <literalString
                       Id="97534a8f-c0ec-4e77-bf9f-ebd0e38e25e9"
                       name="Lower"
-                      value="*" />
+                      value="1" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
                       Id="99cef00b-118d-428d-8816-c5b1fbccf934"
                       name="Upper"
-                      value="*" />
+                      value="1" />
                   </upperValueInternal>
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -3759,13 +3759,13 @@
                     <literalString
                       Id="a8285d7f-5314-4d18-9afa-862cb0c40970"
                       name="Lower"
-                      value="*" />
+                      value="1" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
                       Id="4ab53abc-4590-4456-9f36-3a8b0831321c"
                       name="Upper"
-                      value="*" />
+                      value="1" />
                   </upperValueInternal>
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -6789,6 +6789,1689 @@
                     Id="3432bd8f-5d4f-42af-99fa-64cfcd6a39e9">
                     <propertyInstance
                       Id="0404096e-a7ce-44c3-88f4-3eb62828233b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ed07159f-3f0d-4d25-a5c5-d75e71b84ca0"
+        name="Timesheet"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="980221c2-cd97-4bd6-a2a0-2fdcde1182c0"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="52e77246-c5da-4dd4-bde7-d42929f978fe"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2dbcd5bf-48cb-4012-8fa0-9185a32b59e1">
+                <propertyInstance
+                  Id="e2ed7462-283a-491a-9e18-1602d1239cd6"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5e052ebc-9954-43c7-bb35-48f5c432a1ee">
+                <propertyInstance
+                  Id="48006924-5776-4ab1-9427-8813ae7b7b4a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="021d9b44-4bcc-4e24-baaa-e1c466c0468d">
+                <propertyInstance
+                  Id="ba1eae43-4b01-42b3-ba8b-5a8ad0d27873"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2bdd2ea3-ba34-4323-addb-c0efffc46a53">
+                <propertyInstance
+                  Id="c3b995db-ed15-4a42-bcde-031188be43dc"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="64799a10-d636-4fd8-8272-b24c53ba6b1b">
+                <propertyInstance
+                  Id="016562d4-13e9-4518-a8fc-ef5054f802e9"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="26fbaee5-8f7a-49be-89d6-cfb4bf7d4ff3"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="Date"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1725f6ff-0c99-479a-a982-7ef3a285fa37"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package2_1619.uml" />
+            <description>Property Date references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8e92f50d-6c0e-49f5-8381-74ed66390e31"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8661b7b4-2a55-4994-8fbe-7701fb8d2467"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1cb4277b-d102-4c86-bbae-33c1d3eae72f"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f9ec2d7b-c8ce-493b-becc-bf52ac5578a3"
+                  name="Date"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0a3dbd78-389b-4a27-b5b3-174f560e4cd4"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="40e255ab-1ef5-493e-9b55-bf0965beaed8"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="94937210-4f0c-4a9d-b53d-9a2a22570f07"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="StartTime"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1725f6ff-0c99-479a-a982-7ef3a285fa37"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package2_1619.uml" />
+            <description>Property StartTime references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e1cad537-cc74-4168-af0f-c83bdbe8e50e"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f10975da-5009-493f-a2de-71b8b5426efe"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c7392ddf-0e47-40b3-824d-0b486010a639"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="779d776e-1e0f-4278-bca4-ae7e96f4bb7c"
+                  name="StartTime"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d5b44e77-04d5-46dd-ae35-57f0e46acdb4"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="78910e4c-0a60-43af-b47e-de24430b3243"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0ae70df8-737f-4c17-9357-c64a9645826a"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="EndTime"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1725f6ff-0c99-479a-a982-7ef3a285fa37"
+              LastKnownName="DateTime"
+              LastKnownLocation="Package2_1619.uml" />
+            <description>Property EndTime references type DateTime.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c71a9757-f040-4cdf-9e3e-dfbb2e4dddca"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="75c0a374-43ba-41fb-b322-0030e4c9f1cf"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d0705c0a-5d2b-487f-87e7-a32cb5ce4955"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="14830246-555a-4f27-be9c-201400977e46"
+                  name="EndTime"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="9d428d1e-93a0-4d6e-a68a-b02350f8b2c1"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="23171551-1c63-4c2f-8e81-0964bcf836d1"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="83dc6056-2c8a-447e-a463-02c5dd967974"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="ProjectId"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="5a93eb93-88ad-470a-beeb-d9eab4d5d547"
+              LastKnownName="Nullable&lt;Int32‎&gt;"
+              LastKnownLocation="Package2_1619.uml" />
+            <description>Property ProjectId references type Nullable&lt;Int32‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8dd6c027-8fba-49a3-8656-1537b6c49fb2"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="4bad01fe-a757-42a8-a7d9-7ab9fc4f5236"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="de8f46e6-5549-44a0-b821-6c1bf76ca9af"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f0bf5ec6-e060-48a7-941b-1b4293867c31"
+                  name="ProjectId"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d1a4de32-fe4b-4939-bac4-3b0b8bc153e0"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ba5b113e-1f56-4165-b403-1eec75537500"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="425a118e-14d5-4b08-8a85-e75da70129fb"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="ClientId"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="5a93eb93-88ad-470a-beeb-d9eab4d5d547"
+              LastKnownName="Nullable&lt;Int32‎&gt;"
+              LastKnownLocation="Package2_1619.uml" />
+            <description>Property ClientId references type Nullable&lt;Int32‎&gt;.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e3f0ce4b-b3a3-43eb-a090-921eb0c5119c"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="254c6d74-a89e-4ed4-9cd7-2ac04ec160a0"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="0114308a-c25d-45aa-873e-bd1b2910fdd6"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="beb0eb27-aaf4-4e67-88c0-78c3f3a26142"
+                  name="ClientId"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f6bd6993-6708-482d-b291-3b9c2db5d922"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ec1bc013-9512-4692-bb19-ab79884290fa"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="ed850fdc-5901-40d2-9316-bbf6b6942532"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="Activity"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="f3ad4758-4676-47da-92c6-bf3dc6bab4bf"
+              LastKnownName="Activity"
+              LastKnownLocation="Package5_1619.uml" />
+            <description>Property Activity references type Activity.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="85d2b5eb-f058-4d3d-8bbc-c506acb8a609"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="640b77c3-6880-4ce4-9ca7-12484fe1444c"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="5a9f4107-629e-447e-8db2-85cf45945b9d"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="465e25b3-46eb-43c8-bf07-89d9f3ad7825"
+                  name="Activity"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c1f68a19-aba9-49e1-bc9d-62389dbfed53"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="14552dbf-3559-47d8-a12b-2700e4a3c067"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3175104e-c580-4bfd-92d5-e9253acfefb7"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="Employee"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="ffba11bc-b59e-487c-a3d6-5c98b015a0e6"
+              LastKnownName="Employee"
+              LastKnownLocation="Package5_1619.uml" />
+            <description>Property Employee references type Employee.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b1d379ea-1b64-4125-95e9-f656b4a70c58"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8c7dd295-2e9c-46b8-b6c3-94b9941d0375"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="827d4ecf-24db-4d6a-98a6-4da8a0122440"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c52dda2f-f515-411b-b5a0-7bc82ad602c2"
+                  name="Employee"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="100c78c1-9826-41c3-a277-3a3fc4b88691"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="88689514-ae0c-41b8-bc8b-36449240d789"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e66bb4b6-3099-44dc-afa1-10d3786a6122"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="Project"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="4639ea8e-8b3a-4351-899b-7d44b07349ad"
+              LastKnownName="Project"
+              LastKnownLocation="Package5_1619.uml" />
+            <description>Property Project references type Project.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6dc200a4-89f9-4a07-b46d-948adae565f3"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="f9052814-106d-48ad-9d7d-4c3fbfb7fdf5"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="5bf116fb-0edd-4b23-904c-4fd967909c23"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e41319a9-9d87-4f61-9bbe-9a9d80b4e345"
+                  name="Project"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2ded5d46-098c-4f9d-bf95-2a910e9e205d"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="300daec2-9214-49c9-b031-3659e44a5651"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d0aa0e5d-da2d-47e1-9f7b-dd7c46a00246"
+            isDerived="false"
+            sourceEndRoleName="Timesheet"
+            targetEndRoleName="Client"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="51e7d651-ab77-419d-8e6c-18e94f69c861"
+              LastKnownName="Client"
+              LastKnownLocation="Package5_1619.uml" />
+            <description>Property Client references type Client.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="385ce512-fc91-4eb6-b44a-a357d31f7623"
+                  name="Timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="c5fd3eb8-97b8-48ff-8b19-8bb2aac08ff3"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="e5afdb36-d00f-4e48-998b-2c6f3efce091"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fa330871-aca7-490f-be0a-5384952856b9"
+                  name="Client"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2fb49504-82ce-47d0-86d7-d27cc4c504f3"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="df76623a-dbaa-4af4-922c-fa8259ab5cba"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="07b46821-3c19-46a5-8a98-d22728ac3c78"
+            name="TimesheetId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="eb9114bd-0885-4184-9747-fed91a3c2e3b"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DTimesheetId"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="147ed8a1-6381-4c60-859b-3246cb89a9af"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fbde609d-950b-402c-80dc-871638cbf1d4">
+                    <propertyInstance
+                      Id="aea69d78-ed9a-492c-a2ba-390e153f6049"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ac72aa93-f4e4-44a2-bcb1-24fd9359964b">
+                    <propertyInstance
+                      Id="662753a6-815b-4264-9f13-5b561370781a"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fcc397d2-24c1-4129-b96e-b5097703ca2e">
+                    <propertyInstance
+                      Id="3d8658d6-a2ae-4a54-b75d-32a5bd622e47"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="47fbcbbd-2c6d-4c75-b175-e3c2af5a70a6">
+                    <propertyInstance
+                      Id="24813e57-4c17-462e-af8b-dc564a824262"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="799be3c5-2606-421a-af7d-34d35f63ac97">
+                    <propertyInstance
+                      Id="7a0b9e2e-c0d0-4784-90ec-9c8a339d439d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b39ef786-b82e-48d2-b8af-0665abb17369">
+                    <propertyInstance
+                      Id="8dc893c0-006e-46c5-b0fa-d65136f4b1fb"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="56b06424-a591-429f-8416-a74cee257b05">
+                    <propertyInstance
+                      Id="621e08e5-4dad-42e8-b7bb-5a55b2e4bb76"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="987cbf1f-3b51-41e5-bfed-9f76ca15687d"
+            name="Date"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ac4be978-77f0-4d38-add5-e46929921e45"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DDate"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c53f29fd-5183-4e73-a85e-cabec81ef190"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eb705148-fc1a-4d7a-bce7-0e0acfd4a24f">
+                    <propertyInstance
+                      Id="a007c19b-d2f6-4e8f-bf34-53157c0c48bf"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36321698-222f-4783-8614-e1e4e185edca">
+                    <propertyInstance
+                      Id="1dbb6672-faed-4177-9c47-4afd553cf947"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="26f32a85-eb76-4fe9-a682-e7904084398d">
+                    <propertyInstance
+                      Id="038ce25a-49d8-47de-b8d2-3bf0a4713414"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ac21e452-2539-4635-b82d-34255340ac29">
+                    <propertyInstance
+                      Id="b5290fb0-26d5-46cd-8d40-9f737ccffde7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="771ecc9a-af78-4d14-9a43-d282d127342c">
+                    <propertyInstance
+                      Id="f8f23a67-f222-4932-bd78-2d390a972f1a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f6447482-23c0-48b7-bd7c-dbf5b12e0de8">
+                    <propertyInstance
+                      Id="ebd775b1-2e1a-44b0-b3de-e4bf43fc65be"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="47efbc2a-6ea5-4fa0-867c-33ac8ab5ecce">
+                    <propertyInstance
+                      Id="e8844195-7eb7-4297-ba52-4a0e88bbcfb5"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="1725f6ff-0c99-479a-a982-7ef3a285fa37"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package2_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="2bbda8c7-bd4f-4252-909c-c9f98334c1df"
+            name="StartTime"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="27df8862-3c88-4fb4-a01a-95341f8d1c35"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DStartTime"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2784e7cf-6b4c-4510-b466-ba21d46ef6a7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9c47e18b-bac4-417b-9262-d1051b369760">
+                    <propertyInstance
+                      Id="e4b65531-0685-45fb-9fa2-301d5cd098ff"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c69af502-d916-424c-81a5-12984f40ef91">
+                    <propertyInstance
+                      Id="692f887d-6833-49d9-80d1-84a59103846c"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bb654bda-cd60-49d2-bab5-f7d4909172c0">
+                    <propertyInstance
+                      Id="42d4da9a-3c8c-4952-9523-ca5a1b78fcdd"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ccf09e68-2163-45a0-85d9-7630fa55c778">
+                    <propertyInstance
+                      Id="851d96d8-f476-427f-aa69-203db3ca12f4"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c39b95cb-be07-4930-b88e-1055bc2d3892">
+                    <propertyInstance
+                      Id="2b92b08c-a4e2-4de7-b1dd-1dc38de715dc"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="234fb87c-00b8-4562-8bd0-b8aec555685d">
+                    <propertyInstance
+                      Id="f042b469-79c4-4955-a207-71c1f391bf21"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="246b3306-a987-4bd0-89f5-33f95b063146">
+                    <propertyInstance
+                      Id="d2dbc2dd-78dc-43e2-badd-7721ef7d55a1"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="1725f6ff-0c99-479a-a982-7ef3a285fa37"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package2_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a7301ac4-b240-4f3c-954b-9b8b9e666783"
+            name="EndTime"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="9a477cde-d050-4933-8e2e-1de4cebfd62d"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DEndTime"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8c09ff93-7268-438e-8b53-8d80b7dc603a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cdec17f2-34a2-4227-b98b-5664d06fe0e6">
+                    <propertyInstance
+                      Id="e1fd61e6-be0e-45b2-beae-2ba3dd1d7bde"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c17c1e42-ec5b-4025-9c92-681096943f94">
+                    <propertyInstance
+                      Id="8a31ca88-44c0-4499-b9b1-9bc8212fd86d"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dc75a659-4309-4308-94d6-9b9b565103f8">
+                    <propertyInstance
+                      Id="3d5e8b67-2d64-4b08-ad84-4ad53a1676f5"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9f543115-724b-462d-8438-65df09185873">
+                    <propertyInstance
+                      Id="0d8badb6-4c6d-4331-b202-9c66443016af"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="510394c7-a1d9-4c9d-b630-960613128e1e">
+                    <propertyInstance
+                      Id="f7a20274-06c3-408d-a1b0-e2d0b0877e30"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="174db985-bc8e-4f73-a96e-31183e5ffb28">
+                    <propertyInstance
+                      Id="2d448986-c56d-458e-97e5-c303a414e4a4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="670ee144-d760-42a4-9964-ee23412bdd72">
+                    <propertyInstance
+                      Id="66b3c6e6-7291-415c-b7d3-fb51bcbb9fd8"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="1725f6ff-0c99-479a-a982-7ef3a285fa37"
+                LastKnownName="DateTime"
+                LastKnownLocation="Package2_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5ce3db21-6dab-4be4-a177-4ecc6519c626"
+            name="EmployeeId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b8214388-5b8e-4d38-ac9e-933c901131f8"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DEmployeeId"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c4e2496e-ff73-413a-918a-8df4e174446d"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02ddbbba-818a-4f0d-9f41-12424d987aff">
+                    <propertyInstance
+                      Id="8b29adc3-f1cd-4435-b40f-7308f3fc6fac"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4890ef4f-3c62-4eff-ab43-b0d7ecd33f9c">
+                    <propertyInstance
+                      Id="017e3e10-6815-4637-8666-2b06f7e58661"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a862d554-9af0-4606-8d50-3b4684be6939">
+                    <propertyInstance
+                      Id="a4682587-e461-4b73-82af-19e2ad82b686"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="797032f0-de2d-487e-9e00-f2d5aa17e4ed">
+                    <propertyInstance
+                      Id="cd0ebd9a-7e4e-449f-9e5d-ea3aae21e4c0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2f5e7711-e4d6-4161-92a9-c94237ca1580">
+                    <propertyInstance
+                      Id="79004a61-0ec7-4d7a-9c94-00f99af951c5"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bf3a3296-565d-4c40-9475-91f54252e8e1">
+                    <propertyInstance
+                      Id="3344e49b-5cd8-4c21-9203-7bc443e597aa"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a31dda38-f1c3-47b0-ad69-4ccfe9ba71a4">
+                    <propertyInstance
+                      Id="4ad0436d-ec5e-44b8-ac24-5539101ae2af"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b577f556-9624-4a37-bb52-d245623c428f"
+            name="ActivityId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="049d3ed9-bb82-442c-84e8-56d08e4a3fcd"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DActivityId"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fb14cc04-d35f-492f-84d7-98caed496c07"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd9c0ae6-ffb6-4ed6-b2f2-07a14f207631">
+                    <propertyInstance
+                      Id="d4d95405-7d7b-419e-a596-6226a30c4337"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d890c14-b573-465b-981d-c5f45c1777bc">
+                    <propertyInstance
+                      Id="9715189e-dbdc-4e37-84f8-84b04c27bc1b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d5e2dd8f-285e-40d0-b7f8-f1cedfa43a7e">
+                    <propertyInstance
+                      Id="b34d8a3b-ccb2-4b07-9707-c82c3a83c42f"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="526fdfa1-d80b-4f28-9e8c-027cffebfa53">
+                    <propertyInstance
+                      Id="a437d0e1-9e36-4c43-b577-23eedc614cc1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1126999c-8330-4f9f-b079-a3acb2b9dc20">
+                    <propertyInstance
+                      Id="57873cab-9749-4279-967b-e669c4b3979d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a68a3aad-f7fc-4fab-9c0a-c611fa74853d">
+                    <propertyInstance
+                      Id="c9e573df-76a3-4697-a002-682f50365583"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c2fd97b-0814-4007-91a2-8db816f4f4cf">
+                    <propertyInstance
+                      Id="addb9567-7e41-4c04-b2ca-04ddfafd20d1"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="dde2defa-692f-45a1-90b4-86927ed12d30"
+            name="ProjectId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="f214f7de-34f3-4529-baac-9bb40bce81b7"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DProjectId"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d3487ba7-5c20-4e5d-a77a-53975b5565f7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b9ff2a0c-812f-4607-b8a0-8ca8db9b39db">
+                    <propertyInstance
+                      Id="20029853-a2cc-4faa-9179-87cc28b678b9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19a0faff-407c-4d2c-94fa-a141ec9b9862">
+                    <propertyInstance
+                      Id="d499f694-8b68-4304-b846-f8a22b3fcb0b"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f45454aa-5d8f-4673-be80-de45d94c5dac">
+                    <propertyInstance
+                      Id="624261b7-40e4-46a8-add3-6698a4ad2442"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fc5dcbc3-0a71-4201-bf9d-c0159e363a15">
+                    <propertyInstance
+                      Id="b779c942-3097-4e11-bb66-05790902363c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1fc2dd58-0bfe-4b41-9391-c126bc297451">
+                    <propertyInstance
+                      Id="e98b902b-98e4-496e-ace7-7efee04c2667"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="33afe71b-dfdf-41af-ab0b-6fc9a15b7f8b">
+                    <propertyInstance
+                      Id="c3ee068d-9884-4d7d-9fb6-73cf260f0820"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="68cc76c1-d58a-4e3a-afc9-ba89362b9690">
+                    <propertyInstance
+                      Id="8f50080d-8fc9-4544-a5c7-347705a7ba44"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="5a93eb93-88ad-470a-beeb-d9eab4d5d547"
+                LastKnownName="Nullable&lt;Int32‎&gt;"
+                LastKnownLocation="Package2_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c0ae106a-6757-440c-948f-bba549e6da67"
+            name="ClientId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="54e1d2d7-5cae-406f-9d87-12b076a22407"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DClientId"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fa49d0b1-7770-4604-9e86-4af5c216fec4"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e51080a9-8972-4529-ac60-917d7ff15ec2">
+                    <propertyInstance
+                      Id="651aee46-68c5-4f2c-85e2-a2240bbe2a1b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3dfbfb3d-e713-4a14-9428-a25f8171cc6c">
+                    <propertyInstance
+                      Id="2c1efada-ed8f-4432-b21a-1f0afb782a9a"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31cbf35d-93fb-4c16-9a81-70f83b87c6dd">
+                    <propertyInstance
+                      Id="587e2076-e682-4cb7-972d-32b8740c1414"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c9b2fa88-acd5-45d7-8e17-bb0aab5394e3">
+                    <propertyInstance
+                      Id="ec9be298-a511-4b86-8f70-4d6a3c952090"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="43d36c9f-3090-4aeb-8646-264939b70509">
+                    <propertyInstance
+                      Id="e6f25637-c9fb-44ad-928b-934e30dabd85"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ac347f1-c207-4919-a089-53b24c1fa8ee">
+                    <propertyInstance
+                      Id="a5e93726-6fab-4fba-ab3b-71c97f497a9b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="288c4392-aa55-475a-9fdc-4c44093aaf1a">
+                    <propertyInstance
+                      Id="7c721205-db2a-434a-b442-e96e47fb67ea"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="5a93eb93-88ad-470a-beeb-d9eab4d5d547"
+                LastKnownName="Nullable&lt;Int32‎&gt;"
+                LastKnownLocation="Package2_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="89a8da95-9aed-458a-b892-3175a5ea980a"
+            name="Activity"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="4ccfd867-b17d-41ca-a796-68a702f36abe"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DActivity"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="dd0bbc40-79a2-42d3-a8a4-bae6b26eaeb0"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2152bcf3-1ec3-46e0-8353-e69ad5a73cf0">
+                    <propertyInstance
+                      Id="225ac309-feac-4b44-93be-f7f6f1f371ec"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0bd03c04-8258-414d-8011-c60d24d22d51">
+                    <propertyInstance
+                      Id="5cddac97-4757-48e4-957d-33ea5ee4f5f7"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9d982c3b-7bc7-4191-9d19-e7f3973f5b2a">
+                    <propertyInstance
+                      Id="72c0b7c4-28ab-4e8d-b563-0918760e3c34"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6642f61b-ac55-4500-b7ec-3bf2afdc34d6">
+                    <propertyInstance
+                      Id="4584f1d9-bc14-4550-8915-a1b423a4fdb2"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e1d5e23c-0bfe-40e9-a36e-e4d9682168a9">
+                    <propertyInstance
+                      Id="df06aab8-fba6-45c4-bc9e-69b04172c308"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57077717-b5fc-439a-a525-0d1fb0473b3f">
+                    <propertyInstance
+                      Id="2e647b0f-dd06-489d-aed2-a689994f6dec"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="474e71ef-d074-40bd-b9e1-640dc4bb1637">
+                    <propertyInstance
+                      Id="1e8ccbd4-9e21-435c-85be-136cfd2eff46"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="f3ad4758-4676-47da-92c6-bf3dc6bab4bf"
+                LastKnownName="Activity"
+                LastKnownLocation="Package5_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3cd8a29e-83b0-46c7-a926-508fe1429718"
+            name="Employee"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3b317379-107e-4e76-8ad9-848872fe417e"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DEmployee"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="eb8f9e30-5562-46b3-9318-bf22fb2374ff"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a8aa9d3a-df80-41bb-ab67-2bd8a0d84ce9">
+                    <propertyInstance
+                      Id="712dc4e9-e5ea-427a-a09f-d499cc8ba929"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="33c2515e-5c00-43f6-b637-dd4e1ceb09fa">
+                    <propertyInstance
+                      Id="8392c96d-9242-415d-a470-10c6f708ffaa"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="45556361-e119-4b03-8bd8-1e3d53f39ddb">
+                    <propertyInstance
+                      Id="1c38e339-0859-490d-abd2-7b77272f2833"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3bc27f1f-7ae8-4338-9cb3-d9a645dd70e2">
+                    <propertyInstance
+                      Id="32e467b0-6818-4e49-bd08-e35e66aed43d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4439ba3b-447d-4b0d-82ba-119038d6b52a">
+                    <propertyInstance
+                      Id="6e23772e-6792-473b-953a-121fef8b55cd"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f6f693c5-4f48-4604-9b9c-f86a2b747650">
+                    <propertyInstance
+                      Id="845f9f53-8fad-4656-94fb-ad5d4c205da4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ed34e98-fa31-463d-b821-ee3f12189fff">
+                    <propertyInstance
+                      Id="8a3b421b-63e9-4cfb-9134-247257b4c703"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ffba11bc-b59e-487c-a3d6-5c98b015a0e6"
+                LastKnownName="Employee"
+                LastKnownLocation="Package5_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="50e1950b-4c04-4e45-a7f3-e6fb3a6512e0"
+            name="Project"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="d2fbd885-3788-4797-9d4a-3f65fa8317d1"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DProject"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1415f4fe-eadb-47c8-88b4-1693d738dd3a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="702bd1e5-d925-42f1-ac04-d4ddd1c9322e">
+                    <propertyInstance
+                      Id="85f417bd-2283-4062-b0cd-faada5937ffe"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8d8a6a55-32a8-4b17-8ad6-997c094c65d6">
+                    <propertyInstance
+                      Id="adabfc61-8128-472e-893c-51875322e343"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f9abe4aa-48fb-4088-a79b-9e5a0ec6efe1">
+                    <propertyInstance
+                      Id="92e6f311-4e63-4dcb-98b6-60b741505877"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e569d7d3-3527-4fe0-8ea2-d3e49853332e">
+                    <propertyInstance
+                      Id="52c6b5be-6831-4d6d-85ac-226c38ae0158"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96864dd6-ddaa-4d5a-9f53-e3ef4bf7cbba">
+                    <propertyInstance
+                      Id="cd163b77-da08-456d-be62-f827a16be8ef"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00c49a32-3d88-4ff9-8552-8989b4acd474">
+                    <propertyInstance
+                      Id="7eac80de-d522-48ca-ad75-dce1557fbe63"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b7f0565f-50af-4bf0-9f08-45bf960aed1a">
+                    <propertyInstance
+                      Id="14e50cf8-dd69-4157-8648-c24535c70eab"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="4639ea8e-8b3a-4351-899b-7d44b07349ad"
+                LastKnownName="Project"
+                LastKnownLocation="Package5_1619.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="52b23093-6b32-4992-9c04-dadc3620bfee"
+            name="Client"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="df6089c9-d345-45f1-8e3c-38a23d550bac"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3DClient"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7b7e3e24-12a7-43c7-8f80-3358c401b05a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b426db89-792d-44c0-b394-b580b4495306">
+                    <propertyInstance
+                      Id="2e2f5bab-3832-4789-86ed-1a11bf9b0674"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e16f1fac-ed39-4ae2-ae72-109712ba4f0e">
+                    <propertyInstance
+                      Id="1e1bd54e-891c-474e-b24f-fb6029c97d17"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3609b240-3637-4ea7-80ea-1962d3865877">
+                    <propertyInstance
+                      Id="be5fdd79-3ba6-4bec-a375-a7a6b8001ed4"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d094b48e-5280-4d00-a004-c91cf0ac1708">
+                    <propertyInstance
+                      Id="04990a38-6f74-40b4-8379-080379b6802b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2c64a6e-09ce-452d-935f-6fe99b4963c8">
+                    <propertyInstance
+                      Id="920fc4e5-7ee9-4e7d-a2b1-dc33e6ce350a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a31d4e8b-2c2a-4a5d-863c-2e8799d1d61f">
+                    <propertyInstance
+                      Id="2a950795-1b66-41c4-8677-bc9f243d59e8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19275029-6549-4e34-a4d6-ced93eba549b">
+                    <propertyInstance
+                      Id="389087e7-98f1-4d5b-94f8-0e5fe0da7e59"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="51e7d651-ab77-419d-8e6c-18e94f69c861"
+                LastKnownName="Client"
+                LastKnownLocation="Package5_1619.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="beeb5d2a-561f-48ad-946e-a0fb5786d85a"
+            name="Timesheet"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="ec7b84fc-7dc9-462d-9ae8-fecb700e9815"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FRadu%2FDocuments%2FGitHub%2FISIProject%2FISIProject%2Fbin%2FISIProject.dll Namespace%3DISIProject.Models Type%3DTimesheet Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f4130034-010f-439d-b78d-6d2a17f15402"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="51d84981-b053-48bd-a78a-5a818cc40288">
+                    <propertyInstance
+                      Id="9a87bd85-24cc-43bc-b8f1-c8afae759bb3"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39a92533-8f43-4840-8dc7-1b6eab76b337">
+                    <propertyInstance
+                      Id="afb14f6f-3184-4807-a25b-0020fa1a7e89"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a4dbe76-6893-42fc-b584-5572cafbeb45">
+                    <propertyInstance
+                      Id="62fa4708-d133-4673-99cb-fe9bc08c818a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b29a253-cf8a-4a9c-b3cf-55a6a04f8662">
+                    <propertyInstance
+                      Id="4555e096-71af-4dad-8dc8-66fe500c44ed"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="64691c54-95c7-4972-8b55-00f0387b1e2b">
+                    <propertyInstance
+                      Id="a2509e57-239a-4a52-83b0-f5f0b23ca769"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0dcc7b4b-8851-47cb-9faf-e9ec477c49b0">
+                    <propertyInstance
+                      Id="c46823fd-6ef3-4da5-8392-ccaaaaf39f84"
                       name="params"
                       value="false" />
                   </stereotypeInstanceHasPropertyInstances>
