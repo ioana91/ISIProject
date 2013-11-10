@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ISIProject.Models;
+using System.Web.Security;
 
 namespace ISIProject.Controllers
 {
+    //[Authorize(Roles="Administrator")]
     public class DivisionManagerController : Controller
     {
         private CompanyContext db = new CompanyContext();
@@ -40,7 +42,8 @@ namespace ISIProject.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name");
+            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name")
+                .Where(x => x.Text != string.Empty);
             return View();
         }
 
@@ -55,6 +58,10 @@ namespace ISIProject.Controllers
             {
                 db.Divisions.Add(division);
                 db.SaveChanges();
+
+                var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+                Roles.AddUserToRole(manager.UserName, "DivisionManager");
+
                 return RedirectToAction("Index");
             }
 
@@ -72,7 +79,9 @@ namespace ISIProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
+
+            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId)
+                .Where(x => x.Text != string.Empty);
             return View(division);
         }
 
@@ -85,8 +94,16 @@ namespace ISIProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(division).State = EntityState.Modified;
+                var currentDivision = db.Divisions.Find(division.DivisionId);
+                var exManager = db.Employees.SingleOrDefault(e => e.EmployeeId == currentDivision.DivisionManagerId);
+                Roles.RemoveUserFromRole(exManager.UserName, "DivisionManager");
+
+                db.Entry(currentDivision).CurrentValues.SetValues(division);
                 db.SaveChanges();
+
+                var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+                Roles.AddUserToRole(manager.UserName, "DivisionManager");
+
                 return RedirectToAction("Index");
             }
             ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
@@ -116,6 +133,10 @@ namespace ISIProject.Controllers
             Division division = db.Divisions.Find(id);
             db.Divisions.Remove(division);
             db.SaveChanges();
+
+            var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+            Roles.RemoveUserFromRole(manager.UserName, "DivisionManager");
+
             return RedirectToAction("Index");
         }
 

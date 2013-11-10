@@ -19,5 +19,6 @@ namespace ISIProject.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<Division> Divisions { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Timesheet> Timesheets { get; set; }
     }
 }
