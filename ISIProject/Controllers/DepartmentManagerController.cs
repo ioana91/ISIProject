@@ -42,7 +42,8 @@ namespace ISIProject.Controllers
         public ActionResult Create()
         {
             ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "Name");
-            ViewBag.DepartmentManagerId = new SelectList(db.Employees, "EmployeeId", "Name");
+            ViewBag.DepartmentManagerId = new SelectList(db.Employees, "EmployeeId", "Name")
+                .Where(x => x.Text != string.Empty);
             return View();
         }
 
@@ -81,11 +82,9 @@ namespace ISIProject.Controllers
                 return HttpNotFound();
             }
 
-            var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
-            Roles.RemoveUserFromRole(manager.UserName, "DepartmentManager");
-
             ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "Name", department.DivisionId);
-            ViewBag.DepartmentManagerId = new SelectList(db.Employees, "EmployeeId", "Name", department.DepartmentManagerId);
+            ViewBag.DepartmentManagerId = new SelectList(db.Employees, "EmployeeId", "Name", department.DepartmentManagerId)
+                .Where(x => x.Text != string.Empty);
             return View(department);
         }
 
@@ -98,7 +97,11 @@ namespace ISIProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(department).State = EntityState.Modified;
+                var currentDepartment = db.Departments.Find(department.DepartmentId);
+                var exManager = db.Employees.SingleOrDefault(e => e.EmployeeId == currentDepartment.DepartmentManagerId);
+                Roles.RemoveUserFromRole(exManager.UserName, "DepartmentManager");
+
+                db.Entry(currentDepartment).CurrentValues.SetValues(department);
                 db.SaveChanges();
 
                 var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
