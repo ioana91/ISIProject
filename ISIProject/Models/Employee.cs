@@ -16,6 +16,7 @@ namespace ISIProject.Models
         public int EmployeeId { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
         //TODO: This should be modified when Department table contains data (OR NOT?)
         public int? DepartmentId { get; set; }
 
