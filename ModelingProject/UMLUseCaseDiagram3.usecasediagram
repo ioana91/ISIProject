@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="05597604-73fd-4cff-bed1-68e87c87abbf" name="UMLUseCaseDiagram3" linkedPackageId="3bbbbaec-3380-4701-a4ed-25d448ea32bf" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="70ccf9b3-fddf-4aa9-b411-bc4fa7e0bde2">
+      <profileInstance Id="f31730b4-33db-418c-9e09-350ec3d538bd" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a0767c1e-f880-45aa-a3db-3814602b4e76">
+      <profileInstance Id="b9bd89ed-ac3f-48be-9a14-f577c7ff51c2" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="ef2df7f1-2078-4848-99ca-470c83d47b27">
+      <profileInstance Id="534eb0df-35b4-4f11-ba0a-40b43923a6a0" name="CSharpProfile">
+        <elementDefinition Id="66c955b1-caf4-49a3-948a-4613ba52fd80" />
+      </profileInstance>
+      <elementDefinition Id="81e0ac74-d243-47b1-94e9-6751ec202897" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="6a796403-ae46-46a6-973e-16b84b8df557" name="Employee" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ec2ad169-c4a0-4d4a-82bd-dc32e58edf59" />
+        <targetEnds>
+          <association Id="a08c1905-8b55-4ec6-ac3a-321db26c9330" isDerived="false" sourceEndRoleName="Employee" targetEndRoleName="Login" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6f8ecaec-82fc-46e5-be9f-01789ec04256" LastKnownName="Login" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="56d587d7-fda1-4b1b-aa01-3ba43d67506c" name="Employee" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="414ff283-724f-4236-bc1e-5b5591a34b3f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a5b37d01-138b-4587-8c4c-875f47040a12" name="Login" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f2952813-5767-47f6-aea9-7f1a1b0931f4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ed86e9db-1736-4fa3-a864-a21ac6f5a640" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6f8ecaec-82fc-46e5-be9f-01789ec04256" name="Login" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f9fa21f-bd43-4d22-8c8d-f917ece86b7c" />
+        <targetEnds>
+          <association Id="a8432795-3267-4e2d-ad05-9dae15226b8a" isDerived="false" sourceEndRoleName="Login" targetEndRoleName="Checks Timesheet" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="99e37a06-0924-4cc1-956c-9760a4269269" LastKnownName="Checks Timesheet" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c563f312-30a0-41b5-8ddf-88f17454e4d1" name="Login" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b335c6d7-ffc1-4b1b-afdb-bdfb6b36a445" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b8758bd0-16ad-40bc-9615-02d26baec840" name="Checks Timesheet" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="730c9c9d-6a57-4807-a63b-621e36abe2a4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="189e7c87-f3fb-4e0a-bc47-8584f7c03523" />
+          </association>
+          <association Id="a7c3e39d-c209-45fd-949c-472d54f4a77f" isDerived="false" sourceEndRoleName="Login" targetEndRoleName="Completes timesheet" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c817868e-e2f4-4bfb-83b2-9b237c1a6b33" LastKnownName="Completes timesheet" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="019423a8-6133-4eed-808c-7f20c52c7f0b" name="Login" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b9b82df1-1a86-416d-ba97-36790b187806" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e39aa944-b0d8-412a-825d-fc01238e47a8" name="Completes timesheet" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="dc46dc31-a4ea-448f-9f3e-9163eff3bafc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="23fbba88-703a-43e5-92a9-2224a7ff2179" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="99e37a06-0924-4cc1-956c-9760a4269269" name="Checks Timesheet" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="eb6384b1-9f9f-4913-89de-5f36d323e786" />
+        <suppliersInternal>
+          <dependency Id="d42254ba-d34d-42ce-81b7-fafa122b6473">
+            <useCaseMoniker Id="1d08ed35-75de-47f4-9406-d8ac9a29acd9" LastKnownName="Save timesheet" />
+            <elementDefinition Id="93dcc357-ba25-47c7-b3c3-3ac7e72896fe" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c817868e-e2f4-4bfb-83b2-9b237c1a6b33" name="Completes timesheet" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d648171a-2a0d-462f-88ff-0f720174680b" />
+        <targetEnds>
+          <association Id="0301a523-4c83-4f5e-947a-15e2dccd06fb" isDerived="false" sourceEndRoleName="Completes timesheet" targetEndRoleName="Save timesheet" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1d08ed35-75de-47f4-9406-d8ac9a29acd9" LastKnownName="Save timesheet" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0600f837-6970-4584-aac1-20e79233f56a" name="Completes timesheet" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9673154a-4dd7-4f60-81f0-1bee3deb8627" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9a355c3c-1c6f-4ae6-8401-28ea295315e8" name="Save timesheet" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="14aa3523-c0c7-44f0-b8db-a419eb485efc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="feb55680-4d27-4b90-b3d2-31f0d1c1078a" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1d08ed35-75de-47f4-9406-d8ac9a29acd9" name="Save timesheet" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c61fc496-34ea-4a1d-b29f-9c9b88e8a8b7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="3bbbbaec-3380-4701-a4ed-25d448ea32bf" name="ModelingProject">
+    <elementDefinition Id="875341e7-d610-4ddf-85ea-dc278c6b7c14" />
+  </package>
+</useCaseModelRoot>
