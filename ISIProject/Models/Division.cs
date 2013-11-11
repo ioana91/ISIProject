@@ -15,7 +15,7 @@ namespace ISIProject.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int DivisionId { get; set; }
         public string Name { get; set; }
-        public int? DivisionManagerId { get; set; }
+        public int DivisionManagerId { get; set; }
 
         [InverseProperty("EmployeeId")]
         [ForeignKey("DivisionManagerId")]
