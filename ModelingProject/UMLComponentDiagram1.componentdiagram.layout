@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.625, 9.125" name="UMLComponentDiagram1">
+  <componentModelMoniker Id="9dad265a-e5c8-473a-9498-9a4c5e6689ba" />
+  <nestedChildShapes>
+    <componentShape Id="f7a7d647-674c-401c-aedd-3880ebc3b49a" absoluteBounds="4.875, 0.75, 4.3187499205271394, 2.5500000000000003" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+      <componentMoniker Id="70f5a264-4733-4e18-818a-7f7a41f04957" LastKnownName="View" />
+      <nestedChildShapes>
+        <componentUseShape Id="690c62d3-c232-4c27-8454-8e281279ba5f" isExpanded="false" absoluteBounds="4.975, 1.375, 1.510416666666667, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="2.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="2.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="85ba9449-696a-4927-bc22-875bf19c9195" LastKnownName="Login Page" />
+        </componentUseShape>
+        <componentUseShape Id="73f67652-7cce-446c-9f7f-44c53c44563e" isExpanded="false" absoluteBounds="7, 1.375, 1.7395833333333339, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="2.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="2.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="ec151916-f260-4212-a714-e64d774bd6e8" LastKnownName="Employee Page" />
+        </componentUseShape>
+        <componentUseShape Id="01afeabf-e8b6-4539-a5f6-1b8315b8324a" isExpanded="false" absoluteBounds="5, 2.5, 1.5625000000000004, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="2.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="2.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="289ed648-9591-49f0-8789-237a290e045f" LastKnownName="Admin Page" />
+        </componentUseShape>
+        <componentUseShape Id="76824b49-80a6-4fce-819c-05095b223bff" isExpanded="false" absoluteBounds="7, 2.5, 1.7604166666666661, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="2.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="2.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="8b59c233-8c86-465d-b350-38c653c7e7b1" LastKnownName="Management Page" />
+        </componentUseShape>
+      </nestedChildShapes>
+    </componentShape>
+    <componentShape Id="bbd2f7cf-810b-4635-a5fb-2376f1e0ec68" absoluteBounds="9.875, 2.625, 2.4437499999999996, 5.1749999999999989" customColor="161, 199, 231" whiteBoxBoundsHeight="0" whiteBoxBoundsWidth="0" blackBoxBoundsHeight="0" blackBoxBoundsWidth="0" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0">
+      <componentMoniker Id="bf522d06-6de0-43dd-a709-86e9a1d76921" LastKnownName="Controller" />
+      <nestedChildShapes>
+        <componentUseShape Id="44614330-9f71-496b-8331-abbc5ea5a8c1" isExpanded="false" absoluteBounds="10.25, 3.375, 1.6875, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="91a5e7e2-141c-4140-87db-4256164a5363" LastKnownName="Administration" />
+        </componentUseShape>
+        <componentUseShape Id="03890fbd-3dff-4b55-9f08-820e93497dcc" isExpanded="false" absoluteBounds="10.25, 4.25, 1.6875, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="b42296e4-0bcf-4618-8d46-db1623e8f356" LastKnownName="Account" />
+        </componentUseShape>
+        <componentUseShape Id="8118fd82-a017-4b3e-acce-70de37e457d5" isExpanded="false" absoluteBounds="10.25, 6, 1.6875, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="2cf398ae-28b2-4f10-9239-18b45bc87d4a" LastKnownName="Department" />
+        </componentUseShape>
+        <componentUseShape Id="6efbf9f3-3148-41f0-9a19-3341fe093140" isExpanded="false" absoluteBounds="10.25, 5.125, 1.6875, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="20cf1b3e-de16-4200-9108-fb45f7647eb5" LastKnownName="Division" />
+        </componentUseShape>
+        <componentUseShape Id="9cf9c151-1d22-4112-a857-10fb43ac6704" isExpanded="false" absoluteBounds="10.25, 6.875, 1.6875, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="8a618049-8226-4023-8bcd-2d48f766d902" LastKnownName="Employee" />
+        </componentUseShape>
+      </nestedChildShapes>
+    </componentShape>
+    <componentShape Id="3f5b6a82-9bf6-4e15-94c1-884847387a37" absoluteBounds="2, 2.375, 1.975, 6.5499999999999989" customColor="161, 199, 231" whiteBoxBoundsHeight="0" whiteBoxBoundsWidth="0" blackBoxBoundsHeight="0" blackBoxBoundsWidth="0" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0">
+      <componentMoniker Id="28a5d21a-81be-416b-8dce-fd4768329561" LastKnownName="Model" />
+      <nestedChildShapes>
+        <componentUseShape Id="432fec63-3b9b-49de-8320-059951ab108c" isExpanded="false" absoluteBounds="2.125, 5.5, 1.5, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="4c45232c-050d-46f9-976e-80cc32b38596" LastKnownName="Division" />
+        </componentUseShape>
+        <componentUseShape Id="a3d473fa-2719-416a-acb1-d14af522126b" isExpanded="false" absoluteBounds="2.1, 3.75, 1.5, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="2ebbcb85-1d85-454a-ba26-0c91daf56a72" LastKnownName="Client" />
+        </componentUseShape>
+        <componentUseShape Id="d4ac5175-f295-4564-95f9-2758dc47015c" isExpanded="false" absoluteBounds="2.125, 4.625, 1.5, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="2e0b421d-b937-41be-b51e-e898324b77c6" LastKnownName="Departament" />
+        </componentUseShape>
+        <componentUseShape Id="b4d72e7d-0889-4eba-8c9c-af48011fd8d6" isExpanded="false" absoluteBounds="2.125, 2.9125064855813978, 1.5, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="9280fd4b-b2bd-4bd3-af7c-8f4f750403c7" LastKnownName="Activity" />
+        </componentUseShape>
+        <componentUseShape Id="66bfc22a-2fa6-4877-8585-4329a87d23c2" isExpanded="false" absoluteBounds="2.125, 6.375, 1.5, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="7be9b6f6-f1cc-46b8-a31d-7d67af3e7c52" LastKnownName="Employee" />
+        </componentUseShape>
+        <componentUseShape Id="0d57640b-143b-4084-adf7-6e78db93b5d8" isExpanded="false" absoluteBounds="2.125, 7.25, 1.5, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="6b0cb4da-e36f-4a0e-8858-f25f9389c4df" LastKnownName="Project" />
+        </componentUseShape>
+        <componentUseShape Id="2bc2563e-0523-42ad-bde7-3bdf85e1bff4" isExpanded="false" absoluteBounds="2.125, 8.125, 1.5, 0.7" customColor="161, 199, 231" whiteBoxBoundsHeight="0.95" whiteBoxBoundsWidth="1.5" blackBoxBoundsHeight="0.7" blackBoxBoundsWidth="1.5" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0" whiteBoxSettingsInitialized="true" blackBoxSettingsInitialized="true">
+          <partMoniker Id="b470558b-f34d-4e77-8610-17a89439595f" LastKnownName="Timesheet" />
+        </componentUseShape>
+      </nestedChildShapes>
+    </componentShape>
+    <dependencyConnector edgePoints="[(9.19374992052714 : 2.9625); (9.875 : 2.9625)]" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <dependencyMoniker Id="a888a1f4-b203-4e39-b1aa-1eb2303f87da" />
+      <relativeChildShapes />
+      <nodes>
+        <componentShapeMoniker Id="f7a7d647-674c-401c-aedd-3880ebc3b49a" />
+        <componentShapeMoniker Id="bbd2f7cf-810b-4635-a5fb-2376f1e0ec68" />
+      </nodes>
+    </dependencyConnector>
+    <dependencyConnector edgePoints="[(9.875 : 5.58125); (3.975 : 5.58125)]" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <dependencyMoniker Id="73db70dd-58b6-420d-bdc2-2e71298d7599" />
+      <relativeChildShapes />
+      <nodes>
+        <componentShapeMoniker Id="bbd2f7cf-810b-4635-a5fb-2376f1e0ec68" />
+        <componentShapeMoniker Id="3f5b6a82-9bf6-4e15-94c1-884847387a37" />
+      </nodes>
+    </dependencyConnector>
+  </nestedChildShapes>
+</componentDiagram>
