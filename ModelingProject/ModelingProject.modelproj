@@ -69,6 +69,13 @@
       <SubType>Content</SubType>
       <DependentUpon>UMLUseCaseDiagram1.usecasediagram</DependentUpon>
     </Content>
+    <Content Include="UMLUseCaseDiagram2.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLUseCaseDiagram2.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLUseCaseDiagram2.usecasediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\ModelingProject.uml">
       <SubType>Content</SubType>

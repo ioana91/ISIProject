@@ -720,6 +720,809 @@
         </subjects>
       </useCase>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="dbad8ac8-3e51-44ba-bfcf-a4b7a8cb4dca"
+        name="Timesheet Management Application"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6911054c-2ec1-4ec0-9df0-3b0ad1c70670"
+        name="Financial Application"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="424c74bc-e839-4ef1-9946-fcf8b5fb39c5"
+        name="User"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="b0a61abc-9eec-44c0-8a07-fe7a6535ec8c"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Check holidays"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="fceca2c9-1289-4d23-b2c9-ef70dfdb1369"
+              LastKnownName="Check holidays"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e923f79e-8656-441a-887f-e0f6b3056227"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="53ea45fe-8eba-42b4-afff-e55177c79a98"
+                  name="Check holidays"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="472901b1-4b77-4ecf-ba86-bb560ec427a2"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Calculate the  salaries"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="36d12d13-65c6-460c-a8ba-993b58e21d8a"
+              LastKnownName="Calculate the  salaries"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ad85acf6-dab9-4709-8807-ddb1dae28f4d"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="86e2ab9e-76a1-4f7d-b11c-a79dfd4a7b9a"
+                  name="Calculate the  salaries"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="36d12d13-65c6-460c-a8ba-993b58e21d8a"
+        name="Calculate the  salaries"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="bd0997c7-24bc-4550-bd05-30ce9dae2b10"
+            isDerived="false"
+            sourceEndRoleName="Calculate the  salaries"
+            targetEndRoleName="Salary Web Service"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="db83bcc3-79f6-405e-a3a3-fae6ed2004b3"
+              LastKnownName="Salary Web Service"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="95ef38f8-d395-4f84-a3b6-0e62d2724f98"
+                  name="Calculate the  salaries"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fdd3dbff-1798-497b-957f-afda6e5f119c"
+                  name="Salary Web Service"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="df0e5466-4841-4e6a-89ae-d92eb57e90df"
+            isDerived="false"
+            sourceEndRoleName="Calculate the  salaries"
+            targetEndRoleName="Get"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7225d5e0-352b-4e68-a807-64a9a7ca914c"
+              LastKnownName="Get"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d4830610-e6fd-45c1-8a40-abdc64dc3c0e"
+                  name="Calculate the  salaries"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="18b79340-9a6d-4aaa-a6a1-fa5eb9b62407"
+                  name="Get"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4a9c0fb6-dee1-44e7-8030-ea9a967de421"
+            isDerived="false"
+            sourceEndRoleName="Calculate the  salaries"
+            targetEndRoleName="Display Information"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7d25fc31-58a2-47fd-9803-a4375fd2ab17"
+              LastKnownName="Display Information"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f42a92fe-e053-4fc8-9ae8-4e40719d78db"
+                  name="Calculate the  salaries"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="447c7aa9-2b86-4718-b60b-b11d03b9cdf3"
+                  name="Display Information"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="6911054c-2ec1-4ec0-9df0-3b0ad1c70670"
+            LastKnownName="Financial Application"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fceca2c9-1289-4d23-b2c9-ef70dfdb1369"
+        name="Check holidays"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="9e99a309-c411-4e36-864c-0074a6e22742"
+            isDerived="false"
+            sourceEndRoleName="Check holidays"
+            targetEndRoleName="Get"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3ef2b279-bc19-49cd-9344-a34da45b64f5"
+              LastKnownName="Get"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f54889d-7c8a-45e4-8710-4703444e567b"
+                  name="Check holidays"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="95c5cedc-f092-44bb-8a7b-c5be8a9e9db3"
+                  name="Get"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="03d1e395-bd6c-4d61-b466-d4ac80090aab"
+            isDerived="false"
+            sourceEndRoleName="Check holidays"
+            targetEndRoleName="Display Information"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7d25fc31-58a2-47fd-9803-a4375fd2ab17"
+              LastKnownName="Display Information"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ce55c10f-b685-4a75-b01c-cf9520cb4c9d"
+                  name="Check holidays"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="45ec2450-afa2-49ab-aeaf-289201d550ef"
+                  name="Display Information"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="6911054c-2ec1-4ec0-9df0-3b0ad1c70670"
+            LastKnownName="Financial Application"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4eddc1a4-1d5d-4fd2-a0d3-765470f0361d"
+        name="Compute  Salary"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="3e7a5b6c-af75-412d-b305-65862e20552d"
+            isDerived="false"
+            sourceEndRoleName="Compute  Salary"
+            targetEndRoleName="Post"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a2682b07-0888-42b7-a8ca-57d98e096c10"
+              LastKnownName="Post"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fa5c2af5-2429-4e4a-bd48-452ca01f6a06"
+                  name="Compute  Salary"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="53b58ab6-73d4-49ea-88f2-bec3969b0ba9"
+                  name="Post"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="dbad8ac8-3e51-44ba-bfcf-a4b7a8cb4dca"
+            LastKnownName="Timesheet Management Application"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b6c8b962-e985-4ee8-855e-4180bbe68c1c"
+        name="Calculate Holidays"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="03e069be-60e9-45ab-aea1-dc46fb1d851f"
+            isDerived="false"
+            sourceEndRoleName="Calculate Holidays"
+            targetEndRoleName="Post"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6e09b592-d030-42d0-b4e7-ee299b42c8c9"
+              LastKnownName="Post"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4541a282-6832-476f-9097-96a03782431d"
+                  name="Calculate Holidays"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="04d9017e-e8c3-43d4-97f5-a25e4197a485"
+                  name="Post"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="dbad8ac8-3e51-44ba-bfcf-a4b7a8cb4dca"
+            LastKnownName="Timesheet Management Application"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7d25fc31-58a2-47fd-9803-a4375fd2ab17"
+        name="Display Information"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="70312733-091f-4678-a5cb-cde64ab5fbfa"
+            isDerived="false"
+            sourceEndRoleName="Display Information"
+            targetEndRoleName="User"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="424c74bc-e839-4ef1-9946-fcf8b5fb39c5"
+              LastKnownName="User"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6c12fe2b-fe10-43ff-af8b-b771c448bcc4"
+                  name="Display Information"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9dfb9f00-6003-4f92-96f0-72a1687d9e66"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="6911054c-2ec1-4ec0-9df0-3b0ad1c70670"
+            LastKnownName="Financial Application"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6bfa77fd-7d8a-4c20-a116-3ca2c910e3c5"
+        name="Web Services"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="532024e0-f1c5-4e89-b3a9-2cbb5707985b"
+        name="Holiday Web Service"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="db83bcc3-79f6-405e-a3a3-fae6ed2004b3"
+        name="Salary Web Service"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="400fbbfa-fbec-443e-b5ba-346674c68c6e"
+            isDerived="false"
+            sourceEndRoleName="Salary Web Service"
+            targetEndRoleName="Compute  Salary"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4eddc1a4-1d5d-4fd2-a0d3-765470f0361d"
+              LastKnownName="Compute  Salary"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="197e075b-d59d-4738-9262-fbbfcc89018a"
+                  name="Salary Web Service"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b207a5d6-549a-4883-baa8-21f3cfe8c1d7"
+                  name="Compute  Salary"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <artifact
+        Id="f469dfa5-f1a5-449a-a34b-e664181d92eb"
+        name="Artifact1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="9b84e373-a874-4b74-81cf-6d75bf044b6a"
+        name="Holiday Web Service"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="987bae6c-d854-4167-a326-de3464cba93c"
+        name="Salary Web Service"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7225d5e0-352b-4e68-a807-64a9a7ca914c"
+        name="Get"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="a7df88a0-97b2-433d-8665-472a29ee5236"
+            isDerived="false"
+            sourceEndRoleName="Get"
+            targetEndRoleName="Compute  Salary"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4eddc1a4-1d5d-4fd2-a0d3-765470f0361d"
+              LastKnownName="Compute  Salary"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9822a5ed-ca76-463a-88c7-61b013dbd5d0"
+                  name="Get"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0c628d17-9468-4a13-b24b-a2c769ea16e7"
+                  name="Compute  Salary"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="987bae6c-d854-4167-a326-de3464cba93c"
+            LastKnownName="Salary Web Service"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a2682b07-0888-42b7-a8ca-57d98e096c10"
+        name="Post"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="9ca3b4c5-4774-41b2-a0fa-12a64fe4c549"
+            isDerived="false"
+            sourceEndRoleName="Post"
+            targetEndRoleName="Calculate the  salaries"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="36d12d13-65c6-460c-a8ba-993b58e21d8a"
+              LastKnownName="Calculate the  salaries"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a76de6a0-39b4-4b52-ad57-4480625ea702"
+                  name="Post"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d86c7df0-6a5d-4459-974f-a0305ced42f9"
+                  name="Calculate the  salaries"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="987bae6c-d854-4167-a326-de3464cba93c"
+            LastKnownName="Salary Web Service"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3ef2b279-bc19-49cd-9344-a34da45b64f5"
+        name="Get"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="7c94a435-8708-4b74-ad6a-25e60d66f6b4"
+            isDerived="false"
+            sourceEndRoleName="Get"
+            targetEndRoleName="Calculate Holidays"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b6c8b962-e985-4ee8-855e-4180bbe68c1c"
+              LastKnownName="Calculate Holidays"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b030a8ee-ff57-42e2-a85a-23544f0c1490"
+                  name="Get"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="093bf851-731d-4d13-ade7-3bd72f1cac42"
+                  name="Calculate Holidays"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="9b84e373-a874-4b74-81cf-6d75bf044b6a"
+            LastKnownName="Holiday Web Service"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6e09b592-d030-42d0-b4e7-ee299b42c8c9"
+        name="Post"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="66a38ceb-ab19-4b1e-845b-540d0b598f86"
+            isDerived="false"
+            sourceEndRoleName="Post"
+            targetEndRoleName="Check holidays"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="fceca2c9-1289-4d23-b2c9-ef70dfdb1369"
+              LastKnownName="Check holidays"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9b383695-0a30-4470-a601-85e3e8fc994f"
+                  name="Post"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="34bcea3d-28cb-4135-8372-97e4fc2afd5f"
+                  name="Check holidays"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="9b84e373-a874-4b74-81cf-6d75bf044b6a"
+            LastKnownName="Holiday Web Service"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
