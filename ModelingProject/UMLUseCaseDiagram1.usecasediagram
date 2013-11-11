@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="04b400b8-7035-485a-92d5-fc67fe0fb7a6" name="UMLUseCaseDiagram1" linkedPackageId="de65b712-b7d1-4197-94fa-e04ac9f76022" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="e041a7ec-260a-470e-bad2-832c3b338026">
-      <profileInstance Id="f5cacab4-5789-4cf8-b1ee-3c42ddcd1d54" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="a000d0d5-fcb7-495a-9e2c-82f56998f144">
-      <profileInstance Id="9b9c66a6-b90b-4e10-b670-304b03e691ae" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="6c5b92a2-2303-4639-8647-58ae39342c75">
-      <profileInstance Id="f005c711-2152-49db-8a88-ddb839491dd5" name="CSharpProfile">
-        <elementDefinition Id="66c955b1-caf4-49a3-948a-4613ba52fd80" />
-      </profileInstance>
-      <elementDefinition Id="81e0ac74-d243-47b1-94e9-6751ec202897" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="f4d062cb-b1dc-4a5b-b24d-b33f3ac0b039" name="Administrator" isAbstract="false" isLeaf="false">
@@ -32,7 +12,7 @@
         </generalsInternal>
         <targetEnds>
           <association Id="1d270298-6d7b-4134-a06a-f4e4ae2c8b6c" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="UseCase1" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="139e3fe9-2212-4ed8-a350-d97835190c1b" LastKnownName="Adds Employees" />
+            <useCaseMoniker Id="139e3fe9-2212-4ed8-a350-d97835190c1b" LastKnownName="Adds/Removes Employees" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="1b2f14c1-3e71-4311-aebe-2dba4f0916b7" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -48,7 +28,7 @@
             <elementDefinition Id="6b43ea58-375c-429f-b999-ebeaf55c7dde" />
           </association>
           <association Id="c87d3b45-88e5-4db6-a119-824b9202f282" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="Adds Departaments" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="d3ce662f-024c-4713-85fe-9e4532841a9f" LastKnownName="Adds Departaments" />
+            <useCaseMoniker Id="d3ce662f-024c-4713-85fe-9e4532841a9f" LastKnownName="Adds/Removes Departaments" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="33a6bf4d-66aa-43e4-8a77-51de87d22d4c" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -64,7 +44,7 @@
             <elementDefinition Id="1565034b-3f46-40c3-a564-6b2107999dda" />
           </association>
           <association Id="4a29320e-f4ee-4bc0-834b-354a51a30d3b" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="Adds Divisions" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="79aa1709-6586-4181-997d-73c9e57a608a" LastKnownName="Adds Divisions" />
+            <useCaseMoniker Id="79aa1709-6586-4181-997d-73c9e57a608a" LastKnownName="Adds/Removes Divisions" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="830d0e04-0570-411b-979c-720ba07aab25" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -79,11 +59,43 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="736ebb62-958e-4f4c-ba98-f03ba09cf31f" />
           </association>
+          <association Id="03d36c15-67c7-4280-9fd2-c4daf37593f8" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="See the audit data" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="30bc2b1e-d0ff-4684-bf39-8228a3e69e73" LastKnownName="See the audit data" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8ca95a8a-244c-4f46-b8b3-5dc102cb983a" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ee5656c5-16a4-4887-8adb-80ec331662bc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4d32be0f-939b-40a4-a1aa-2fdca347a711" name="See the audit data" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="581717c7-6692-41e8-a61f-3e1e00145510" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9a481296-1713-4796-a562-12871b579d81" />
+          </association>
+          <association Id="8e2c8789-6eec-4df9-809e-922f10330d91" isDerived="false" sourceEndRoleName="Administrator" targetEndRoleName="Set Audit Settings" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9453bedf-c237-4114-9e89-20fc3c2f2c1f" LastKnownName="Set Audit Settings" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1af91d10-9a15-4951-ac3e-df40d19521a2" name="Administrator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="12ba62f5-f1f8-4cdd-b00f-5795b9aadb5c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="677e42dc-b30a-4d1d-8013-7e6cf4e9a430" name="Set Audit Settings" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="04872d5a-0baa-48b3-a581-0d9cc26fd666" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2ba4d801-f6d7-4e27-9618-9f892bc89c68" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="139e3fe9-2212-4ed8-a350-d97835190c1b" name="Adds Employees" isAbstract="false" isLeaf="false">
+      <useCase Id="139e3fe9-2212-4ed8-a350-d97835190c1b" name="Adds/Removes Employees" isAbstract="false" isLeaf="false">
         <elementDefinition Id="a16af339-3184-4c72-91fe-9b3c8233acc8" />
         <subjects>
           <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
@@ -91,7 +103,7 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="79aa1709-6586-4181-997d-73c9e57a608a" name="Adds Divisions" isAbstract="false" isLeaf="false">
+      <useCase Id="79aa1709-6586-4181-997d-73c9e57a608a" name="Adds/Removes Divisions" isAbstract="false" isLeaf="false">
         <elementDefinition Id="3db9a9dc-ae7a-4f5b-b7bf-61b154c9270e" />
         <subjects>
           <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
@@ -99,7 +111,7 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="d3ce662f-024c-4713-85fe-9e4532841a9f" name="Adds Departaments" isAbstract="false" isLeaf="false">
+      <useCase Id="d3ce662f-024c-4713-85fe-9e4532841a9f" name="Adds/Removes Departaments" isAbstract="false" isLeaf="false">
         <elementDefinition Id="65eaeb95-240f-46a4-b1a2-0e721bc34118" />
         <subjects>
           <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
@@ -157,6 +169,24 @@
             <elementDefinition Id="e4ef53ce-cb68-47e4-ab1a-f0eb574d4279" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="5da88eea-be89-42b2-b387-87e7fb76c847" isDerived="false" sourceEndRoleName="Division Manager" targetEndRoleName="Checks and aproves timesheets" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="70cb6b77-5ff3-4302-a15a-bf6282d2312d" LastKnownName="Checks and aproves timesheets" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="31acf8eb-d9fa-493b-9b6b-f2f188a62ff2" name="Division Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fdac87cb-acc1-46c3-855c-06b505d971dd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c073a177-a1ab-4567-83de-2ea91480399d" name="Checks and aproves timesheets" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f3fbee14-d622-4d7b-b676-b56aa80f3421" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9c5dea8f-4e36-42e6-a7df-39a71099d859" />
+          </association>
+        </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
@@ -168,6 +198,40 @@
             <elementDefinition Id="bf042401-03d3-4e6c-b598-fc430a4ba9cf" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="5bbf0503-1189-47cd-86fc-18aa469f4031" isDerived="false" sourceEndRoleName="Department Manager" targetEndRoleName="Checks and aproves timesheets" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="70cb6b77-5ff3-4302-a15a-bf6282d2312d" LastKnownName="Checks and aproves timesheets" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bb84c3f5-6067-476a-bce7-9a562bc077dd" name="Department Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5ae169e1-0508-4c93-baa0-cc5ac41accba" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d09802b4-d3e8-4a2b-b88c-5a6a7d49d7c1" name="Checks and aproves timesheets" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f237a7e7-271f-4a8e-87c0-f6f19f861523" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c821cacc-bd40-4a9b-a587-9e4813c18ade" />
+          </association>
+          <association Id="d5b2c855-a2ee-46bd-9ee2-4a310d28e625" isDerived="false" sourceEndRoleName="Department Manager" targetEndRoleName="Adds clients and projects for the departament" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="70b6b310-b18f-4b14-921a-e748911c8a7e" LastKnownName="Adds clients and projects for the departament" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f26ba0b8-48e6-46fe-85c2-c4b8f462b515" name="Department Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="16469360-2fab-4a3d-972b-8a91c3cc32e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="02628c5a-83f0-430a-b717-def5e8e3e795" name="Adds clients and projects for the departament" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b254a4a5-4237-4d03-b908-79042fa08dc6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6d93c49b-9a98-4985-9344-00e096a6b369" />
+          </association>
+        </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
@@ -189,8 +253,95 @@
         <elementDefinition Id="d7620bbd-9da4-42b9-9191-f7ba968c5e83" />
       </subsystem>
     </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="2df2ce58-c69b-4e5d-9aeb-40c3006ca42b" name="Director" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="35d135b2-784b-4b6c-8e7f-9ea36fef61f5" />
+        <generalsInternal>
+          <generalization Id="d084c263-5f78-493c-8f7b-51955f1819c7" isSubstitutable="false">
+            <actorMoniker Id="05b5e55c-da87-4376-be80-dc78e4f82b71" LastKnownName="Employee" />
+            <elementDefinition Id="c7da1646-6ff6-498b-84e2-5be442d0263a" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="58f1b030-e76c-4706-b0dd-7bb45a14aeb2" isDerived="false" sourceEndRoleName="Director" targetEndRoleName="Checks and aproves timesheets" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="70cb6b77-5ff3-4302-a15a-bf6282d2312d" LastKnownName="Checks and aproves timesheets" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="15ff2675-6ad5-4ada-9180-5c0e01f5b154" name="Director" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a8e3db3c-f2c7-4bcd-b0eb-5b0c36b728ee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="75e7c72d-fa21-4079-8621-01dbad6a2224" name="Checks and aproves timesheets" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4a5ef126-118d-47f0-a7fb-ec2d7f3ed044" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cb09f834-4bf8-4593-a2a8-99e9d8e88bc5" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="9453bedf-c237-4114-9e89-20fc3c2f2c1f" name="Set Audit Settings" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f52511e6-ba75-452a-adbb-ac2bc1e27a59" />
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="30bc2b1e-d0ff-4684-bf39-8228a3e69e73" name="See the audit data" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2c639a4d-e251-4648-ba15-8f40fbb7e8eb" />
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="70cb6b77-5ff3-4302-a15a-bf6282d2312d" name="Checks and aproves timesheets" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2fe0221a-f118-4a7c-a8b8-d04a3607324c" />
+        <suppliersInternal>
+          <dependency Id="4c91328b-4d9c-4e9f-8561-b21842645528">
+            <useCaseMoniker Id="680eac1c-87f1-4311-85f9-8b661598ff35" LastKnownName="Completes monthly timesheet" />
+            <elementDefinition Id="5e477a5d-36ea-48f1-b2b2-4a5af1c5e71d" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="70b6b310-b18f-4b14-921a-e748911c8a7e" name="Adds clients and projects for the departament" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="979cc38f-f09c-4593-b36c-59eee25d4119" />
+        <subjects>
+          <subsystemMoniker Id="d2fbfb4f-7fb3-44fc-a5f3-6e351dc9847e" LastKnownName="Timesheet Aplication" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="de65b712-b7d1-4197-94fa-e04ac9f76022" name="ModelingProject">
     <elementDefinition Id="875341e7-d610-4ddf-85ea-dc278c6b7c14" />
+    <profileInstances>
+      <packageHasProfileInstances Id="e041a7ec-260a-470e-bad2-832c3b338026">
+        <profileInstance Id="f5cacab4-5789-4cf8-b1ee-3c42ddcd1d54" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a000d0d5-fcb7-495a-9e2c-82f56998f144">
+        <profileInstance Id="9b9c66a6-b90b-4e10-b670-304b03e691ae" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="6c5b92a2-2303-4639-8647-58ae39342c75">
+        <profileInstance Id="f005c711-2152-49db-8a88-ddb839491dd5" name="CSharpProfile">
+          <elementDefinition Id="66c955b1-caf4-49a3-948a-4613ba52fd80" />
+        </profileInstance>
+        <elementDefinition Id="81e0ac74-d243-47b1-94e9-6751ec202897" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>

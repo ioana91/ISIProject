@@ -8,6 +8,14 @@ using System.Data.Entity;
 
 namespace ISIProject.Models
 {
+    public enum TimesheetState
+    {
+        Open,
+        Submited,
+        Aproved,
+        Rejected
+    }
+
     [Table("Timesheet")]
     public class Timesheet
     {
@@ -19,6 +27,8 @@ namespace ISIProject.Models
         public DateTime EndTime { get; set; }
         public int EmployeeId { get; set; }
         public int ActivityId { get; set; }
+        public bool ExtraHours { get; set; }
+        public TimesheetState State { get; set;}
         public int? ProjectId { get; set; }
         public int? ClientId { get; set; }
 
