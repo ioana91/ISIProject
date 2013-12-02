@@ -11,7 +11,7 @@ namespace ISIProject.Models
     public enum TimesheetState
     {
         Open,
-        Submitted,
+        Submited,
         Aproved,
         Rejected
     }

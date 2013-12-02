@@ -6,17 +6,15 @@ using System.Web.Mvc;
 
 namespace ISIProject.Controllers
 {
-    public class HomeController : Controller
+    public class HomeAdministratorController : Controller
     {
+        //
+        // GET: /HomeAdministrator/
+
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to Timesheet Manager";
             return View();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
     }
 }

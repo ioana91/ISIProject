@@ -21,15 +21,10 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            @*<li>@User.Identity.Name</li>*@
-                            @if (Roles.IsUserInRole("Administrator"))                        
-                            {
-                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li>@Html.ActionLink("Divisions","Index","DivisionManager")</li>
-                                <li>@Html.ActionLink("Departments","Index","DepartmentManager")</li>
-                                <li>@Html.ActionLink("Employees", "Index", "EmployeeManager")</li>
-                                <li>@Html.ActionLink("About", "About", "Home")</li>
-                            }
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Division","Index","DivisionManager")</li>
+                            <li>@Html.ActionLink("Department","Index","DepartmentManager")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
                         </ul>
                     </nav>
                 </div>
