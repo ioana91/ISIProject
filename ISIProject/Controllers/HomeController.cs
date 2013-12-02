@@ -11,6 +11,7 @@ namespace ISIProject.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to Timesheet Manager";
+            
             return View();
         }
 

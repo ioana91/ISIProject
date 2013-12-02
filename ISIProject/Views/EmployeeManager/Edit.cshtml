@@ -1,17 +1,19 @@
-﻿@model ISIProject.Models.Department
+﻿@model ISIProject.Models.Employee
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Department</legend>
+        <legend>Employee</legend>
+
+        @Html.HiddenFor(model => model.EmployeeId)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -22,23 +24,23 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DivisionId, "Division")
+            @Html.LabelFor(model => model.Email)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("DivisionId", String.Empty)
-            @Html.ValidationMessageFor(model => model.DivisionId)
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DepartmentManagerId, "Department Manager")
+            @Html.LabelFor(model => model.DepartmentId, "Department")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("DepartmentManagerId", String.Empty)
-            @Html.ValidationMessageFor(model => model.DepartmentManagerId)
+            @Html.DropDownList("DepartmentId", String.Empty)
+            @Html.ValidationMessageFor(model => model.DepartmentId)
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

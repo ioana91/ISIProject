@@ -55,6 +55,13 @@ namespace ISIProject.Models
         [Display(Name = "Last name")]
         public string LastName { get; set; }
 
+        [Display(Name = "E-mail")]
+        public string Email { get; set; }
+
+        //[ForeignKey("Department")]
+        public int? DepartmentId { get; set; }
+        public virtual Department Department { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
