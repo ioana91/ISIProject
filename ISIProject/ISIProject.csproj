@@ -186,6 +186,7 @@
     <Compile Include="Controllers\DivisionManagerController.cs" />
     <Compile Include="Controllers\EmployeeManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TimesheetController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -326,6 +327,7 @@
     <Content Include="Views\EmployeeManager\Create.cshtml" />
     <Content Include="Views\EmployeeManager\Edit.cshtml" />
     <Content Include="Views\EmployeeManager\Delete.cshtml" />
+    <Content Include="Views\Timesheet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
