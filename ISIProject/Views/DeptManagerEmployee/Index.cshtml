@@ -5,6 +5,12 @@
 }
 
 <h2>Add Employees</h2>
+<p>Search by:</p>
+<p>
+    @Html.DisplayName("Id") @Html.RadioButton("Category", new object())
+    @Html.DisplayName("Name") @Html.RadioButton("Category", new object())
+    @Html.DisplayName("Department") @Html.RadioButton("Category", new object())
+</p>
 <table>
     <tr>
         <th></th>
@@ -24,6 +30,9 @@
         <tr>
             <td>
                 @Html.CheckBox("Checkbox" + item.EmployeeId.ToString())
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
