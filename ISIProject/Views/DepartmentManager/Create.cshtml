@@ -12,7 +12,7 @@
 
     <fieldset>
         <legend>Department</legend>
-
+            @Html.ValidationMessage("UniqueName")
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>

@@ -56,14 +56,22 @@ namespace ISIProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Departments.Add(department);
-                db.SaveChanges();
+                if (!db.Departments.Any(d => d.Name.ToLower() == department.Name.ToLower()))
+                {
+                    db.Departments.Add(department);
+                    db.SaveChanges();
 
-                var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
-                //Roles.RemoveUserFromRole(manager.UserName, "Employee");
-                Roles.AddUserToRole(manager.UserName, "DepartmentManager");
+                    var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
+                    //Roles.RemoveUserFromRole(manager.UserName, "Employee");
+                    if (!Roles.IsUserInRole(manager.UserName, "DepartmentManager"))
+                    {
+                        Roles.AddUserToRole(manager.UserName, "DepartmentManager");
+                    }
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("UniqueName", "The name is not unique");
             }
 
             ViewBag.DivisionId = new SelectList(db.Divisions, "DivisionId", "Name", department.DivisionId);

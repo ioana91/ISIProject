@@ -56,17 +56,25 @@ namespace ISIProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Divisions.Add(division);
-                db.SaveChanges();
+                if (!db.Divisions.Any(d => d.Name.ToLower() == division.Name.ToLower()))
+                {
+                    db.Divisions.Add(division);
+                    db.SaveChanges();
 
-                var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
-                Roles.AddUserToRole(manager.UserName, "DivisionManager");
+                    var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+                    if (!Roles.IsUserInRole(manager.UserName, "DivisionManager"))
+                    {
+                        Roles.AddUserToRole(manager.UserName, "DivisionManager");
+                    }
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("UniqueName", "The name is not unique");
             }
-
             ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name", division.DivisionManagerId);
             return View(division);
+
         }
 
         //
