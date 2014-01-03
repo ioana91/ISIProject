@@ -10,6 +10,13 @@
     <legend>Employee</legend>
 
     <div class="display-label">
+        @Html.DisplayName("Id")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeId)
+    </div>
+
+    <div class="display-label">
          @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
@@ -17,14 +24,14 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
+        @Html.DisplayNameFor(model => model.Email)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Email)
     </div>
 
     <div class="display-label">
-         @Html.DisplayName("Department")
+        @Html.DisplayName("Department")
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Department.Name)

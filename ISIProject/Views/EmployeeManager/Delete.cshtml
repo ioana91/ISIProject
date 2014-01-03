@@ -11,6 +11,13 @@
     <legend>Employee</legend>
 
     <div class="display-label">
+         @Html.DisplayName("Id")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeId)
+    </div>
+
+    <div class="display-label">
          @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
