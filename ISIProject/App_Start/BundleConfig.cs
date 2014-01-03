@@ -17,6 +17,9 @@ namespace ISIProject
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/jQueryWeekCalendar").Include(
+                        "~/Scripts/jquery.weekcalendar.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -38,6 +41,8 @@ namespace ISIProject
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/themes/base/jQueryWeekCalendar").Include("~/Content/themes/base/jquery.weekcalendar.css"));
         }
     }
 }
