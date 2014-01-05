@@ -35,8 +35,9 @@
             @Html.LabelFor(model => model.DepartmentId, "Department")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("DepartmentId", String.Empty)
-            @Html.ValidationMessageFor(model => model.DepartmentId)
+            @*@Html.DropDownList("DepartmentId", String.Empty)
+            @Html.ValidationMessageFor(model => model.DepartmentId)*@
+            @Html.DisplayFor(model => model.Department.Name)
         </div>
 
         <p>

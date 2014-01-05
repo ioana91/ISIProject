@@ -198,6 +198,7 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\CompanyContext.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\DeptManagerSelectEmp.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Project.cs" />

@@ -40,14 +40,15 @@ namespace ISIProject.Migrations
                 WebSecurity.CreateUserAndAccount(
                     "rtapus",
                     "password",
-                    new { Name = "Radu Tapus", Email="radutzp@yahoo.com"});
+                    new { Name = "Radu Tapus", Email = "radutzp@yahoo.com", IsSelected = false });
             if (!Roles.GetRolesForUser("rtapus").Contains("Employee"))
                 Roles.AddUserToRole("rtapus", "Employee");
 
             if (!WebSecurity.UserExists("admin"))
                 WebSecurity.CreateUserAndAccount(
                     "admin",
-                    "password");
+                    "password",
+                    new { IsSelected = false });
             if (!Roles.GetRolesForUser("admin").Contains("Administrator"))
                 Roles.AddUserToRole("admin", "Administrator");
         }

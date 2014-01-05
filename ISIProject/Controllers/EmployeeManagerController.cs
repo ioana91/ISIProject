@@ -20,8 +20,6 @@ namespace ISIProject.Controllers
 
         public ActionResult Index()
         {
-            var a = db.Employees.Where(e => e.UserName != "admin").
-                Include("Department").ToList();
             return View(db.Employees.Where(e => e.UserName != "admin").
                 Include("Department").ToList());
         }
@@ -65,7 +63,8 @@ namespace ISIProject.Controllers
                     UserName = model.UserName,
                     DepartmentId = model.DepartmentId,
                     Email = model.Email,
-                    Name = model.Name
+                    Name = model.Name,
+                    IsSelected = false
                 };
                 db.Employees.Add(employee);
                 db.SaveChanges();

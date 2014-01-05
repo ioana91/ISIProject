@@ -1,45 +1,62 @@
-﻿@model IEnumerable<ISIProject.Models.Employee>
+﻿@model ISIProject.Models.DeptManagerSelectEmp
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Add Employees</h2>
-<p>Search by:</p>
-<p>
-    @Html.DisplayName("Id") @Html.RadioButton("Category", new object())
-    @Html.DisplayName("Name") @Html.RadioButton("Category", new object())
-    @Html.DisplayName("Department") @Html.RadioButton("Category", new object())
-</p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            @Html.DisplayName("Id")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayName("Department")
-        </th>
-    </tr>
+@using (Html.BeginForm()) 
+{
+    <p>Search by:</p>
+    <p>
+        @for (int i = 0; i < Model.SelectionCategories.Length; i++)
+        {
+            if (i == 0)
+            {
+                @Html.DisplayName(Model.SelectionCategories[i] + " ") @Html.RadioButtonFor(m => m.SelectedCategory, i, new { style="margin-right:50px", Checked = "checked"})         
+            }
+            else
+            {
+                @Html.DisplayName(Model.SelectionCategories[i] + " ") @Html.RadioButtonFor(m => m.SelectedCategory, i, new { style="margin-right:50px"})
+            }
+        }
+        @Html.TextBoxFor(m => m.SearchString)
+        <input type="submit" name="submitButton" value="Search" />
+    </p>
 
-    @foreach (var item in Model)
-    {
+    <table>
         <tr>
-            <td>
-                @Html.CheckBox("Checkbox" + item.EmployeeId.ToString())
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.Name)
-            </td>
+            <th></th>
+            <th>
+                @Html.DisplayName("Id")
+            </th>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <th>
+                @Html.DisplayName("Department")
+            </th>
         </tr>
-    }
-</table>
+
+        @for (int i = 0; i < Math.Min(Model.Employees.Count, Model.EmployeeIds.Count); i++)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(modelItem => Model.EmployeeIds[i])
+                    @Html.CheckBoxFor(modelItem => Model.IsSelected[i])
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Employees[Model.EmployeeIds[i]].EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Employees[Model.EmployeeIds[i]].Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Employees[Model.EmployeeIds[i]].Department.Name)
+                </td>
+            </tr>
+        }
+    </table>
+    
+    <input type="submit" name="submitButton" value="Add" />
+}

@@ -453,6 +453,11 @@ input[type="checkbox"] {
     width: auto;
 }
 
+input[type="radio"] {
+    width: auto;
+    background: inherit;
+}
+
 input[type="submit"],
 input[type="button"],
 button {
