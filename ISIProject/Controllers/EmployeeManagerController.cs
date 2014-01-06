@@ -64,7 +64,7 @@ namespace ISIProject.Controllers
                     DepartmentId = model.DepartmentId,
                     Email = model.Email,
                     Name = model.Name,
-                    IsSelected = false
+                    IsRegular = true
                 };
                 db.Employees.Add(employee);
                 db.SaveChanges();

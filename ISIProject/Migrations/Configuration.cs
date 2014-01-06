@@ -40,7 +40,7 @@ namespace ISIProject.Migrations
                 WebSecurity.CreateUserAndAccount(
                     "rtapus",
                     "password",
-                    new { Name = "Radu Tapus", Email = "radutzp@yahoo.com", IsSelected = false });
+                    new { Name = "Radu Tapus", Email = "radutzp@yahoo.com", IsRegular = true });
             if (!Roles.GetRolesForUser("rtapus").Contains("Employee"))
                 Roles.AddUserToRole("rtapus", "Employee");
 
@@ -48,7 +48,7 @@ namespace ISIProject.Migrations
                 WebSecurity.CreateUserAndAccount(
                     "admin",
                     "password",
-                    new { IsSelected = false });
+                    new { IsRegular = false });
             if (!Roles.GetRolesForUser("admin").Contains("Administrator"))
                 Roles.AddUserToRole("admin", "Administrator");
         }

@@ -9,7 +9,7 @@ namespace ISIProject.Models
 {
     public class DeptManagerSelectEmp
     {
-        public DeptManagerSelectEmp()
+        public static void Initialize()
         {
             db = new CompanyContext();
             employees = db.Employees.Where(e => e.UserName != "admin").Include("Department").ToList();
@@ -19,6 +19,14 @@ namespace ISIProject.Models
             {
                 isSelected.Add(false);
                 employeeIds.Add(item.EmployeeId);
+            }
+        }
+
+        static DeptManagerSelectEmp()
+        {
+            if (db == null)
+            {
+                Initialize();
             }
         }
 
@@ -57,9 +65,9 @@ namespace ISIProject.Models
             set { employeeIds = value; }
         }
 
-        private List<Employee> employees;
-        private CompanyContext db;
-        private List<bool> isSelected;
-        private List<int> employeeIds;
+        private static List<Employee> employees;
+        private static CompanyContext db;
+        private static List<bool> isSelected;
+        private static List<int> employeeIds;
     }
 }

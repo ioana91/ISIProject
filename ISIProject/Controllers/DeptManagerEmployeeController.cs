@@ -13,7 +13,7 @@ namespace ISIProject.Controllers
 {
     public class DeptManagerEmployeeController : Controller
     {
-        
+
         //
         // GET: /DeptManagerEmployee/
 
@@ -46,7 +46,8 @@ namespace ISIProject.Controllers
 
             if (selectEmp.SelectedCategory == "0")
             {
-                selectEmp.Employees = selectEmp.Employees.Where(x => x.Name.ToLower().Contains(selectEmp.SearchString.ToLower())).ToList();
+                selectEmp.Employees = selectEmp.Employees.Where
+                    (x => x.Name.ToLower().Contains(selectEmp.SearchString.ToLower())).ToList();
             }
             else if (selectEmp.SelectedCategory == "1")
             {
@@ -57,6 +58,8 @@ namespace ISIProject.Controllers
                 selectEmp.Employees = selectEmp.Employees.Where(x => x.Department.Name.ToLower() == selectEmp.SearchString.ToLower()).ToList();
             }
 
+            selectEmp.EmployeeIds = selectEmp.EmployeeIds.Where
+                (x => selectEmp.Employees.Select(e => e.EmployeeId).Contains(x)).ToList();
             return View(selectEmp);
         }
 
@@ -64,20 +67,16 @@ namespace ISIProject.Controllers
         {
             for (int i = 0; i < selectEmp.IsSelected.Count; i++)
             {
-                var a = selectEmp.IsSelected[i];
-                try
+                if (selectEmp.IsSelected[i])
                 {
-                    if (selectEmp.IsSelected[i])
-                    {
-                        selectEmp.IsSelected[i] = false;
-                        selectEmp.Employees.First(e => e.EmployeeId == selectEmp.EmployeeIds[i]).DepartmentId = selectEmp.DB.Employees.First(x => x.UserName == User.Identity.Name).DepartmentId;
-                        //selectEmp.Employees[selectEmp.EmployeeIds[i]].DepartmentId = selectEmp.DB.Employees.First(x => x.UserName == User.Identity.Name).DepartmentId;
-
-                        selectEmp.DB.SaveChanges();
-                    }
+                    selectEmp.IsSelected[i] = false;
+                    selectEmp.Employees.First(e => e.EmployeeId == selectEmp.EmployeeIds[i]).DepartmentId = 
+                        selectEmp.DB.Employees.First(x => x.UserName == User.Identity.Name).DepartmentId;
+                    selectEmp.DB.SaveChanges();
                 }
-                catch { }
             }
+
+            DeptManagerSelectEmp.Initialize();
             return View(selectEmp);
         }
 

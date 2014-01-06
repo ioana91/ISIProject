@@ -38,21 +38,20 @@
             </th>
         </tr>
 
-        @for (int i = 0; i < Math.Min(Model.Employees.Count, Model.EmployeeIds.Count); i++)
+        @for (int i = 0; i < Model.Employees.Count; i++)
         {
             <tr>
                 <td>
-                    @Html.HiddenFor(modelItem => Model.EmployeeIds[i])
                     @Html.CheckBoxFor(modelItem => Model.IsSelected[i])
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Employees[Model.EmployeeIds[i]].EmployeeId)
+                    @Html.DisplayFor(modelItem => Model.Employees[i].EmployeeId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Employees[Model.EmployeeIds[i]].Name)
+                    @Html.DisplayFor(modelItem => Model.Employees[i].Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Employees[Model.EmployeeIds[i]].Department.Name)
+                    @Html.DisplayFor(modelItem => Model.Employees[i].Department.Name)
                 </td>
             </tr>
         }
