@@ -1,15 +1,60 @@
 ﻿@{
     ViewBag.Title = "Index";
- }
+}
 
 @section AddToHead{
     <link rel='stylesheet' type='text/css' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css' />
     <link href="~/Content/themes/base/jquery.weekcalendar.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/TimeSheet.css" rel="stylesheet" />
 
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js'></script>
     <script type='text/javascript' src="~/Scripts/jquery.weekcalendar.js"></script>
+
+    <script src="~/Scripts/TimeSheet.js"></script>
 }
 
 <h2>Index</h2>
-<div id='calendar'></div>
+<div class="weekCalendar">
+    <div id='calendar'></div>
+    <div id="event_edit_container">
+        <form>
+            <input type="hidden" />
+            <ul>
+                <li>
+                    <span>Date: </span><span class="date_holder"></span>
+                </li>
+                <li>
+                    <label for="start">Start Time: </label>
+                    <select name="start">
+                        <option value="">Select Start Time</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="end">End Time: </label>
+                    <select name="end">
+                        <option value="">Select End Time</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="client">Client: </label>
+                    <select name="client">
+                        <option value="-1">Select Client</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="product">Product: </label>
+                    <select name="product">
+                        <option value="-1">Select Product</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="activity">Activity: </label>
+                    <select name="activity">
+                        <option value="-1">Select Activity</option>
+                    </select>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

@@ -192,3 +192,7 @@ table.wc-time-slots {
 .wc-container .ui-draggable-dragging {
    z-index: 1000;
 }
+
+#event_edit_container {
+	display: none;
+}
