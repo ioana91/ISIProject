@@ -15,5 +15,6 @@ namespace ISIProject.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int ActivityId { get; set; }
         public string Name { get; set; }
+        public bool IsActive { get; set; }
     }
 }

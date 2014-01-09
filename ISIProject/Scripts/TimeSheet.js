@@ -1,6 +1,17 @@
-﻿$(document).ready(function () {
-    var $calendar = $('#calendar');
+﻿var activities;
+
+$(document).ready(function () {
     var id = 10;
+    var $calendar = $('#calendar');
+
+    var selectActivityValue = function () { return $("select[name='activity']").val(); }
+    var selectActivityText = function () { return $("select[name='activity'] :selected").text(); }
+
+    var selectClientValue = function () { return $("select[name='client']").val(); }
+    var selectClientText = function () { return $("select[name='client'] :selected").text(); }
+
+    var selectProjectValue = function () { return $("select[name='project']").val(); }
+    var selectProjectText = function () { return $("select[name='project'] :selected").text(); }
 
     $calendar.weekCalendar({
         timeslotsPerHour: 4,
@@ -13,7 +24,7 @@
             return 500;
         },
         eventRender: function (calEvent, $event) {
-            if (calEvent.end.getTime() < new Date().getTime()) {
+            if (calEvent.end.getYear() < new Date().getYear() || calEvent.end.getMonth() < new Date().getMonth()) {
                 $event.css("backgroundColor", "#aaa");
                 $event.find(".wc-time").css({
                     "backgroundColor": "#999",
@@ -32,8 +43,8 @@
             resetForm($dialogContent);
             var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
             var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
-            var activityField = $dialogContent.find("select[name='activity']");
-            var bodyField = $dialogContent.find("select[name='product']");
+            //var activityField = $dialogContent.find("select[name='activity']");
+            //var bodyField = $dialogContent.find("select[name='project']");
 
 
             $dialogContent.dialog({
@@ -50,8 +61,11 @@
                         id++;
                         calEvent.start = new Date(startField.val());
                         calEvent.end = new Date(endField.val());
-                        calEvent.title = activityField.text();
-                        calEvent.body = bodyField.val();
+                        calEvent.title = selectActivityText();
+                        calEvent.body = selectProjectText();
+                        calEvent.activityID = selectActivityValue();
+                        calEvent.clientId = selectClientValue();
+                        calEvent.projectId = selectProjectValue();
 
                         $calendar.weekCalendar("removeUnsavedEvents");
                         $calendar.weekCalendar("updateEvent", calEvent);
@@ -60,9 +74,9 @@
                         var calendarEvent = ({
                             start: calEvent.start,
                             end: calEvent.end,
-                            clientId: 1,
-                            productId: calEvent.body,
-                            activityId: activityField.val(),
+                            clientId: selectClientValue(),
+                            projectId: selectProjectValue(),
+                            activityId: selectActivityValue(),
                         });
 
                         var dataToBeSent = JSON.stringify({ NewEvent: calendarEvent });
@@ -97,9 +111,9 @@
                 id: calEvent.id,
                 start: calEvent.start,
                 end: calEvent.end,
-                clientId: 1,
-                productId: calEvent.body,
-                activityId: calEvent.title,
+                clientId: calEvent.clientId,
+                projectId: calEvent.projectId,
+                activityId: calEvent.activityId,
             });
 
             $.ajax({
@@ -114,15 +128,15 @@
                 }
             });
         },
-        eventResize: function (calEvent, $event) {      
+        eventResize: function (calEvent, $event) {
 
             var calendarEvent = ({
                 id: calEvent.id,
                 start: calEvent.start,
                 end: calEvent.end,
-                clientId: 1,
-                productId: calEvent.body,
-                activityId: calEvent.title,
+                clientId: calEvent.clientId,
+                projectId: calEvent.projectId,
+                activityId: calEvent.activityId,
             });
 
             $.ajax({
@@ -167,16 +181,19 @@
 
                         calEvent.start = new Date(startField.val());
                         calEvent.end = new Date(endField.val());
-                        calEvent.title = activityField.val();
-                        calEvent.body = bodyField.val();
+                        calEvent.title = selectActivityText();
+                        calEvent.body = selectProjectText();
+                        calEvent.activityId = selectActivityValue();
+                        calEvent.projectId = selectProjectValue();
+                        calEvent.clientId = selectClientValue();
 
                         var calendarEvent = ({
-                            id : calEvent.id,
+                            id: calEvent.id,
                             start: calEvent.start,
                             end: calEvent.end,
-                            clientId: 1,
-                            productId: calEvent.body,
-                            activityId: calEvent.title,
+                            clientId: calEvent.clientId,
+                            projectId: calEvent.projectId,
+                            activityId: calEvent.activityId,
                         });
 
                         $.ajax({
@@ -185,7 +202,7 @@
                             data: JSON.stringify({ NewEvent: calendarEvent }),
                             dataType: "json",
                             url: "/Timesheet/UpdateEvent",
-                            contentType: "application/json; charset=utf-8",                            
+                            contentType: "application/json; charset=utf-8",
                             failure: function (errMsg) {
                                 alert(errMsg);
                             }
@@ -249,7 +266,7 @@
         var month = new Date().getMonth();
         var day = new Date().getDate();
 
-        var superEvent;
+        var superEvents;
 
         $.ajax({
             type: "POST",
@@ -262,16 +279,16 @@
                 for (i = 0; i < superEvents.length; i++) {
                     superEvents[i].start = new Date(superEvents[i].start);
                     superEvents[i].end = new Date(superEvents[i].end);
-                    }
-                },
-                error: function () {
-                    alert("An error has occured");
+
                 }
-            });
+            },
+            error: function () {
+                alert("An error has occured");
+                return;
+            }
+        });
 
-
-        var events = superEvents;
-        return events;
+        return superEvents;
     }
 
 
@@ -333,29 +350,28 @@
 });
 
 function populateActivityDropDownList() {
-    //var $dialogContent = $("#event_edit_container");
-    //var projectID = $dialogContent.find("select[name='product']");
-    //var activityList;
+    var $dialogContent = $("#event_edit_container");
+    var projectID = $dialogContent.find("select[name='project']");
 
-    //$.ajax({
-    //    type: "POST",
-    //    async: false,
-    //    data: JSON.stringify(projectID),
-    //    dataType: "json",
-    //    url: "/Timesheet/GetActivities",
-    //    contentType: "application/json; charset=utf-8",
-    //    success: function (activities) {
-    //        activityList = activities;
-    //    },
-    //    failure: function (errMsg) {
-    //        alert(errMsg);
-    //    },
-    //});
+    $.ajax({
+        type: "POST",
+        async: false,
+        data: JSON.stringify(projectID),
+        dataType: "json",
+        url: "/Timesheet/GetActivities",
+        contentType: "application/json; charset=utf-8",
+        success: function (activitiesList) {
+            activities = activitiesList;
+        },
+        failure: function (errMsg) {
+            alert(errMsg);
+        },
+    });
 
-    //var activityField = $dialogContent.find("select[name='activity']");
+    var activityField = $dialogContent.find("select[name='activity']");
 
-    //for (var i = 0; i < activityList.length; i++) {        
-    //    var htmlString = "<option value='" + activityList[i].ActivityId + "'>" + activityList[i].Name + "</option>";
-    //    activityField.append(htmlString);
-    //}
+    for (var i = 0; i < activities.length; i++) {
+        var htmlString = "<option value='" + activities[i].ActivityId + "'>" + activities[i].Name + "</option>";
+        activityField.append(htmlString);
+    }
 }

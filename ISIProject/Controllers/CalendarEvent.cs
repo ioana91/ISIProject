@@ -11,7 +11,7 @@ namespace ISIProject.Controllers
         public DateTime start { get; set; }
         public DateTime end { get; set; }
         public string clientId { get; set; }
-        public string productId { get; set; }
+        public string projectId { get; set; }
         public string activityId { get; set; }
 
     }

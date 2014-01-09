@@ -27,13 +27,6 @@ namespace ISIProject.Controllers
             var loggedInUserName = User.Identity.Name;
             int userID = db.Employees.Where(e => e.UserName == loggedInUserName).FirstOrDefault().EmployeeId;
 
-            //return Json(new
-            //{
-            //    id = "1",
-            //    start = new DateTime(2014, 1, 4, 14, 30, 0).ToString("MMMM dd, yyyy HH:mm:ss", new CultureInfo("en-US")),
-            //    end = new DateTime(2014, 1, 4, 16, 0, 0).ToString("MMMM dd, yyyy HH:mm:ss", new CultureInfo("en-US")),
-            //    title = "Super Test",
-            //});
             var x = db.Timesheets.Where(tm => tm.EmployeeId == userID).ToList();
 
             var y = x.Select(tm =>
@@ -43,6 +36,10 @@ namespace ISIProject.Controllers
                             start = tm.StartTime.ToString("MMMM dd, yyyy HH:mm:ss", new CultureInfo("en-US")),
                             end = tm.EndTime.ToString("MMMM dd, yyyy HH:mm:ss", new CultureInfo("en-US")),
                             title = tm.Activity.Name,
+                            body = tm.ProjectId.HasValue ? tm.Project.Name : string.Empty,
+                            activityId = tm.ActivityId,
+                            projectId = tm.ProjectId,
+                            clientId = tm.ClientId,
                         }).ToArray();
 
             var json = Json(y);
@@ -59,12 +56,18 @@ namespace ISIProject.Controllers
                 EndTime = NewEvent.end,
                 Date = NewEvent.start.Date,
                 EmployeeId = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).EmployeeId,
-                ActivityId = 1,
+                ActivityId = Convert.ToInt32(NewEvent.activityId),
                 ExtraHours = false,
                 State = TimesheetState.Open,
             };
 
-            db.Timesheets.Add(timeSheet);            
+            if (!String.IsNullOrWhiteSpace(NewEvent.projectId))
+            {
+                timeSheet.ProjectId = Convert.ToInt32(NewEvent.projectId);
+                timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
+            }
+
+            db.Timesheets.Add(timeSheet);
             db.SaveChanges();
 
             //var json = Json(new {newId = timeSheet.TimesheetId});
@@ -80,7 +83,13 @@ namespace ISIProject.Controllers
             timeSheet.StartTime = NewEvent.start;
             timeSheet.EndTime = NewEvent.end;
             timeSheet.Date = NewEvent.start.Date;
-            timeSheet.ActivityId = 1;
+            timeSheet.ActivityId = Convert.ToInt32(NewEvent.activityId);
+
+            if (!String.IsNullOrWhiteSpace(NewEvent.projectId))
+            {
+                timeSheet.ProjectId = Convert.ToInt32(NewEvent.projectId);
+                timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
+            }
             timeSheet.ExtraHours = false;
             timeSheet.State = TimesheetState.Open;
 
@@ -97,26 +106,15 @@ namespace ISIProject.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetActivities(string projectID)
+        public JsonResult GetActivities()
         {
-           // List<Activity> activities;
-
-            if (projectID == "-1")
-            {
-                //activities = db.Activities.Select(new {})
-            }
-            else
-            {
-
-            }
-
             var activities = db.Activities.Select(a =>
                 new
                 {
                     a.ActivityId,
-                    a.Name
+                    a.Name,
+                    a.IsActive
                 }).ToArray();
-
 
             return Json(activities);
         }
