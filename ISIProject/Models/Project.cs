@@ -19,5 +19,6 @@ namespace ISIProject.Models
 
         public virtual Client Client { get; set; }
         public virtual ICollection<Activity> Activities { get; set; }
+        public virtual ICollection<Department> Departments { get; set; }
     }
 }

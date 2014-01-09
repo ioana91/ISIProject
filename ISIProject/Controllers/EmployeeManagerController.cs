@@ -11,6 +11,7 @@ using ISIProject.Models;
 
 namespace ISIProject.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class EmployeeManagerController : Controller
     {
         private CompanyContext db = new CompanyContext();

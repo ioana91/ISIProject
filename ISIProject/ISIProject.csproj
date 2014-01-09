@@ -182,11 +182,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientManagerController.cs" />
     <Compile Include="Controllers\DepartmentManagerController.cs" />
     <Compile Include="Controllers\DeptManagerEmployeeController.cs" />
+    <Compile Include="Controllers\DeptManagerProjectsController.cs" />
+    <Compile Include="Controllers\DirectorManagerController.cs" />
     <Compile Include="Controllers\DivisionManagerController.cs" />
     <Compile Include="Controllers\EmployeeManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectManagerController.cs" />
     <Compile Include="Controllers\TimesheetController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,6 +203,8 @@
     <Compile Include="Models\CompanyContext.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DeptManagerSelectEmp.cs" />
+    <Compile Include="Models\DeptManagerSelectProjects.cs" />
+    <Compile Include="Models\DirectorSelect.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Project.cs" />
@@ -334,6 +340,17 @@
     <Content Include="Views\EmployeeManager\Delete.cshtml" />
     <Content Include="Views\Timesheet\Index.cshtml" />
     <Content Include="Views\DeptManagerEmployee\Index.cshtml" />
+    <Content Include="Views\DirectorManager\Index.cshtml" />
+    <Content Include="Views\DirectorManager\Details.cshtml" />
+    <Content Include="Views\DirectorManager\Select.cshtml" />
+    <Content Include="Views\ClientManager\Index.cshtml" />
+    <Content Include="Views\ClientManager\Create.cshtml" />
+    <Content Include="Views\ClientManager\Delete.cshtml" />
+    <Content Include="Views\ProjectManager\Index.cshtml" />
+    <Content Include="Views\ProjectManager\Details.cshtml" />
+    <Content Include="Views\ProjectManager\Create.cshtml" />
+    <Content Include="Views\ProjectManager\Delete.cshtml" />
+    <Content Include="Views\DeptManagerProjects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

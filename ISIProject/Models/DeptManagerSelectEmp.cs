@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Data;
 using System.Data.Entity;
+using System.Web.Security;
+using WebMatrix.WebData;
 
 namespace ISIProject.Models
 {
@@ -12,7 +15,7 @@ namespace ISIProject.Models
         public static void Initialize()
         {
             db = new CompanyContext();
-            employees = db.Employees.Where(e => e.UserName != "admin").Include("Department").ToList();
+            employees = db.Employees.Include("Department").ToList();
             isSelected = new List<bool>();
             employeeIds = new List<int>();
             foreach (var item in employees)

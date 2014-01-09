@@ -10,6 +10,7 @@ using ISIProject.Models;
 
 namespace ISIProject.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class DepartmentManagerController : Controller
     {
         private CompanyContext db = new CompanyContext();
@@ -59,10 +60,11 @@ namespace ISIProject.Controllers
                 if (!db.Departments.Any(d => d.Name.ToLower() == department.Name.ToLower()))
                 {
                     db.Departments.Add(department);
+                    var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
+                    manager.DepartmentId = department.DepartmentId;
+                    manager.IsRegular = false;
                     db.SaveChanges();
 
-                    var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
-                    //Roles.RemoveUserFromRole(manager.UserName, "Employee");
                     if (!Roles.IsUserInRole(manager.UserName, "DepartmentManager"))
                     {
                         Roles.AddUserToRole(manager.UserName, "DepartmentManager");
@@ -107,12 +109,16 @@ namespace ISIProject.Controllers
             {
                 var currentDepartment = db.Departments.Find(department.DepartmentId);
                 var exManager = db.Employees.SingleOrDefault(e => e.EmployeeId == currentDepartment.DepartmentManagerId);
+                exManager.DepartmentId = null;
+                exManager.IsRegular = true;
                 Roles.RemoveUserFromRole(exManager.UserName, "DepartmentManager");
 
                 db.Entry(currentDepartment).CurrentValues.SetValues(department);
-                db.SaveChanges();
-
                 var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
+                manager.DepartmentId = department.DepartmentId;
+                manager.IsRegular = false;
+                db.SaveChanges();
+                
                 Roles.AddUserToRole(manager.UserName, "DepartmentManager");
 
                 return RedirectToAction("Index");
@@ -144,9 +150,11 @@ namespace ISIProject.Controllers
         {
             Department department = db.Departments.Find(id);
             db.Departments.Remove(department);
-            db.SaveChanges();
 
             var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
+            manager.IsRegular = true;
+            manager.DepartmentId = null;
+            db.SaveChanges();
             Roles.RemoveUserFromRole(manager.UserName, "DepartmentManager");
 
             return RedirectToAction("Index");

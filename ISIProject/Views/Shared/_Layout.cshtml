@@ -26,14 +26,23 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            @*<li>@User.Identity.Name</li>*@
-                            @if (Roles.IsUserInRole("Administrator"))                        
+                            @if (Request.IsAuthenticated)
                             {
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            }
+                            @if (Roles.IsUserInRole("Administrator"))                        
+                            {
                                 <li>@Html.ActionLink("Divisions","Index","DivisionManager")</li>
                                 <li>@Html.ActionLink("Departments","Index","DepartmentManager")</li>
                                 <li>@Html.ActionLink("Employees", "Index", "EmployeeManager")</li>
-                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                <li>@Html.ActionLink("Manager", "Index", "DirectorManager")</li>
+                                <li>@Html.ActionLink("Clients", "Index", "ClientManager")</li>
+                                <li>@Html.ActionLink("Projects", "Index", "ProjectManager")</li>
+                            }
+                            @if (Roles.IsUserInRole("DepartmentManager"))
+                            {
+                                <li>@Html.ActionLink("Manage Employees", "Index", "DeptManagerEmployee")</li>
+                                <li>@Html.ActionLink("Manage Projects", "Index", "DeptManagerProjects")</li>
                             }
                         </ul>
                     </nav>

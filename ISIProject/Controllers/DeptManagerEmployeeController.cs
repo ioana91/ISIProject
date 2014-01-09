@@ -11,16 +11,34 @@ using ISIProject.Models;
 
 namespace ISIProject.Controllers
 {
+    [Authorize(Roles = "DepartmentManager")]
     public class DeptManagerEmployeeController : Controller
     {
 
         //
         // GET: /DeptManagerEmployee/
 
+        private void AllowedEmployees(DeptManagerSelectEmp selectEmp)
+        {
+            selectEmp.Employees = selectEmp.Employees.Where(e => e.DepartmentId == null ||
+                e.DepartmentId == selectEmp.DB.Employees.First(x => x.UserName == User.Identity.Name).DepartmentId).Where(e => e.IsRegular).ToList();
+            selectEmp.EmployeeIds = selectEmp.EmployeeIds.Where
+                (x => selectEmp.Employees.Select(e => e.EmployeeId).Contains(x)).ToList();
+
+            for (int i = 0; i < selectEmp.Employees.Count; i++)
+            {
+                if (selectEmp.Employees[i].DepartmentId != null)
+                {
+                    selectEmp.IsSelected[i] = true;
+                }
+            }
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
             DeptManagerSelectEmp selectEmp = new DeptManagerSelectEmp();
+            AllowedEmployees(selectEmp);
             return View(selectEmp);
         }
 
@@ -33,7 +51,7 @@ namespace ISIProject.Controllers
             }
             else
             {
-                return Add(selectEmp);
+                return Save(selectEmp);
             }
         }
 
@@ -41,6 +59,8 @@ namespace ISIProject.Controllers
         {
             if (selectEmp.SearchString == string.Empty || selectEmp.SearchString == null)
             {
+                DeptManagerSelectEmp.Initialize();
+                AllowedEmployees(selectEmp);
                 return View(selectEmp);
             }
 
@@ -55,7 +75,8 @@ namespace ISIProject.Controllers
             }
             else
             {
-                selectEmp.Employees = selectEmp.Employees.Where(x => x.Department.Name.ToLower() == selectEmp.SearchString.ToLower()).ToList();
+                selectEmp.Employees = selectEmp.Employees.Where(x => x.Department != null 
+                    && x.Department.Name.ToLower() == selectEmp.SearchString.ToLower()).ToList();
             }
 
             selectEmp.EmployeeIds = selectEmp.EmployeeIds.Where
@@ -63,25 +84,30 @@ namespace ISIProject.Controllers
             return View(selectEmp);
         }
 
-        private ActionResult Add(DeptManagerSelectEmp selectEmp)
+        private ActionResult Save(DeptManagerSelectEmp selectEmp)
         {
+            var loggedUser = selectEmp.DB.Employees.First(x => x.UserName == User.Identity.Name);
             for (int i = 0; i < selectEmp.IsSelected.Count; i++)
             {
+                var currentEmployee = selectEmp.Employees.First(e => e.EmployeeId == selectEmp.EmployeeIds[i]);
                 if (selectEmp.IsSelected[i])
                 {
                     selectEmp.IsSelected[i] = false;
-                    selectEmp.Employees.First(e => e.EmployeeId == selectEmp.EmployeeIds[i]).DepartmentId = 
-                        selectEmp.DB.Employees.First(x => x.UserName == User.Identity.Name).DepartmentId;
-                    selectEmp.DB.SaveChanges();
+                    currentEmployee.DepartmentId = loggedUser.DepartmentId;
+                }
+                else
+                {
+                    if (currentEmployee.DepartmentId ==
+                        loggedUser.DepartmentId)
+                    {
+                        currentEmployee.DepartmentId = null;
+                    }
                 }
             }
 
+            selectEmp.DB.SaveChanges();
             DeptManagerSelectEmp.Initialize();
-            return View(selectEmp);
-        }
-
-        private ActionResult Remove(DeptManagerSelectEmp selectEmp)
-        {
+            AllowedEmployees(selectEmp);
             return View(selectEmp);
         }
     }

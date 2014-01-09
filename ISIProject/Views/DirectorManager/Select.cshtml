@@ -1,0 +1,33 @@
+﻿@model ISIProject.Models.DirectorSelect
+
+@{
+    ViewBag.Title = "Select";
+}
+
+<h2>Select Manager</h2>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Manager</legend>
+        <div class="editor-label">
+            @Html.Label("Manager")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SelectedValue", ViewBag.EmployeeId as SelectList, string.Empty)
+        </div>
+    </fieldset>
+    
+    <p>
+        <input type="submit" value="Select" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
