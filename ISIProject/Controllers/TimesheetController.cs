@@ -25,16 +25,19 @@ namespace ISIProject.Controllers
         [HttpPost, ActionName("Index")]
         public ActionResult IndexSubmit()
         {
-            //System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-            //message.To.Add("sw33t_i0a@yahoo.com");
-            //message.Subject = "This is the Subject line";
-            //message.From = new System.Net.Mail.MailAddress("From@online.microsoft.com");
-            //message.Body = "This is the message body";
-            //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
-            //smtp.Host = "smtp.gmail.com";
-            //smtp.Port = 587;
-            //smtp.UseDefaultCredentials = false;
-            //smtp.Send(message);
+            var text = string.Empty;
+
+            SendEmail();
+            ChangeTimesheetState();
+
+            var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
+            if (employee.IsAudited)
+            {
+                text += DateTime.Now + " Employee " + employee.Name + " has submitted the timesheets for " +
+                    CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName
+                    (DateTime.Now.Month == 1 ? 12 : DateTime.Now.Month - 1) + System.Environment.NewLine;
+                LogAction(text);
+            }
 
             return View();
         }
@@ -241,6 +244,32 @@ namespace ISIProject.Controllers
         private void LogAction(string text)
         {
             System.IO.File.AppendAllText(@"C:\Users\Public\audit.txt", text);
+        }
+
+        private void SendEmail()
+        {
+            var client = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential("isiprojectri@gmail.com", "newP@ssword"),
+                EnableSsl = true
+            };
+
+            var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
+            var from = "isiprojectri@gmail.com";
+            var to = employee.Department.DepartmentManager.Email;
+            var subject = "Sent Timesheet";
+            var body = "Employee " + employee.Name + " has sent you the timesheets for " +
+                CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month == 1 ? 12 : DateTime.Now.Month - 1);
+            client.Send(from, to, subject, body);
+        }
+
+        private void ChangeTimesheetState()
+        {
+            var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
+            var month = DateTime.Now.Month == 1 ? 12 : DateTime.Now.Month - 1;
+            db.Timesheets.Where(t => t.EmployeeId == employee.EmployeeId && t.Date.Month == month).ToList().
+                ForEach(t => t.State = TimesheetState.Submitted);
+            db.SaveChanges();
         }
     }
 }
