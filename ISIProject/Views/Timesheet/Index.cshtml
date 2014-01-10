@@ -37,19 +37,27 @@
                     </select>
                 </li>
                 <li>
+                    <label for="activityType">Activity type: </label>
+                    <input id="rdb1" type="radio" value="1" name="activityType" checked="checked"/>Active<br />
+                    <input id="rdb2" type="radio" value="2" name="activityType"/>Inactive<br />
+                </li>
+                <li id="clientLi">
+                    <label for="client">Client: </label>
+                    <select name="client">
+                    </select>
+                </li>
+                <li id="projectLi">
+                    <label for="project">Project: </label>
+                    <select name="project">
+                    </select>
+                </li>
+                <li>
                     <label for="activity">Activity: </label>
                     <select name="activity">
                     </select>
                 </li>
                 <li>
-                    <label for="client">Client: </label>
-                    <select name="client">
-                    </select>
-                </li>
-                <li>
-                    <label for="project">Project: </label>
-                    <select name="project">
-                    </select>
+                    <label id="lblError" style="color: red">There is an error on the selection of the activity, client or project</label>
                 </li>
             </ul>
         </form>

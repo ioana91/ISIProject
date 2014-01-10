@@ -1,17 +1,23 @@
 ﻿var activities;
+var clients;
+var projects;
+var activityType = function () { return $("input[name='activityType']:radio") }
+var activityTypeValue = activityType().val();
+
+var selectActivityValue = function () { return $("select[name='activity']").val(); }
+var selectActivityText = function () { return $("select[name='activity'] :selected").text(); }
+
+var selectClientValue = function () { return $("select[name='client']").val(); }
+var selectClientText = function () { return $("select[name='client'] :selected").text(); }
+
+var selectProjectValue = function () { return $("select[name='project']").val(); }
+var selectProjectText = function () { return $("select[name='project'] :selected").text(); }
 
 $(document).ready(function () {
     var id = 10;
     var $calendar = $('#calendar');
 
-    var selectActivityValue = function () { return $("select[name='activity']").val(); }
-    var selectActivityText = function () { return $("select[name='activity'] :selected").text(); }
-
-    var selectClientValue = function () { return $("select[name='client']").val(); }
-    var selectClientText = function () { return $("select[name='client'] :selected").text(); }
-
-    var selectProjectValue = function () { return $("select[name='project']").val(); }
-    var selectProjectText = function () { return $("select[name='project'] :selected").text(); }
+    $('#lblError').hide();
 
     $calendar.weekCalendar({
         timeslotsPerHour: 4,
@@ -67,10 +73,6 @@ $(document).ready(function () {
                         calEvent.clientId = selectClientValue();
                         calEvent.projectId = selectProjectValue();
 
-                        $calendar.weekCalendar("removeUnsavedEvents");
-                        $calendar.weekCalendar("updateEvent", calEvent);
-                        $dialogContent.dialog("close");
-
                         var calendarEvent = ({
                             start: calEvent.start,
                             end: calEvent.end,
@@ -80,24 +82,32 @@ $(document).ready(function () {
                         });
 
                         var dataToBeSent = JSON.stringify({ NewEvent: calendarEvent });
-
-                        $.ajax({
-                            type: "POST",
-                            async: true,
-                            data: JSON.stringify({ NewEvent: calendarEvent }),
-                            dataType: "json",
-                            url: "/Timesheet/AddEvent",
-                            contentType: "application/json; charset=utf-8",
-                            success: function (newId) {
-                                calEvent.id = newId;
-                            },
-                            failure: function (errMsg) {
-                                alert(errMsg);
-                            }
-                        });
+                        if (validate()) {
+                            $.ajax({
+                                type: "POST",
+                                async: true,
+                                data: JSON.stringify({ NewEvent: calendarEvent }),
+                                dataType: "json",
+                                url: "/Timesheet/AddEvent",
+                                contentType: "application/json; charset=utf-8",
+                                success: function (newId) {
+                                    calEvent.id = newId;
+                                },
+                                failure: function (errMsg) {
+                                    alert(errMsg);
+                                }
+                            });
+                            $calendar.weekCalendar("removeUnsavedEvents");
+                            $calendar.weekCalendar("updateEvent", calEvent);
+                            $dialogContent.dialog("close");
+                            $('#lblError').hide();
+                        } else {
+                            $('#lblError').show();
+                        }
                     },
                     cancel: function () {
                         $dialogContent.dialog("close");
+                        $('#lblError').hide();
                     }
                 }
             }).show();
@@ -195,24 +205,28 @@ $(document).ready(function () {
                             projectId: calEvent.projectId,
                             activityId: calEvent.activityId,
                         });
-
-                        $.ajax({
-                            type: "POST",
-                            async: true,
-                            data: JSON.stringify({ NewEvent: calendarEvent }),
-                            dataType: "json",
-                            url: "/Timesheet/UpdateEvent",
-                            contentType: "application/json; charset=utf-8",
-                            failure: function (errMsg) {
-                                alert(errMsg);
-                            }
-                        });
-
-                        $calendar.weekCalendar("updateEvent", calEvent);
-                        $dialogContent.dialog("close");
+                        if (validate()) {
+                            $.ajax({
+                                type: "POST",
+                                async: true,
+                                data: JSON.stringify({ NewEvent: calendarEvent }),
+                                dataType: "json",
+                                url: "/Timesheet/UpdateEvent",
+                                contentType: "application/json; charset=utf-8",
+                                failure: function (errMsg) {
+                                    alert(errMsg);
+                                }
+                            });
+                            $('#lblError').hide();
+                            $calendar.weekCalendar("updateEvent", calEvent);
+                            $dialogContent.dialog("close");
+                        }
+                        else {
+                            $('#lblError').show();
+                        }
                     },
                     "delete": function () {
-
+                        $('#lblError').hide();
                         var calendarEvent = ({
                             id: calEvent.id
                         });
@@ -233,6 +247,7 @@ $(document).ready(function () {
                     },
                     cancel: function () {
                         $dialogContent.dialog("close");
+                        $('#lblError').hide();
                     }
                 }
             }).show();
@@ -346,32 +361,129 @@ $(document).ready(function () {
 
     });
 
-    populateActivityDropDownList();
+    $("input[name=activityType]:radio").change(function () {
+        if ($('input:radio:checked').attr('id') === "rdb1") {
+            $("#clientLi").show();
+            $("#projectLi").show();
+            populateActivityDropDownList(true);
+        } else {
+            $("#clientLi").hide();
+            $("#projectLi").hide();
+            populateActivityDropDownList(false);
+        }
+    });
+
+    $("select[name='client']").change(function () {
+        if (selectClientValue() !== "-1") {
+            populateProjectDropDownList(selectClientValue());
+        } else {
+
+        }
+    });
+
+    populateActivityDropDownList(true);
+    populateClientDropDownList();
 });
 
-function populateActivityDropDownList() {
+function populateActivityDropDownList(activeOnes) {
     var $dialogContent = $("#event_edit_container");
-    var projectID = $dialogContent.find("select[name='project']");
+
+    if (typeof activities == "undefined") {
+        $.ajax({
+            type: "POST",
+            async: false,
+            dataType: "json",
+            url: "/Timesheet/GetActivities",
+            contentType: "application/json; charset=utf-8",
+            success: function (activitiesList) {
+                activities = activitiesList;
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            },
+        });
+    }
+    var activityField = $dialogContent.find("select[name='activity']");
+
+    activityField.empty();
+    activityField.append("<option value='" + "-1" + "'>" + "" + "</option>");
+
+    for (var i = 0; i < activities.length; i++) {
+        if (activities[i].IsActive == activeOnes) {
+            var htmlString = "<option value='" + activities[i].ActivityId + "'>" + activities[i].Name + "</option>";
+            activityField.append(htmlString);
+        }
+    }
+}
+
+function populateClientDropDownList() {
+    var $dialogContent = $("#event_edit_container");
 
     $.ajax({
         type: "POST",
         async: false,
-        data: JSON.stringify(projectID),
         dataType: "json",
-        url: "/Timesheet/GetActivities",
+        url: "/Timesheet/GetClients",
         contentType: "application/json; charset=utf-8",
-        success: function (activitiesList) {
-            activities = activitiesList;
+        success: function (clientList) {
+            clients = clientList;
         },
         failure: function (errMsg) {
             alert(errMsg);
         },
     });
 
-    var activityField = $dialogContent.find("select[name='activity']");
+    var clientField = $dialogContent.find("select[name='client']");
 
-    for (var i = 0; i < activities.length; i++) {
-        var htmlString = "<option value='" + activities[i].ActivityId + "'>" + activities[i].Name + "</option>";
-        activityField.append(htmlString);
+    clientField.empty();
+    clientField.append("<option value='" + "-1" + "'>" + "" + "</option>");
+
+    for (var i = 0; i < clients.length; i++) {
+        var htmlString = "<option value='" + clients[i].ClientId + "'>" + clients[i].Name + "</option>";
+        clientField.append(htmlString);
     }
+}
+
+function populateProjectDropDownList(clientID) {
+    var $dialogContent = $("#event_edit_container");
+
+    $.ajax({
+        type: "POST",
+        async: false,
+        data: JSON.stringify({ clientId: clientID }),
+        dataType: "json",
+        url: "/Timesheet/GetProjects",
+        contentType: "application/json; charset=utf-8",
+        success: function (projectList) {
+            projects = projectList;
+        },
+        failure: function (errMsg) {
+            alert(errMsg);
+        },
+    });
+
+    var projectField = $dialogContent.find("select[name='project']");
+
+    projectField.empty();
+    projectField.append("<option value='" + "-1" + "'>" + "" + "</option>");
+
+    for (var i = 0; i < projects.length; i++) {
+        var htmlString = "<option value='" + projects[i].ProjectId + "'>" + projects[i].Name + "</option>";
+        projectField.append(htmlString);
+    }
+}
+
+function validate() {
+    if ($('input:radio:checked').attr('id') === "rdb1") {
+        if (selectActivityValue() != "-1"
+            && selectClientValue() != "-1"
+            && selectProjectValue() != "-1") {
+            return true;
+        }
+    } else {
+        if (selectActivityValue() != "-1") {
+            return true;
+        }
+    }
+    return false;
 }

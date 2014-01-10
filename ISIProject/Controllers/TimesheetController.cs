@@ -114,9 +114,37 @@ namespace ISIProject.Controllers
                     a.ActivityId,
                     a.Name,
                     a.IsActive
-                }).ToArray();
+                }).OrderBy(a=>a.Name).ToArray();
 
             return Json(activities);
+        }
+
+        [HttpPost]
+        public JsonResult GetClients()
+        {
+            var deptID = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).DepartmentId;
+
+            var clients = db.Clients.Where(c => c.Projects.Any(p => p.Departments.Any(d => d.DepartmentId == deptID))).Select(c=>new 
+                { 
+                    c.ClientId,
+                    c.Name
+                }).OrderBy(c => c.Name).ToArray();
+
+            return Json(clients);
+        }
+
+        [HttpPost]
+        public JsonResult GetProjects(string clientId)
+        {
+            int ClientID = Convert.ToInt32(clientId);
+            var projects = db.Projects.Where(p => p.ClientId == ClientID).Select(p =>
+                new
+                {
+                    p.ProjectId,
+                    p.Name
+                }).OrderBy(p => p.Name).ToArray();
+
+            return Json(projects);
         }
     }
 }
