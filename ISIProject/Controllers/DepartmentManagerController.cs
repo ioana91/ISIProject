@@ -69,6 +69,10 @@ namespace ISIProject.Controllers
                     {
                         Roles.AddUserToRole(manager.UserName, "DepartmentManager");
                     }
+                    if (Roles.IsUserInRole(manager.UserName, "Employee"))
+                    {
+                        Roles.RemoveUserFromRole(manager.UserName, "Employee");
+                    }
 
                     return RedirectToAction("Index");
                 }
@@ -112,6 +116,7 @@ namespace ISIProject.Controllers
                 exManager.DepartmentId = null;
                 exManager.IsRegular = true;
                 Roles.RemoveUserFromRole(exManager.UserName, "DepartmentManager");
+                Roles.AddUserToRole(exManager.UserName, "Employee");
 
                 db.Entry(currentDepartment).CurrentValues.SetValues(department);
                 var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == department.DepartmentManagerId);
@@ -120,6 +125,7 @@ namespace ISIProject.Controllers
                 db.SaveChanges();
                 
                 Roles.AddUserToRole(manager.UserName, "DepartmentManager");
+                Roles.RemoveUserFromRole(manager.UserName, "Employee");
 
                 return RedirectToAction("Index");
             }
@@ -156,6 +162,7 @@ namespace ISIProject.Controllers
             manager.DepartmentId = null;
             db.SaveChanges();
             Roles.RemoveUserFromRole(manager.UserName, "DepartmentManager");
+            Roles.AddUserToRole(manager.UserName, "Employee");
 
             return RedirectToAction("Index");
         }

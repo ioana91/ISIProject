@@ -23,7 +23,7 @@ namespace ISIProject.Controllers
             Employee director = new Employee();
             foreach (var employee in db.Employees)
             {
-                if (Roles.IsUserInRole(employee.UserName, "Director"))
+                if (Roles.IsUserInRole(employee.UserName, "Manager"))
                 {
                     director = employee;
                 }
@@ -53,7 +53,7 @@ namespace ISIProject.Controllers
             Employee director = null;
             foreach (var employee in db.Employees)
             {
-                if (Roles.IsUserInRole(employee.UserName, "Director"))
+                if (Roles.IsUserInRole(employee.UserName, "Manager"))
                 {
                     director = employee;
                 }
@@ -77,7 +77,7 @@ namespace ISIProject.Controllers
             Employee director = null;
             foreach (var employee in db.Employees)
             {
-                if (Roles.IsUserInRole(employee.UserName, "Director"))
+                if (Roles.IsUserInRole(employee.UserName, "Manager"))
                 {
                     director = employee;
                 }
@@ -85,13 +85,29 @@ namespace ISIProject.Controllers
 
             if (director != null)
             {
-                Roles.RemoveUserFromRole(director.UserName, "Director");
+                Roles.RemoveUserFromRole(director.UserName, "Manager");
+                Roles.AddUserToRole(director.UserName, "Employee");
+                director.IsRegular = true;
             }
 
             int selectedId = int.Parse(((string[])selected.SelectedValue)[0]);
             var newDirector = db.Employees.SingleOrDefault(e => e.EmployeeId == selectedId);
             newDirector.IsRegular = false;
-            Roles.AddUserToRole(newDirector.UserName, "Director");
+            Roles.AddUserToRole(newDirector.UserName, "Manager");
+
+            if (Roles.IsUserInRole(newDirector.UserName, "Employee"))
+            {
+                Roles.RemoveUserFromRole(newDirector.UserName, "Employee");
+            }
+            if (Roles.IsUserInRole(newDirector.UserName, "DivisionManager"))
+            {
+                Roles.RemoveUserFromRole(newDirector.UserName, "DivisionManager");
+            }
+            if (Roles.IsUserInRole(newDirector.UserName, "DepartmentManager"))
+            {
+                Roles.RemoveUserFromRole(newDirector.UserName, "DepartmentManager");
+            }
+            
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -18,10 +18,10 @@ namespace ISIProject.Models
             employees = db.Employees.Include("Department").ToList();
             isSelected = new List<bool>();
             employeeIds = new List<int>();
-            foreach (var item in employees)
+            foreach (var employee in employees)
             {
                 isSelected.Add(false);
-                employeeIds.Add(item.EmployeeId);
+                employeeIds.Add(employee.EmployeeId);
             }
         }
 

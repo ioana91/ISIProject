@@ -26,8 +26,8 @@ namespace ISIProject.Migrations
             #region Roles
             if (!Roles.RoleExists("Administrator"))
                 Roles.CreateRole("Administrator");
-            if (!Roles.RoleExists("Director"))
-                Roles.CreateRole("Director");
+            if (!Roles.RoleExists("Manager"))
+                Roles.CreateRole("Manager");
             if (!Roles.RoleExists("Employee"))
                 Roles.CreateRole("Employee");
             if (!Roles.RoleExists("DivisionManager"))
@@ -40,7 +40,7 @@ namespace ISIProject.Migrations
                 WebSecurity.CreateUserAndAccount(
                     "rtapus",
                     "password",
-                    new { Name = "Radu Tapus", Email = "radutzp@yahoo.com", IsRegular = true });
+                    new { Name = "Radu Tapus", Email = "radutzp@yahoo.com", IsRegular = true, IsAudited = false });
             if (!Roles.GetRolesForUser("rtapus").Contains("Employee"))
                 Roles.AddUserToRole("rtapus", "Employee");
 
@@ -48,7 +48,7 @@ namespace ISIProject.Migrations
                 WebSecurity.CreateUserAndAccount(
                     "admin",
                     "password",
-                    new { IsRegular = false });
+                    new { IsRegular = false, IsAudited = false });
             if (!Roles.GetRolesForUser("admin").Contains("Administrator"))
                 Roles.AddUserToRole("admin", "Administrator");
         }

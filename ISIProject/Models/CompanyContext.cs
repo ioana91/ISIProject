@@ -26,5 +26,6 @@ namespace ISIProject.Models
         public DbSet<Division> Divisions { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Timesheet> Timesheets { get; set; }
+        public DbSet<AuditSelections> AuditSelections { get; set; }
     }
 }

@@ -1,0 +1,93 @@
+﻿@model ISIProject.Models.AuditModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Audit</h2>
+@using (Html.BeginForm())
+{
+    <h5>Filter by role:</h5>
+    <p>
+        @for (int i = 0; i < Model.AvailableRoles.Length; i++)
+        {
+            if (i != 0)
+            {
+                @Html.CheckBoxFor(modelItem => Model.SelectedRoles[i], new { style = "margin-left:50px; margin-right:5px"})
+            }
+            else
+            { 
+                @Html.CheckBoxFor(modelItem => Model.SelectedRoles[i], new { style = "margin-right:5px"})
+            }
+            @Html.DisplayFor(modelItem => Model.AvailableRoles[i])
+        }
+    </p>
+    
+    <h5>Filter by division:</h5>
+    <p>
+        @for (int i = 0; i < Model.Divisions.Count; i++)
+        {
+            if (i != 0)
+            {
+                @Html.CheckBoxFor(modelItem => Model.SelectedDivisions[i], new { style = "margin-left:50px; margin-right:5px"})
+            }
+            else
+            {
+                @Html.CheckBoxFor(modelItem => Model.SelectedDivisions[i], new { style = "margin-right:5px"})
+            }
+            @Html.DisplayFor(modelItem => Model.Divisions[i].Name)
+        }
+    </p>
+    
+    <h5>Filter by department:</h5>
+    <p>
+        @for (int i = 0; i < Model.Departments.Count; i++)
+        {
+            if (i != 0)
+            {
+                @Html.CheckBoxFor(modelItem => Model.SelectedDepartments[i], new { style = "margin-left:50px; margin-right:5px"})
+            }
+            else
+            {
+                @Html.CheckBoxFor(modelItem => Model.SelectedDepartments[i], new { style = "margin-right:5px"})
+            }
+            @Html.DisplayFor(modelItem => Model.Departments[i].Name)
+        }
+    </p>
+    
+    <h5>Filter by employee:</h5>
+    <table>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <th style="padding-right:10px">
+                @Html.DisplayName("Department")
+            </th>
+            <th>
+                @Html.DisplayName("Role")
+            </th>
+        </tr>
+
+        @for (int i = 0; i < Model.Employees.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(modelItem => Model.SelectedEmployees[i])
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Employees[i].Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Employees[i].Department.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.EmployeeRoles[i])
+                </td>
+            </tr>
+        }
+    </table>
+    
+    <input type="submit" name="startButton" value="Save" />
+}

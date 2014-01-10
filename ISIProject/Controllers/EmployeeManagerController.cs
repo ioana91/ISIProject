@@ -65,7 +65,8 @@ namespace ISIProject.Controllers
                     DepartmentId = model.DepartmentId,
                     Email = model.Email,
                     Name = model.Name,
-                    IsRegular = true
+                    IsRegular = true,
+                    IsAudited = false
                 };
                 db.Employees.Add(employee);
                 db.SaveChanges();

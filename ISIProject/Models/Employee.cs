@@ -18,6 +18,7 @@ namespace ISIProject.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public bool IsRegular { get; set; }
+        public bool IsAudited { get; set; }
 
         public int? DepartmentId { get; set; }
         [InverseProperty("DepartmentId")]

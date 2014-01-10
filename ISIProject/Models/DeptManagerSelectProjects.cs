@@ -11,12 +11,11 @@ namespace ISIProject.Models
         {
             db = new CompanyContext();
             projects = db.Projects.Include("Client").ToList();
+            projects = projects.OrderBy(project => project.Client.Name).ThenBy(project => project.Name).ToList();
             isSelected = new List<bool>();
-            projectIds = new List<int>();
             foreach (var item in projects)
             {
                 isSelected.Add(false);
-                projectIds.Add(item.ProjectId);
             }
         }
 
@@ -42,15 +41,8 @@ namespace ISIProject.Models
             set { isSelected = value;}
         }
 
-        public List<int> ProjectIds
-        {
-            get { return projectIds; }
-            set { projectIds = value; }
-        }
-
         private static List<Project> projects;
         private static CompanyContext db;
         private static List<bool> isSelected;
-        private static List<int> projectIds;
     }
 }

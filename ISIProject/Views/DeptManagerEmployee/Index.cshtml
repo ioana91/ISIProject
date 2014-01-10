@@ -13,11 +13,13 @@
         {
             if (i == 0)
             {
-                @Html.DisplayName(Model.SelectionCategories[i] + " ") @Html.RadioButtonFor(m => m.SelectedCategory, i, new { style="margin-right:50px", Checked = "checked"})         
+                @Html.DisplayName(Model.SelectionCategories[i] + " ") @Html.RadioButtonFor(m => m.SelectedCategory, i, 
+                    new { style="margin-right:50px", Checked = "checked"})         
             }
             else
             {
-                @Html.DisplayName(Model.SelectionCategories[i] + " ") @Html.RadioButtonFor(m => m.SelectedCategory, i, new { style="margin-right:50px"})
+                @Html.DisplayName(Model.SelectionCategories[i] + " ") @Html.RadioButtonFor(m => m.SelectedCategory, i, 
+                    new { style="margin-right:50px"})
             }
         }
         @Html.TextBoxFor(m => m.SearchString)
@@ -33,7 +35,7 @@
             <th>
                 @Html.DisplayName("Name")
             </th>
-            <th>
+            <th style="padding-right:10px">
                 @Html.DisplayName("Department")
             </th>
         </tr>

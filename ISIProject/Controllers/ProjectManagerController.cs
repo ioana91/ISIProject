@@ -19,7 +19,7 @@ namespace ISIProject.Controllers
 
         public ActionResult Index()
         {
-            var projects = db.Projects.Include(p => p.Client);
+            var projects = db.Projects.Include(p => p.Client).OrderBy(p => p.Client.Name);
             return View(projects.ToList());
         }
 
@@ -62,37 +62,6 @@ namespace ISIProject.Controllers
             ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name", project.ClientId);
             return View(project);
         }
-
-        //
-        // GET: /ProjectManager/Edit/5
-
-        //public ActionResult Edit(int id = 0)
-        //{
-        //    Project project = db.Projects.Find(id);
-        //    if (project == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name", project.ClientId);
-        //    return View(project);
-        //}
-
-        ////
-        //// POST: /ProjectManager/Edit/5
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(Project project)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(project).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Name", project.ClientId);
-        //    return View(project);
-        //}
 
         //
         // GET: /ProjectManager/Delete/5

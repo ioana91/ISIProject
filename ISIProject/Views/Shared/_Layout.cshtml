@@ -30,7 +30,7 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            @if (Request.IsAuthenticated)
+                            @if (Request.IsAuthenticated && !Roles.IsUserInRole("Administrator"))
                             {
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             }
@@ -42,6 +42,7 @@
                                 <li>@Html.ActionLink("Manager", "Index", "DirectorManager")</li>
                                 <li>@Html.ActionLink("Clients", "Index", "ClientManager")</li>
                                 <li>@Html.ActionLink("Projects", "Index", "ProjectManager")</li>
+                                <li>@Html.ActionLink("Audit", "Index", "Audit")</li>
                             }
                             @if (Roles.IsUserInRole("DepartmentManager"))
                             {

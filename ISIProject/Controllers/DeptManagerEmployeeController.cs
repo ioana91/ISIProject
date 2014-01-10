@@ -86,6 +86,8 @@ namespace ISIProject.Controllers
 
         private ActionResult Save(DeptManagerSelectEmp selectEmp)
         {
+            var text = string.Empty;
+
             var loggedUser = selectEmp.DB.Employees.First(x => x.UserName == User.Identity.Name);
             for (int i = 0; i < selectEmp.IsSelected.Count; i++)
             {
@@ -93,7 +95,13 @@ namespace ISIProject.Controllers
                 if (selectEmp.IsSelected[i])
                 {
                     selectEmp.IsSelected[i] = false;
-                    currentEmployee.DepartmentId = loggedUser.DepartmentId;
+                    if (currentEmployee.DepartmentId != loggedUser.DepartmentId)
+                    {
+                        text += System.DateTime.Now + " Department Manager " + loggedUser.Name + " from department " +
+                            loggedUser.Department.Name + " added a new employee in his/her department: " +
+                            currentEmployee.Name + System.Environment.NewLine;
+                        currentEmployee.DepartmentId = loggedUser.DepartmentId;
+                    }
                 }
                 else
                 {
@@ -101,6 +109,9 @@ namespace ISIProject.Controllers
                         loggedUser.DepartmentId)
                     {
                         currentEmployee.DepartmentId = null;
+                        text += System.DateTime.Now + " Department Manager " + loggedUser.Name + " from department " +
+                            loggedUser.Department.Name + " removed employee " + currentEmployee.Name +
+                            " from his/her department" + System.Environment.NewLine;
                     }
                 }
             }
@@ -108,7 +119,17 @@ namespace ISIProject.Controllers
             selectEmp.DB.SaveChanges();
             DeptManagerSelectEmp.Initialize();
             AllowedEmployees(selectEmp);
+
+            if (loggedUser.IsAudited)
+            {
+                LogAction(text);
+            }
             return View(selectEmp);
+        }
+
+        private void LogAction(string text)
+        {
+            System.IO.File.AppendAllText(@"C:\Users\Public\audit.txt", text);
         }
     }
 }

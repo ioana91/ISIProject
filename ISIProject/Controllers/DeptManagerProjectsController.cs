@@ -32,6 +32,7 @@ namespace ISIProject.Controllers
         [HttpPost]
         public ActionResult Index(DeptManagerSelectProjects selectProjects)
         {
+            var text = string.Empty;
             var manager = selectProjects.DB.Employees.FirstOrDefault(x => x.UserName == User.Identity.Name);
             var managerDepartment = selectProjects.DB.Departments.First(d => d.DepartmentId == manager.DepartmentId);
             for (int i = 0; i < selectProjects.IsSelected.Count; i++)
@@ -41,6 +42,10 @@ namespace ISIProject.Controllers
                     selectProjects.IsSelected[i] = false;
                     if (!selectProjects.Projects[i].Departments.Contains(managerDepartment))
                     {
+                        text += System.DateTime.Now + " Department Manager " + manager.Name + " from department " +
+                            manager.Department.Name + " added a new project in his/her department: " +
+                            selectProjects.Projects[i].Name + " for client " + selectProjects.Projects[i].Client.Name +
+                            System.Environment.NewLine;
                         selectProjects.Projects[i].Departments.Add(managerDepartment);
                     }
                 }
@@ -48,15 +53,28 @@ namespace ISIProject.Controllers
                 {
                     if (selectProjects.Projects[i].Departments.Contains(managerDepartment))
                     {
+                        text += System.DateTime.Now + " Department Manager " + manager.Name + " from department " +
+                            manager.Department.Name + " removed project " + selectProjects.Projects[i].Name +
+                            " for client " + selectProjects.Projects[i].Client.Name + " from his/her department" +
+                            System.Environment.NewLine;
                         selectProjects.Projects[i].Departments.Remove(managerDepartment);
                     }
                 }
             }
 
             selectProjects.DB.SaveChanges();
-            DeptManagerSelectProjects.Initialize();
+
+            if (manager.IsAudited)
+            {
+                LogAction(text);
+            }
+
             return View(selectProjects);
         }
 
+        private void LogAction(string text)
+        {
+            System.IO.File.AppendAllText(@"C:\Users\Public\audit.txt", text);
+        }
     }
 }
