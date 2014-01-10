@@ -17,8 +17,6 @@ namespace ISIProject.Models
             var roleList = availableRoles.ToList();
             roleList.Remove("Administrator");
             availableRoles = roleList.ToArray();
-            availableRoles[0] = "Department Manager";
-            availableRoles[1] = "Division Manager";
             
             selectedRoles = new List<bool>();
             for (int i = 0; i < availableRoles.Length; i++)

@@ -14,7 +14,14 @@
     <script src="~/Scripts/TimeSheet.js"></script>
 }
 
-<h2>Index</h2>
+<h2>Timesheet</h2>
+@using (Html.BeginForm()) 
+{
+    if (Roles.IsUserInRole("Employee"))
+    {
+        <input type="submit" name="submitButton" value="Send" />
+    }
+}
 <div class="weekCalendar">
     <div id='calendar'></div>
     <div id="event_edit_container">

@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using ISIProject.Models;
 using System.Globalization;
 using System.Web.Script.Serialization;
-
+using System.Web.Security;
 
 namespace ISIProject.Controllers
 {
+    [Authorize(Roles = "Manager, Employee, Division Manager, Department Manager")]
     public class TimesheetController : Controller
     {
         //
@@ -18,6 +19,23 @@ namespace ISIProject.Controllers
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        [HttpPost, ActionName("Index")]
+        public ActionResult IndexSubmit()
+        {
+            //System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+            //message.To.Add("sw33t_i0a@yahoo.com");
+            //message.Subject = "This is the Subject line";
+            //message.From = new System.Net.Mail.MailAddress("From@online.microsoft.com");
+            //message.Body = "This is the message body";
+            //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
+            //smtp.Host = "smtp.gmail.com";
+            //smtp.Port = 587;
+            //smtp.UseDefaultCredentials = false;
+            //smtp.Send(message);
+
             return View();
         }
 
@@ -50,6 +68,7 @@ namespace ISIProject.Controllers
         [HttpPost]
         public int AddEvent(CalendarEvent NewEvent)
         {
+            var text = string.Empty;
             var timeSheet = new Timesheet
             {
                 StartTime = NewEvent.start,
@@ -67,10 +86,26 @@ namespace ISIProject.Controllers
                 timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
             }
 
+            text += System.DateTime.Now + " " + Roles.GetRolesForUser(User.Identity.Name)[0] + " " +
+                db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).Name + " added a new timesheet entry for date " +
+                    timeSheet.StartTime.ToString("D") + " StartTime: " + timeSheet.StartTime.TimeOfDay + " EndTime: " + timeSheet.EndTime.TimeOfDay;
+            if (db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).IsActive)
+            {
+                text += " Client: " + db.Clients.FirstOrDefault(c => c.ClientId == timeSheet.ClientId).Name +
+                    " Project: " + db.Projects.FirstOrDefault(p => p.ProjectId == timeSheet.ProjectId).Name;
+            }
+            text += " Activity: " + db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).Name +
+                System.Environment.NewLine;
+
             db.Timesheets.Add(timeSheet);
             db.SaveChanges();
 
             //var json = Json(new {newId = timeSheet.TimesheetId});
+
+            if (db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).IsAudited)
+            {
+                LogAction(text);
+            }
 
             return timeSheet.TimesheetId;
         }
@@ -78,20 +113,57 @@ namespace ISIProject.Controllers
         [HttpPost]
         public void UpdateEvent(CalendarEvent NewEvent)
         {
+            var text = string.Empty;
+            
             var timeSheet = db.Timesheets.Where(tm => tm.TimesheetId == NewEvent.id).FirstOrDefault();
+            text += System.DateTime.Now + " " + Roles.GetRolesForUser(User.Identity.Name)[0] + " " +
+                db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).Name + " updated timesheet entry for date " +
+                timeSheet.StartTime.ToString("D");
 
-            timeSheet.StartTime = NewEvent.start;
-            timeSheet.EndTime = NewEvent.end;
-            timeSheet.Date = NewEvent.start.Date;
-            timeSheet.ActivityId = Convert.ToInt32(NewEvent.activityId);
-
+            if (timeSheet.StartTime != NewEvent.start)
+            {
+                text += " StartTime modified (" + timeSheet.StartTime.TimeOfDay + "-" + NewEvent.start.TimeOfDay + ")";
+                timeSheet.StartTime = NewEvent.start;
+            }
+            if (timeSheet.EndTime != NewEvent.end)
+            {
+                text += " EndTime modified (" + timeSheet.EndTime.TimeOfDay + "-" + NewEvent.end.TimeOfDay + ")";
+                timeSheet.EndTime = NewEvent.end;
+            }
+            if (timeSheet.Date != NewEvent.start.Date)
+            {
+                text += " Date modified (" + timeSheet.Date.ToString("D") + "-" + NewEvent.start.Date.ToString("D") + ")";
+                timeSheet.Date = NewEvent.start.Date;
+            }
+            if (timeSheet.ActivityId != Convert.ToInt32(NewEvent.activityId))
+            {
+                var activityId = Convert.ToInt32(NewEvent.activityId);
+                text += " Activity modified (" + db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).Name +
+                    "-" + db.Activities.FirstOrDefault(a => a.ActivityId == activityId).Name + ")";
+                timeSheet.ActivityId = activityId;
+            }
             if (!String.IsNullOrWhiteSpace(NewEvent.projectId))
             {
-                timeSheet.ProjectId = Convert.ToInt32(NewEvent.projectId);
+                if (timeSheet.ProjectId != Convert.ToInt32(NewEvent.projectId))
+                {
+                    var projectId = Convert.ToInt32(NewEvent.projectId);
+                    text += " Project modified (" + db.Projects.FirstOrDefault(p => p.ProjectId == timeSheet.ProjectId).Name +
+                        " from client " + db.Projects.FirstOrDefault(p => p.ProjectId == timeSheet.ProjectId).Client.Name + "-" +
+                        db.Projects.FirstOrDefault(p => p.ProjectId == projectId).Name + " from client " +
+                        db.Projects.FirstOrDefault(p => p.ProjectId == projectId).Client.Name + ")";
+
+                    timeSheet.ProjectId = projectId;
+                }
                 timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
             }
             timeSheet.ExtraHours = false;
             timeSheet.State = TimesheetState.Open;
+            
+            text += System.Environment.NewLine;
+            if (db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).IsAudited)
+            {
+                LogAction(text);
+            }
 
             //db.Timesheets.Add(timeSheet);
             db.SaveChanges();
@@ -100,8 +172,27 @@ namespace ISIProject.Controllers
         [HttpPost]
         public void RemoveEvent(CalendarEvent NewEvent)
         {
+            var text = string.Empty;
             var timeSheet = db.Timesheets.Where(tm => tm.TimesheetId == NewEvent.id).FirstOrDefault();
+
+            text += System.DateTime.Now + " " + Roles.GetRolesForUser(User.Identity.Name)[0] + " " +
+                db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).Name + " removed timesheet entry for date " +
+                timeSheet.StartTime.ToString("D") + " StartTime: " + timeSheet.StartTime.TimeOfDay + " EndTime: " + timeSheet.EndTime.TimeOfDay;
+            if (db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).IsActive)
+            {
+                text += " Client: " + db.Clients.FirstOrDefault(c => c.ClientId == timeSheet.ClientId).Name +
+                    " Project: " + db.Projects.FirstOrDefault(p => p.ProjectId == timeSheet.ProjectId).Name;
+            }
+            text += " Activity: " + db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).Name +
+                System.Environment.NewLine;
+
             db.Timesheets.Remove(timeSheet);
+
+            if (db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).IsAudited)
+            {
+                LogAction(text);
+            }
+
             db.SaveChanges();
         }
 
@@ -145,6 +236,11 @@ namespace ISIProject.Controllers
                 }).OrderBy(p => p.Name).ToArray();
 
             return Json(projects);
+        }
+
+        private void LogAction(string text)
+        {
+            System.IO.File.AppendAllText(@"C:\Users\Public\audit.txt", text);
         }
     }
 }

@@ -93,20 +93,7 @@ namespace ISIProject.Controllers
             int selectedId = int.Parse(((string[])selected.SelectedValue)[0]);
             var newDirector = db.Employees.SingleOrDefault(e => e.EmployeeId == selectedId);
             newDirector.IsRegular = false;
-            Roles.AddUserToRole(newDirector.UserName, "Manager");
-
-            if (Roles.IsUserInRole(newDirector.UserName, "Employee"))
-            {
-                Roles.RemoveUserFromRole(newDirector.UserName, "Employee");
-            }
-            if (Roles.IsUserInRole(newDirector.UserName, "DivisionManager"))
-            {
-                Roles.RemoveUserFromRole(newDirector.UserName, "DivisionManager");
-            }
-            if (Roles.IsUserInRole(newDirector.UserName, "DepartmentManager"))
-            {
-                Roles.RemoveUserFromRole(newDirector.UserName, "DepartmentManager");
-            }
+            SetNewRole(newDirector);
             
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -116,6 +103,26 @@ namespace ISIProject.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        private void SetNewRole(Employee newDirector)
+        {
+            if (!Roles.IsUserInRole(newDirector.UserName, "Manager"))
+            {
+                Roles.AddUserToRole(newDirector.UserName, "Manager");
+            }
+            if (Roles.IsUserInRole(newDirector.UserName, "Employee"))
+            {
+                Roles.RemoveUserFromRole(newDirector.UserName, "Employee");
+            }
+            if (Roles.IsUserInRole(newDirector.UserName, "Division Manager"))
+            {
+                Roles.RemoveUserFromRole(newDirector.UserName, "Division Manager");
+            }
+            if (Roles.IsUserInRole(newDirector.UserName, "Department Manager"))
+            {
+                Roles.RemoveUserFromRole(newDirector.UserName, "Department Manager");
+            }
         }
     }
 }

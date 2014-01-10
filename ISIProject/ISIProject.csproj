@@ -183,7 +183,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CalendarEvent.cs" />    <Compile Include="Controllers\AuditController.cs" />    <Compile Include="Controllers\ClientManagerController.cs" />
+    <Compile Include="Controllers\AuditController.cs" />
+    <Compile Include="Controllers\ClientManagerController.cs" />
     <Compile Include="Controllers\DepartmentManagerController.cs" />
     <Compile Include="Controllers\DeptManagerEmployeeController.cs" />
     <Compile Include="Controllers\DeptManagerProjectsController.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\AuditModel.cs" />
     <Compile Include="Models\AuditSelections.cs" />
+    <Compile Include="Models\CalendarEvent.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\CompanyContext.cs" />
     <Compile Include="Models\Department.cs" />

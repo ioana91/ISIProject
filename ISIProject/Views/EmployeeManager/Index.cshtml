@@ -20,8 +20,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
+        <th style="padding-right:10px">
             @Html.DisplayName("Department")
+        </th>
+        <th>
+            @Html.DisplayName("Role")
         </th>
         <th></th>
     </tr>
@@ -39,6 +42,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Department.Name)
+        </td>
+        <td>
+            @Roles.GetRolesForUser(item.UserName)[0]
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId }) |

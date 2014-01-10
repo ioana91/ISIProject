@@ -11,7 +11,7 @@ using ISIProject.Models;
 
 namespace ISIProject.Controllers
 {
-    [Authorize(Roles = "DepartmentManager")]
+    [Authorize(Roles = "Department Manager")]
     public class DeptManagerEmployeeController : Controller
     {
 

@@ -30,10 +30,10 @@ namespace ISIProject.Migrations
                 Roles.CreateRole("Manager");
             if (!Roles.RoleExists("Employee"))
                 Roles.CreateRole("Employee");
-            if (!Roles.RoleExists("DivisionManager"))
-                Roles.CreateRole("DivisionManager");
-            if (!Roles.RoleExists("DepartmentManager"))
-                Roles.CreateRole("DepartmentManager");
+            if (!Roles.RoleExists("Division Manager"))
+                Roles.CreateRole("Division Manager");
+            if (!Roles.RoleExists("Department Manager"))
+                Roles.CreateRole("Department Manager");
             #endregion
 
             if (!WebSecurity.UserExists("rtapus"))

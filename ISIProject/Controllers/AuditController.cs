@@ -23,7 +23,6 @@ namespace ISIProject.Controllers
         public ActionResult Index(AuditModel audit)
         {
             RemoveItems(audit);
-
             SaveAuditOptions(audit);
             AuditEmployees(audit);
 
@@ -38,7 +37,7 @@ namespace ISIProject.Controllers
                 {
                     foreach (var employee in audit.Employees)
                     {
-                        if (Roles.IsUserInRole(employee.UserName, item.EntityName.Replace(" ", string.Empty)))
+                        if (Roles.IsUserInRole(employee.UserName, item.EntityName))
                         {
                             employee.IsAudited = true;
                         }
@@ -60,7 +59,7 @@ namespace ISIProject.Controllers
                 {
                     foreach (var employee in audit.Employees)
                     {
-                        if (employee.Department.Name == item.EntityName)
+                        if (employee.Department != null && employee.Department.Name == item.EntityName)
                         {
                             employee.IsAudited = true;
                         }
@@ -96,6 +95,7 @@ namespace ISIProject.Controllers
             {
                 audit.DB.AuditSelections.Remove(item);
             }
+            audit.Employees.ForEach(e => e.IsAudited = false);
             audit.DB.SaveChanges();
         }
 

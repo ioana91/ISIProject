@@ -33,6 +33,7 @@
                             @if (Request.IsAuthenticated && !Roles.IsUserInRole("Administrator"))
                             {
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Timesheet", "Index", "Timesheet")</li>
                             }
                             @if (Roles.IsUserInRole("Administrator"))                        
                             {
@@ -44,7 +45,7 @@
                                 <li>@Html.ActionLink("Projects", "Index", "ProjectManager")</li>
                                 <li>@Html.ActionLink("Audit", "Index", "Audit")</li>
                             }
-                            @if (Roles.IsUserInRole("DepartmentManager"))
+                            @if (Roles.IsUserInRole("Department Manager"))
                             {
                                 <li>@Html.ActionLink("Manage Employees", "Index", "DeptManagerEmployee")</li>
                                 <li>@Html.ActionLink("Manage Projects", "Index", "DeptManagerProjects")</li>

@@ -63,14 +63,7 @@ namespace ISIProject.Controllers
                     manager.IsRegular = false;
                     db.SaveChanges();
 
-                    if (!Roles.IsUserInRole(manager.UserName, "DivisionManager"))
-                    {
-                        Roles.AddUserToRole(manager.UserName, "DivisionManager");
-                    }
-                    if (Roles.IsUserInRole(manager.UserName, "Employee"))
-                    {
-                        Roles.RemoveUserFromRole(manager.UserName, "Employee");
-                    }
+                    SetNewRole(manager);
 
                     return RedirectToAction("Index");
                 }
@@ -110,7 +103,7 @@ namespace ISIProject.Controllers
                 var currentDivision = db.Divisions.Find(division.DivisionId);
                 var exManager = db.Employees.SingleOrDefault(e => e.EmployeeId == currentDivision.DivisionManagerId);
                 exManager.IsRegular = true;
-                Roles.RemoveUserFromRole(exManager.UserName, "DivisionManager");
+                Roles.RemoveUserFromRole(exManager.UserName, "Division Manager");
                 Roles.AddUserToRole(exManager.UserName, "Employee");
 
                 db.Entry(currentDivision).CurrentValues.SetValues(division);
@@ -118,8 +111,7 @@ namespace ISIProject.Controllers
                 manager.IsRegular = false;
                 db.SaveChanges();
 
-                Roles.RemoveUserFromRole(manager.UserName, "Employee");
-                Roles.AddUserToRole(manager.UserName, "DivisionManager");
+                SetNewRole(manager);
 
                 return RedirectToAction("Index");
             }
@@ -152,7 +144,7 @@ namespace ISIProject.Controllers
             
             var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
             manager.IsRegular = true;
-            Roles.RemoveUserFromRole(manager.UserName, "DivisionManager");
+            Roles.RemoveUserFromRole(manager.UserName, "Division Manager");
             Roles.AddUserToRole(manager.UserName, "Employee");
             db.SaveChanges();
 
@@ -163,6 +155,26 @@ namespace ISIProject.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        private void SetNewRole(Employee manager)
+        {
+            if (!Roles.IsUserInRole(manager.UserName, "Division Manager"))
+            {
+                Roles.AddUserToRole(manager.UserName, "Division Manager");
+            }
+            if (Roles.IsUserInRole(manager.UserName, "Employee"))
+            {
+                Roles.RemoveUserFromRole(manager.UserName, "Employee");
+            }
+            if (Roles.IsUserInRole(manager.UserName, "Manager"))
+            {
+                Roles.RemoveUserFromRole(manager.UserName, "Manager");
+            }
+            if (Roles.IsUserInRole(manager.UserName, "Department Manager"))
+            {
+                Roles.RemoveUserFromRole(manager.UserName, "Department Manager");
+            }
         }
     }
 }
