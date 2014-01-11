@@ -17,6 +17,29 @@ $(document).ready(function () {
     var id = 10;
     var $calendar = $('#calendar');
 
+    $("#btnDuplicate").click(function () {
+        var date = $("#datepicker").datepicker("getDate");
+
+        $.ajax({
+            type: "POST",
+            async: true,
+            data: JSON.stringify({ date: date }),
+            dataType: "json",
+            url: "/Timesheet/DuplicateEvents",
+            contentType: "application/json; charset=utf-8",
+            success: function () {
+                location.reload(true);
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            },
+        });
+
+        $('#calendar').weekCalendar("today");
+        $('#calendar').weekCalendar("refresh");
+
+    });
+
     $('#lblError').hide();
 
     $calendar.weekCalendar({
@@ -72,6 +95,7 @@ $(document).ready(function () {
                         calEvent.activityID = selectActivityValue();
                         calEvent.clientId = selectClientValue();
                         calEvent.projectId = selectProjectValue();
+                        calEvent.state = 0;
 
                         var calendarEvent = ({
                             start: calEvent.start,
@@ -79,6 +103,7 @@ $(document).ready(function () {
                             clientId: selectClientValue(),
                             projectId: selectProjectValue(),
                             activityId: selectActivityValue(),
+                            state : 0
                         });
 
                         var dataToBeSent = JSON.stringify({ NewEvent: calendarEvent });
@@ -99,6 +124,7 @@ $(document).ready(function () {
                             });
                             $calendar.weekCalendar("removeUnsavedEvents");
                             $calendar.weekCalendar("updateEvent", calEvent);
+                            resetDropDownListValues()
                             $dialogContent.dialog("close");
                             $('#lblError').hide();
                         } else {
@@ -107,6 +133,7 @@ $(document).ready(function () {
                     },
                     cancel: function () {
                         $dialogContent.dialog("close");
+                        resetDropDownListValues();
                         $('#lblError').hide();
                     }
                 }
@@ -124,6 +151,7 @@ $(document).ready(function () {
                 clientId: calEvent.clientId,
                 projectId: calEvent.projectId,
                 activityId: calEvent.activityId,
+                state : calEvent.state,
             });
 
             $.ajax({
@@ -147,6 +175,7 @@ $(document).ready(function () {
                 clientId: calEvent.clientId,
                 projectId: calEvent.projectId,
                 activityId: calEvent.activityId,
+                state: calEvent.state,
             });
 
             $.ajax({
@@ -204,6 +233,7 @@ $(document).ready(function () {
                             clientId: calEvent.clientId,
                             projectId: calEvent.projectId,
                             activityId: calEvent.activityId,
+                            state : calEvent.state
                         });
                         if (validate()) {
                             $.ajax({
@@ -220,6 +250,7 @@ $(document).ready(function () {
                             $('#lblError').hide();
                             $calendar.weekCalendar("updateEvent", calEvent);
                             $dialogContent.dialog("close");
+                            resetDropDownListValues();
                         }
                         else {
                             $('#lblError').show();
@@ -244,9 +275,11 @@ $(document).ready(function () {
                         });
                         $calendar.weekCalendar("removeEvent", calEvent.id);
                         $dialogContent.dialog("close");
+                        resetDropDownListValues();
                     },
                     cancel: function () {
                         $dialogContent.dialog("close");
+                        resetDropDownListValues();
                         $('#lblError').hide();
                     }
                 }
@@ -297,8 +330,8 @@ $(document).ready(function () {
 
                 }
             },
-            error: function () {
-                alert("An error has occured");
+            error: function (errMsg) {
+                alert(errMsg);
                 return;
             }
         });
@@ -419,19 +452,21 @@ function populateActivityDropDownList(activeOnes) {
 function populateClientDropDownList() {
     var $dialogContent = $("#event_edit_container");
 
-    $.ajax({
-        type: "POST",
-        async: false,
-        dataType: "json",
-        url: "/Timesheet/GetClients",
-        contentType: "application/json; charset=utf-8",
-        success: function (clientList) {
-            clients = clientList;
-        },
-        failure: function (errMsg) {
-            alert(errMsg);
-        },
-    });
+    if (typeof clients == "undefined") {
+        $.ajax({
+            type: "POST",
+            async: false,
+            dataType: "json",
+            url: "/Timesheet/GetClients",
+            contentType: "application/json; charset=utf-8",
+            success: function (clientList) {
+                clients = clientList;
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            },
+        });
+    }
 
     var clientField = $dialogContent.find("select[name='client']");
 
@@ -446,22 +481,22 @@ function populateClientDropDownList() {
 
 function populateProjectDropDownList(clientID) {
     var $dialogContent = $("#event_edit_container");
-
-    $.ajax({
-        type: "POST",
-        async: false,
-        data: JSON.stringify({ clientId: clientID }),
-        dataType: "json",
-        url: "/Timesheet/GetProjects",
-        contentType: "application/json; charset=utf-8",
-        success: function (projectList) {
-            projects = projectList;
-        },
-        failure: function (errMsg) {
-            alert(errMsg);
-        },
-    });
-
+   
+    
+        $.ajax({
+            type: "POST",
+            async: false,
+            data: JSON.stringify({ clientId: clientID }),
+            dataType: "json",
+            url: "/Timesheet/GetProjects",
+            contentType: "application/json; charset=utf-8",
+            success: function (projectList) {
+                projects = projectList;
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            },
+        });
     var projectField = $dialogContent.find("select[name='project']");
 
     projectField.empty();
@@ -487,3 +522,15 @@ function validate() {
     }
     return false;
 }
+
+function resetDropDownListValues(){
+    $("select[name='activity']").val('-1');
+    $("select[name='project']").val('-1');
+    $("select[name='client']").val('-1');
+}
+
+$(function () {
+    $("#datepicker").datepicker({ firstDay: 1, autoSize: true, defaultDate: -1, showOtherMonths: true, dateFormat: "dd/mm/yy" });
+    $("#datepicker").datepicker("setDate", "-1");
+
+});

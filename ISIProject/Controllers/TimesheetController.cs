@@ -7,6 +7,11 @@ using ISIProject.Models;
 using System.Globalization;
 using System.Web.Script.Serialization;
 using System.Web.Security;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Data.Objects.DataClasses;
+using System.Reflection;
+using System.Data.Objects;
 
 namespace ISIProject.Controllers
 {
@@ -61,6 +66,7 @@ namespace ISIProject.Controllers
                             activityId = tm.ActivityId,
                             projectId = tm.ProjectId,
                             clientId = tm.ClientId,
+                            state = (int)tm.State
                         }).ToArray();
 
             var json = Json(y);
@@ -71,7 +77,7 @@ namespace ISIProject.Controllers
         [HttpPost]
         public int AddEvent(CalendarEvent NewEvent)
         {
-            var text = string.Empty;
+            
             var timeSheet = new Timesheet
             {
                 StartTime = NewEvent.start,
@@ -89,6 +95,22 @@ namespace ISIProject.Controllers
                 timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
             }
 
+            var text = logForAddEvent(timeSheet);
+
+            db.Timesheets.Add(timeSheet);
+            db.SaveChanges();
+
+            if (db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).IsAudited)
+            {
+                LogAction(text);
+            }
+
+            return timeSheet.TimesheetId;
+        }
+
+        private string logForAddEvent(Timesheet timeSheet)
+        {
+            var text = string.Empty;
             text += System.DateTime.Now + " " + Roles.GetRolesForUser(User.Identity.Name)[0] + " " +
                 db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).Name + " added a new timesheet entry for date " +
                     timeSheet.StartTime.ToString("D") + " StartTime: " + timeSheet.StartTime.TimeOfDay + " EndTime: " + timeSheet.EndTime.TimeOfDay;
@@ -99,26 +121,17 @@ namespace ISIProject.Controllers
             }
             text += " Activity: " + db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).Name +
                 System.Environment.NewLine;
-
-            db.Timesheets.Add(timeSheet);
-            db.SaveChanges();
-
-            //var json = Json(new {newId = timeSheet.TimesheetId});
-
-            if (db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).IsAudited)
-            {
-                LogAction(text);
-            }
-
-            return timeSheet.TimesheetId;
+            return text;
         }
 
         [HttpPost]
         public void UpdateEvent(CalendarEvent NewEvent)
         {
-            var text = string.Empty;
-            
+ 
+
             var timeSheet = db.Timesheets.Where(tm => tm.TimesheetId == NewEvent.id).FirstOrDefault();
+
+            var text = string.Empty;
             text += System.DateTime.Now + " " + Roles.GetRolesForUser(User.Identity.Name)[0] + " " +
                 db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).Name + " updated timesheet entry for date " +
                 timeSheet.StartTime.ToString("D");
@@ -141,6 +154,14 @@ namespace ISIProject.Controllers
             if (timeSheet.ActivityId != Convert.ToInt32(NewEvent.activityId))
             {
                 var activityId = Convert.ToInt32(NewEvent.activityId);
+                var isActive = db.Activities.Where(a => a.ActivityId == activityId).Select(a => a.IsActive).FirstOrDefault();
+
+                if (!isActive)
+                {
+                    timeSheet.ProjectId = null;
+                    timeSheet.ClientId = null;
+                }
+
                 text += " Activity modified (" + db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).Name +
                     "-" + db.Activities.FirstOrDefault(a => a.ActivityId == activityId).Name + ")";
                 timeSheet.ActivityId = activityId;
@@ -160,8 +181,8 @@ namespace ISIProject.Controllers
                 timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
             }
             timeSheet.ExtraHours = false;
-            timeSheet.State = TimesheetState.Open;
-            
+            timeSheet.State = (TimesheetState)NewEvent.state;
+
             text += System.Environment.NewLine;
             if (db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).IsAudited)
             {
@@ -208,7 +229,7 @@ namespace ISIProject.Controllers
                     a.ActivityId,
                     a.Name,
                     a.IsActive
-                }).OrderBy(a=>a.Name).ToArray();
+                }).OrderBy(a => a.Name).ToArray();
 
             return Json(activities);
         }
@@ -218,8 +239,8 @@ namespace ISIProject.Controllers
         {
             var deptID = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).DepartmentId;
 
-            var clients = db.Clients.Where(c => c.Projects.Any(p => p.Departments.Any(d => d.DepartmentId == deptID))).Select(c=>new 
-                { 
+            var clients = db.Clients.Where(c => c.Projects.Any(p => p.Departments.Any(d => d.DepartmentId == deptID))).Select(c => new
+                {
                     c.ClientId,
                     c.Name
                 }).OrderBy(c => c.Name).ToArray();
@@ -239,6 +260,30 @@ namespace ISIProject.Controllers
                 }).OrderBy(p => p.Name).ToArray();
 
             return Json(projects);
+        }
+
+        [HttpPost]
+        public void DuplicateEvents(DateTime date)
+        {
+            try
+            {
+                var timeSheets = db.Timesheets.AsNoTracking().Where(t => EntityFunctions.TruncateTime(t.Date) == date).ToList();
+                timeSheets.ForEach(t =>
+                {
+                    t.Date = DateTime.Now.Date;
+                    TimeSpan ts = new TimeSpan(t.StartTime.Hour,t.StartTime.Minute,t.StartTime.Second);
+                    t.StartTime= DateTime.Now.Date + ts;
+                    ts = new TimeSpan(t.EndTime.Hour, t.EndTime.Minute, t.EndTime.Second);
+                    t.EndTime = DateTime.Now.Date + ts;
+                    db.Timesheets.Add(t);
+                });
+
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                e.Equals(new Exception());
+            }
         }
 
         private void LogAction(string text)

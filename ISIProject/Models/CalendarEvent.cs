@@ -13,5 +13,6 @@ namespace ISIProject.Models
         public string clientId { get; set; }
         public string projectId { get; set; }
         public string activityId { get; set; }
+        public int state { get; set; }
     }
 }

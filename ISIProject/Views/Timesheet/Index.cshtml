@@ -13,60 +13,63 @@
 
     <script src="~/Scripts/TimeSheet.js"></script>
 }
-
 <h2>Timesheet</h2>
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     if (Roles.IsUserInRole("Employee"))
     {
-        <input type="submit" name="submitButton" value="Send" />
+    <input type="submit" name="submitButton" value="Send" />
     }
 }
-<div class="weekCalendar">
-    <div id='calendar'></div>
-    <div id="event_edit_container">
-        <form>
-            <input type="hidden" />
-            <ul>
-                <li>
-                    <span>Date: </span><span class="date_holder"></span>
-                </li>
-                <li>
-                    <label for="start">Start Time: </label>
-                    <select name="start">
-                        <option value="">Select Start Time</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="end">End Time: </label>
-                    <select name="end">
-                        <option value="">Select End Time</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="activityType">Activity type: </label>
-                    <input id="rdb1" type="radio" value="1" name="activityType" checked="checked"/>Active<br />
-                    <input id="rdb2" type="radio" value="2" name="activityType"/>Inactive<br />
-                </li>
-                <li id="clientLi">
-                    <label for="client">Client: </label>
-                    <select name="client">
-                    </select>
-                </li>
-                <li id="projectLi">
-                    <label for="project">Project: </label>
-                    <select name="project">
-                    </select>
-                </li>
-                <li>
-                    <label for="activity">Activity: </label>
-                    <select name="activity">
-                    </select>
-                </li>
-                <li>
-                    <label id="lblError" style="color: red">There is an error on the selection of the activity, client or project</label>
-                </li>
-            </ul>
-        </form>
-    </div>
+
+<p>
+    Date:
+    <input type="text" id="datepicker" size="30px">
+    <input type="button" id="btnDuplicate" value="Duplicate" />
+</p>
+<div id='calendar'></div>
+<div id="event_edit_container">
+    <form>
+        <input type="hidden" />
+        <ul>
+            <li>
+                <span>Date: </span><span class="date_holder"></span>
+            </li>
+            <li>
+                <label for="start">Start Time: </label>
+                <select name="start">
+                    <option value="">Select Start Time</option>
+                </select>
+            </li>
+            <li>
+                <label for="end">End Time: </label>
+                <select name="end">
+                    <option value="">Select End Time</option>
+                </select>
+            </li>
+            <li>
+                <label for="activityType">Activity type: </label>
+                <input id="rdb1" type="radio" value="1" name="activityType" checked="checked" />Active<br />
+                <input id="rdb2" type="radio" value="2" name="activityType" />Inactive<br />
+            </li>
+            <li id="clientLi">
+                <label for="client">Client: </label>
+                <select name="client">
+                </select>
+            </li>
+            <li id="projectLi">
+                <label for="project">Project: </label>
+                <select name="project">
+                </select>
+            </li>
+            <li>
+                <label for="activity">Activity: </label>
+                <select name="activity">
+                </select>
+            </li>
+            <li>
+                <label id="lblError" style="color: red">There is an error on the selection of the activity, client or project</label>
+            </li>
+        </ul>
+    </form>
 </div>
