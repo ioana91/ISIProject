@@ -186,8 +186,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllEmployeesInDepartmentReportController.cs" />
+    <Compile Include="Controllers\AllProjectsInDivisionReportController.cs" />
     <Compile Include="Controllers\AuditController.cs" />
     <Compile Include="Controllers\ClientManagerController.cs" />
+    <Compile Include="Controllers\ClientReportController.cs" />
     <Compile Include="Controllers\DepartmentManagerController.cs" />
 	<Compile Include="Controllers\DivisionReportController.cs" />
 	<Compile Include="Controllers\EmployeesPerProjectReportController.cs" />
@@ -199,11 +202,11 @@
     <Compile Include="Controllers\DivisionManagerController.cs" />
     <Compile Include="Controllers\EmployeeManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagerReportController.cs" />
     <Compile Include="Controllers\ProjectManagerController.cs" />
-	<Compile Include="Controllers\EmployeeTimesheetController.cs" />   
+<Compile Include="Controllers\EmployeeTimesheetController.cs" />   
 	<Compile Include="Controllers\DepartmentReportController.cs" />    
-	<Compile Include="Controllers\WorkingHoursPerProjectReportController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+	<Compile Include="Controllers\WorkingHoursPerProjectReportController.cs" />    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +226,7 @@
     <Compile Include="Models\Division.cs" />
 	<Compile Include="Models\DivisionReportModel.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\ManagerReportModel.cs" />
     <Compile Include="Models\Project.cs" />
 	<Compile Include="Models\DepartmentReportModel.cs" />
     <Compile Include="Models\Timesheet.cs" />
@@ -297,14 +301,17 @@
     <Content Include="Images\TimeManagementLogo.jpg" />
     <Content Include="Images\TimeManagementLogo1.jpg" />
     <Content Include="Images\TimeManagementLogo2.jpg" />
+    <Content Include="Scripts\AllEmployeesInDepartmentReport.js" />
+    <Content Include="Scripts\AllProjectsInDivisionReport.js" />
+    <Content Include="Scripts\ClientReport.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
     <Content Include="Scripts\TimeSheet Dept Mangager.js" />
 	<Content Include="Scripts\TimeSheet Dept Mangager.js" />    
 	<Content Include="Scripts\EmployeesPerProjectReport.js" />    
 	<Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />    <Content Include="Scripts\EmployeesPerProjectReport.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />    <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -392,13 +399,16 @@
     <Content Include="Views\ProjectManager\Delete.cshtml" />
     <Content Include="Views\DeptManagerProjects\Index.cshtml" />
     <Content Include="Views\Audit\Index.cshtml" />
-    <Content Include="Views\DeptManagerTimesheet\Index.cshtml" /> 
-	  <Content Include="Views\DepartmentReport\Index.cshtml" />
-    <Content Include="Views\EmployeeTimePerProjectReport\Index.cshtml" />
+    <Content Include="Views\DeptManagerTimesheet\Index.cshtml" />
+    <Content Include="Views\DepartmentReport\Index.cshtml" />    <Content Include="Views\EmployeeTimePerProjectReport\Index.cshtml" />
     <Content Include="Views\EmployeesPerProjectReport\Index.cshtml" />
-	  <Content Include="Views\WorkingHoursPerProjectReport\Index.cshtml" />
-	  <Content Include="Views\DivisionReport\Index.cshtml" />  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Views\WorkingHoursPerProjectReport\Index.cshtml" />
+    <Content Include="Views\DivisionReport\Index.cshtml" />
+    <Content Include="Views\AllProjectsInDivisionReport\Index.cshtml" />
+    <Content Include="Views\AllEmployeesInDepartmentReport\Index.cshtml" />
+    <Content Include="Views\ManagerReport\Index.cshtml" />
+    <Content Include="Views\ClientReport\Index.cshtml" />
+  </ItemGroup>  <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

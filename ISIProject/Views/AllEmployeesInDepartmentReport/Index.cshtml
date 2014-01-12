@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section AddToHead{
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script src="~/Scripts/AllEmployeesInDepartmentReport.js"></script>
+}
+
+<h2>All Employees in Selected Department Report</h2>
+@using (Html.BeginForm())
+{
+    <br />
+    @Html.Label("Select Department")
+    <p>
+        @Html.DropDownList("SelectedDepartment", ViewBag.DepartmentId as SelectList, string.Empty)
+        <input type="button" id="btnDisplay" value="Display" style="margin-left:50px"/> 
+    </p>
+    <div id='table_div'></div>
+}

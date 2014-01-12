@@ -1,81 +1,84 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title - Timesheet Management</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Timesheet Management</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
 
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
-    @if (IsSectionDefined("AddToHead"))
-    {
-        @RenderSection("AddToHead", required: false)
-    }
-</head>
-<body>
-    <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">@Html.ActionLink("timesheet manager", "Index", "Home")</p>
-                @*@Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home").ToHtmlString().Replace("[replacetext]", "<img src=\"../Images/TimeManagementLogo2.jpg\" ... />"))*@
+        @if (IsSectionDefined("AddToHead"))
+        {
+            @RenderSection("AddToHead", required: false)
+        }
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("timesheet manager", "Index", "Home")</p>
+                    @*@Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home").ToHtmlString().Replace("[replacetext]", "<img src=\"../Images/TimeManagementLogo2.jpg\" ... />"))*@
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            @if (Request.IsAuthenticated && !Roles.IsUserInRole("Administrator"))
+                            {
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Timesheet", "Index", "EmployeeTimesheet")</li>
+                            }
+                            @if (Roles.IsUserInRole("Administrator"))                        
+                            {
+                                <li>@Html.ActionLink("Divisions","Index","DivisionManager")</li>
+                                <li>@Html.ActionLink("Departments","Index","DepartmentManager")</li>
+                                <li>@Html.ActionLink("Employees", "Index", "EmployeeManager")</li>
+                                <li>@Html.ActionLink("Manager", "Index", "DirectorManager")</li>
+                                <li>@Html.ActionLink("Clients", "Index", "ClientManager")</li>
+                                <li>@Html.ActionLink("Projects", "Index", "ProjectManager")</li>
+                                <li>@Html.ActionLink("Audit", "Index", "Audit")</li>
+                            }
+                            @if (Roles.IsUserInRole("Department Manager"))
+                            {
+                                <li>@Html.ActionLink("Check Timesheets", "Index", "DeptManagerTimesheet")</li>
+                                <li>@Html.ActionLink("Manage Employees", "Index", "DeptManagerEmployee")</li>
+                                <li>@Html.ActionLink("Manage Projects", "Index", "DeptManagerProjects")</li>
+                                <li>@Html.ActionLink("Reports", "Index", "DepartmentReport")</li>
+                            }
+                            @if (Roles.IsUserInRole("Division Manager"))
+                            {
+                                <li>@Html.ActionLink("View Timesheets", "Index", "DeptManagerTimesheet")</li>                                
+                                <li>@Html.ActionLink("Reports", "Index", "DivisionReport")</li>
+                            }
+                            @if (Roles.IsUserInRole("Manager"))
+                            {
+                                <li>@Html.ActionLink("View Timesheets", "Index", "DeptManagerTimesheet")</li>                                
+                                <li>@Html.ActionLink("Reports", "Index", "ManagerReport")</li>                                
+                            }
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <div class="float-right">
-                <section id="login">
-                    @Html.Partial("_LoginPartial")
-                </section>
-                <nav>
-                    <ul id="menu">
-                        @if (Request.IsAuthenticated && !Roles.IsUserInRole("Administrator"))
-                        {
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Timesheet", "Index", "EmployeeTimesheet")</li>
-                        }
-                        @if (Roles.IsUserInRole("Administrator"))
-                        {
-                            <li>@Html.ActionLink("Divisions", "Index", "DivisionManager")</li>
-                            <li>@Html.ActionLink("Departments", "Index", "DepartmentManager")</li>
-                            <li>@Html.ActionLink("Employees", "Index", "EmployeeManager")</li>
-                            <li>@Html.ActionLink("Manager", "Index", "DirectorManager")</li>
-                            <li>@Html.ActionLink("Clients", "Index", "ClientManager")</li>
-                            <li>@Html.ActionLink("Projects", "Index", "ProjectManager")</li>
-                            <li>@Html.ActionLink("Audit", "Index", "Audit")</li>
-                        }
-                        @if (Roles.IsUserInRole("Department Manager"))
-                        {
-                            <li>@Html.ActionLink("Manage Employees", "Index", "DeptManagerEmployee")</li>
-                            <li>@Html.ActionLink("Manage Projects", "Index", "DeptManagerProjects")</li>
-                            <li>@Html.ActionLink("Reports", "Index", "DepartmentReport")</li>
-                        }
-                        @if (Roles.IsUserInRole("Division Manager"))
-                        {
-                            <li>@Html.ActionLink("Reports", "Index", "DivisionReport")</li>
-                        }
-                        @if (Roles.IsUserInRole("Manager"))
-                        {
-                            <li>@Html.ActionLink("Reports", "Index", "DivisionReport")</li>                             
-                        }
-                    </ul>
-                </nav>
-            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
         </div>
-    </header>
-    <div id="body">
-        @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-        </section>
-    </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - Timesheet Management</p>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Timesheet Management</p>
+                </div>
             </div>
-        </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 </html>

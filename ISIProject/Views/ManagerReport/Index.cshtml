@@ -1,0 +1,19 @@
+﻿@model ISIProject.Models.ManagerReportModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Reports</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        @for (int i = 0; i < Model.ReportCategories.Length; i++)
+		{
+		    @Html.DisplayName(Model.ReportCategories[i] + " ") 
+            @Html.RadioButtonFor(m => m.SelectedReport, i, new { style="margin-right:50px"})	 
+		}
+
+        <input type="submit" name="submitButton" value="Select report" />
+    </p>
+}

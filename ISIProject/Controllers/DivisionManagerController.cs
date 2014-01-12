@@ -42,7 +42,8 @@ namespace ISIProject.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.DivisionManagerId = new SelectList(db.Employees, "EmployeeId", "Name")
+            var employees = db.Employees.ToList();
+            ViewBag.DivisionManagerId = new SelectList(employees, "EmployeeId", "Name")
                 .Where(x => x.Text != string.Empty);
             return View();
         }
@@ -60,6 +61,7 @@ namespace ISIProject.Controllers
                 {
                     db.Divisions.Add(division);
                     var manager = db.Employees.SingleOrDefault(e => e.EmployeeId == division.DivisionManagerId);
+
                     manager.IsRegular = false;
                     db.SaveChanges();
 

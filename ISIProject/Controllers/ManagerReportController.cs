@@ -7,21 +7,19 @@ using ISIProject.Models;
 
 namespace ISIProject.Controllers
 {
-    [Authorize(Roles = "Division Manager")]
-    public class DivisionReportController : Controller
+    public class ManagerReportController : Controller
     {
-        private CompanyContext db = new CompanyContext();
         //
-        // GET: /DivisionReport/
+        // GET: /ManagerReport/
 
         public ActionResult Index()
         {
-            DivisionReportModel model = new DivisionReportModel();
+            ManagerReportModel model = new ManagerReportModel();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Index(DivisionReportModel model)
+        public ActionResult Index(ManagerReportModel model)
         {
             if (model.SelectedReport == "0")
             {
@@ -30,6 +28,10 @@ namespace ISIProject.Controllers
             else if (model.SelectedReport == "1")
             {
                 return RedirectToAction("Index", "AllEmployeesInDepartmentReport");
+            }
+            else if (model.SelectedReport == "2")
+            {
+                return RedirectToAction("Index", "ClientReport");
             }
 
             return View(model);
