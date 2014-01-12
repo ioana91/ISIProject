@@ -49,6 +49,15 @@
                             {
                                 <li>@Html.ActionLink("Manage Employees", "Index", "DeptManagerEmployee")</li>
                                 <li>@Html.ActionLink("Manage Projects", "Index", "DeptManagerProjects")</li>
+                                <li>@Html.ActionLink("Reports", "Index", "DepartmentReport")</li>
+                            }
+                            @if (Roles.IsUserInRole("Division Manager"))
+                            {
+                                <li>@Html.ActionLink("Reports", "Index", "DivisionReport")</li>
+                            }
+                            @if (Roles.IsUserInRole("Manager"))
+                            {
+                                <li>@Html.ActionLink("Reports", "Index", "DivisionReport")</li>                                
                             }
                         </ul>
                     </nav>

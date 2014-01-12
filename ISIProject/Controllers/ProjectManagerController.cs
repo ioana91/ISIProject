@@ -19,7 +19,8 @@ namespace ISIProject.Controllers
 
         public ActionResult Index()
         {
-            var projects = db.Projects.Include(p => p.Client).OrderBy(p => p.Client.Name);
+            var projects = db.Projects.Include(p => p.Client).OrderBy(p => p.Client.Name).
+                ThenBy(project => project.Name).ToList();
             return View(projects.ToList());
         }
 

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section AddToHead{
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="~/Scripts/EmployeesPerProjectReport.js"></script>
+}
+
+<h2>Employees' Working Hours for Specified Project Report</h2>
+@using (Html.BeginForm())
+{
+    <br />
+    <p>
+        @Html.Label("Select Project")
+        @Html.TextBox("SearchString")
+
+        <input type="button" id="btnDisplay" value="Display" /> 
+    </p>
+    <label id="lblError" style="color: red">There is no match for the project name you searched for.</label>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+}
