@@ -1,46 +1,45 @@
-﻿var activities;
-var clients;
-var projects;
-var activityType = function () { return $("input[name='activityType']:radio") }
-var activityTypeValue = activityType().val();
+﻿$(document).ready(function () {
+    
+    var $dialogContent = $('#reject_pop_up');
+    $('#calendar').hide();
 
-var selectActivityValue = function () { return $("select[name='activity']").val(); }
-var selectActivityText = function () { return $("select[name='activity'] :selected").text(); }
+    $dialogContent.hide();
 
-var selectClientValue = function () { return $("select[name='client']").val(); }
-var selectClientText = function () { return $("select[name='client'] :selected").text(); }
+    populateEmployeeList();
 
-var selectProjectValue = function () { return $("select[name='project']").val(); }
-var selectProjectText = function () { return $("select[name='project'] :selected").text(); }
+    $("#btnSelectEmployee").click(function () {
+        var startDate = new Date();
+        startDate.setMonth(startDate.getMonth() - 1);
+        startDate.setDate(1);
 
-$(document).ready(function () {
-    var id = 10;
-    var $calendar = $('#calendar');
+        var employeeId = $("select[name='employee']").val();
+        $("#hdnEmployeeId").val(employeeId);
 
-    $("#btnDuplicate").click(function () {
-        var date = $("#datepicker").datepicker("getDate");
-
-        $.ajax({
-            type: "POST",
-            async: true,
-            data: JSON.stringify({ date: date }),
-            dataType: "json",
-            url: "/EmployeeTimesheet/DuplicateEvents",
-            contentType: "application/json; charset=utf-8",
-            success: function () {
-                location.reload(true);
-            },
-            failure: function (errMsg) {
-                alert(errMsg);
-            },
-        });
-
-        $('#calendar').weekCalendar("today");
-        $('#calendar').weekCalendar("refresh");
-
+        if (employeeId != "-1") {
+            $('#btnAccept').show();
+            $('#btnReject').show();
+            initializeCalendar();
+            $('#calendar').weekCalendar("gotoWeek", startDate);
+            $('#calendar').weekCalendar("refresh");
+            $('#calendar').show();
+        }
+        else {
+            $('#btnAccept').hide();
+            $('#btnReject').hide();
+            $('#calendar').hide();
+        }
     });
 
-    $('#lblError').hide();
+    $('#btnAccept').click(btnAcceptClicked);
+    $('#btnReject').click(btnRejectClicked);
+
+    $('#btnAccept').hide();
+    $('#btnReject').hide();
+
+});
+
+function initializeCalendar() {
+    var $calendar = $('#calendar');    
 
     $calendar.weekCalendar({
         timeslotsPerHour: 4,
@@ -59,9 +58,7 @@ $(document).ready(function () {
                     "backgroundColor": computeTitleColor(calEvent),
                     "border": "1px solid " + computeBorderColor(calEvent)
                 });
-                if (calEvent.state == 1 || calEvent.state == 2) {
-                    calEvent.readOnly = true;
-                }
+                calEvent.readOnly = true;
             }
         },
         draggable: function (calEvent, $event) {
@@ -71,492 +68,139 @@ $(document).ready(function () {
             return calEvent.readOnly != true;
         },
         eventNew: function (calEvent, $event) {
-            var $dialogContent = $("#event_edit_container");
-            resetForm($dialogContent);
-            var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
-            var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
-            //var activityField = $dialogContent.find("select[name='activity']");
-            //var bodyField = $dialogContent.find("select[name='project']");
-
-
-            $dialogContent.dialog({
-                modal: true,
-                title: "New Calendar Event",
-                close: function () {
-                    $dialogContent.dialog("destroy");
-                    $dialogContent.hide();
-                    $('#calendar').weekCalendar("removeUnsavedEvents");
-                },
-                buttons: {
-                    save: function () {
-                        calEvent.id = id;
-                        id++;
-                        calEvent.start = new Date(startField.val());
-                        calEvent.end = new Date(endField.val());
-                        calEvent.title = selectActivityText();
-                        calEvent.body = selectProjectText();
-                        calEvent.activityId = selectActivityValue();
-                        calEvent.clientId = selectClientValue();
-                        calEvent.projectId = selectProjectValue();
-                        calEvent.state = 0;
-
-                        var calendarEvent = ({
-                            start: calEvent.start,
-                            end: calEvent.end,
-                            clientId: selectClientValue(),
-                            projectId: selectProjectValue(),
-                            activityId: selectActivityValue(),
-                            state : 0
-                        });
-
-                        var dataToBeSent = JSON.stringify({ NewEvent: calendarEvent });
-                        if (validate()) {
-                            $.ajax({
-                                type: "POST",
-                                async: true,
-                                data: JSON.stringify({ NewEvent: calendarEvent }),
-                                dataType: "json",
-                                url: "/EmployeeTimesheet/AddEvent",
-                                contentType: "application/json; charset=utf-8",
-                                success: function (newId) {
-                                    calEvent.id = newId;
-                                },
-                                failure: function (errMsg) {
-                                    alert(errMsg);
-                                }
-                            });
-                            $calendar.weekCalendar("removeUnsavedEvents");
-                            $calendar.weekCalendar("updateEvent", calEvent);
-                            resetDropDownListValues();
-                            $dialogContent.dialog("close");
-                            $('#lblError').hide();
-                        } else {
-                            $('#lblError').show();
-                        }
-                    },
-                    cancel: function () {
-                        $dialogContent.dialog("close");
-                        resetDropDownListValues();
-                        $('#lblError').hide();
-                    }
-                }
-            }).show();
-
-            $dialogContent.find(".date_holder").text($calendar.weekCalendar("formatDate", calEvent.start));
-            setupStartAndEndTimeFields(startField, endField, calEvent, $calendar.weekCalendar("getTimeslotTimes", calEvent.start));
-
+            $calendar.weekCalendar("removeUnsavedEvents");
         },
         eventDrop: function (calEvent, $event) {
-            var calendarEvent = ({
-                id: calEvent.id,
-                start: calEvent.start,
-                end: calEvent.end,
-                clientId: calEvent.clientId,
-                projectId: calEvent.projectId,
-                activityId: calEvent.activityId,
-                state : calEvent.state,
-            });
-
-            $.ajax({
-                type: "POST",
-                async: true,
-                data: JSON.stringify({ NewEvent: calendarEvent }),
-                dataType: "json",
-                url: "/EmployeeTimesheet/UpdateEvent",
-                contentType: "application/json; charset=utf-8",
-                failure: function (errMsg) {
-                    alert(errMsg);
-                }
-            });
-        },
-        eventResize: function (calEvent, $event) {
-
-            var calendarEvent = ({
-                id: calEvent.id,
-                start: calEvent.start,
-                end: calEvent.end,
-                clientId: calEvent.clientId,
-                projectId: calEvent.projectId,
-                activityId: calEvent.activityId,
-                state: calEvent.state,
-            });
-
-            $.ajax({
-                type: "POST",
-                async: true,
-                data: JSON.stringify({ NewEvent: calendarEvent }),
-                dataType: "json",
-                url: "/EmployeeTimesheet/UpdateEvent",
-                contentType: "application/json; charset=utf-8",
-                failure: function (errMsg) {
-                    alert(errMsg);
-                }
-            });
-
-            //$calendar.weekCalendar("updateEvent", calEvent);
-            //$dialogContent.dialog("close");
-        },
-        eventClick: function (calEvent, $event) {
-
             if (calEvent.readOnly) {
                 return;
             }
-
-            var $dialogContent = $("#event_edit_container");
-            resetForm($dialogContent);
-            var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
-            var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
-            var activityField = $dialogContent.find("input[name='title']").val(calEvent.title);
-            var bodyField = $dialogContent.find("textarea[name='body']");
-            bodyField.val(calEvent.body);
-
-            setDropDownListValues(calEvent);
-
-            $dialogContent.dialog({
-                modal: true,
-                title: "Edit - " + calEvent.title,
-                close: function () {
-                    $dialogContent.dialog("destroy");                    
-                    $dialogContent.hide();
-                    $('#calendar').weekCalendar("removeUnsavedEvents");
-                },
-                buttons: {
-                    save: function () {
-
-                        calEvent.start = new Date(startField.val());
-                        calEvent.end = new Date(endField.val());
-                        calEvent.title = selectActivityText();
-                        calEvent.body = selectProjectText();
-                        calEvent.activityId = selectActivityValue();
-                        calEvent.projectId = selectProjectValue();
-                        calEvent.clientId = selectClientValue();
-
-                        var calendarEvent = ({
-                            id: calEvent.id,
-                            start: calEvent.start,
-                            end: calEvent.end,
-                            clientId: calEvent.clientId,
-                            projectId: calEvent.projectId,
-                            activityId: calEvent.activityId,
-                            state : calEvent.state
-                        });
-                        if (validate()) {
-                            $.ajax({
-                                type: "POST",
-                                async: true,
-                                data: JSON.stringify({ NewEvent: calendarEvent }),
-                                dataType: "json",
-                                url: "/EmployeeTimesheet/UpdateEvent",
-                                contentType: "application/json; charset=utf-8",
-                                failure: function (errMsg) {
-                                    alert(errMsg);
-                                }
-                            });
-                            $('#lblError').hide();
-                            $calendar.weekCalendar("updateEvent", calEvent);
-                            $dialogContent.dialog("close");
-                            resetDropDownListValues();
-                        }
-                        else {
-                            $('#lblError').show();
-                        }
-                    },
-                    "delete": function () {
-                        $('#lblError').hide();
-                        var calendarEvent = ({
-                            id: calEvent.id
-                        });
-
-                        $.ajax({
-                            type: "POST",
-                            async: true,
-                            data: JSON.stringify({ NewEvent: calendarEvent }),
-                            dataType: "json",
-                            url: "/EmployeeTimesheet/RemoveEvent",
-                            contentType: "application/json; charset=utf-8",
-                            failure: function (errMsg) {
-                                alert(errMsg);
-                            }
-                        });
-                        $calendar.weekCalendar("removeEvent", calEvent.id);
-                        $dialogContent.dialog("close");
-                        resetDropDownListValues();
-                    },
-                    cancel: function () {
-                        $dialogContent.dialog("close");
-                        resetDropDownListValues();
-                        $('#lblError').hide();
-                    }
-                }
-            }).show();
-
-            var startField = $dialogContent.find("select[name='start']").val(calEvent.start);
-            var endField = $dialogContent.find("select[name='end']").val(calEvent.end);
-            $dialogContent.find(".date_holder").text($calendar.weekCalendar("formatDate", calEvent.start));
-            setupStartAndEndTimeFields(startField, endField, calEvent, $calendar.weekCalendar("getTimeslotTimes", calEvent.start));
-            $(window).resize().resize(); //fixes a bug in modal overlay size ??
-
+        },
+        eventResize: function (calEvent, $event) {
+            if (calEvent.readOnly) {
+                return;
+            }
+        },
+        eventClick: function (calEvent, $event) {
+            if (calEvent.readOnly) {
+                return;
+            }
         },
         eventMouseover: function (calEvent, $event) {
         },
         eventMouseout: function (calEvent, $event) {
         },
         noEvents: function () {
-
         },
         data: function (start, end, callback) {
             callback(getEventData());
         }
     });
 
-    function resetForm($dialogContent) {
-        $dialogContent.find("input").val("");
-        $dialogContent.find("textarea").val("");
-    }
-
     function getEventData() {
-        var year = new Date().getFullYear();
-        var month = new Date().getMonth();
-        var day = new Date().getDate();
-
         var superEvents;
+
+        var employeeId = $("select[name='employee']").val();
+
+        if (employeeId == "-1") {
+            return;
+        }
 
         $.ajax({
             type: "POST",
             async: false,
+            data: JSON.stringify({ employeeId: employeeId }),
             dataType: "json",
-            url: "/EmployeeTimesheet/GetEvents",
+            url: "/DeptManagerTimesheet/GetEventsForEmployee",
             contentType: "application/json; charset=utf-8",
             success: function (recieved) {
                 superEvents = recieved;
                 for (i = 0; i < superEvents.length; i++) {
                     superEvents[i].start = new Date(superEvents[i].start);
                     superEvents[i].end = new Date(superEvents[i].end);
-
+                    superEvents[i].readOnly = true;
                 }
             },
-            error: function (errMsg) {
+            failure: function (errMsg) {
                 alert(errMsg);
-                return;
-            }
+            },
         });
-
         return superEvents;
     }
+}
 
+function populateEmployeeList() {
+    $.ajax({
+        type: "POST",
+        async: false,
+        dataType: "json",
+        url: "/DeptManagerTimesheet/GetEmployees",
+        contentType: "application/json; charset=utf-8",
+        success: function (recieved) {
+            var employeeDDL = $("select[name='employee']");
 
-    /*
-     * Sets up the start and end time fields in the calendar event
-     * form for editing based on the calendar event being edited
-     */
-    function setupStartAndEndTimeFields($startTimeField, $endTimeField, calEvent, timeslotTimes) {
+            employeeDDL.empty();
+            employeeDDL.append("<option value='" + "-1" + "'>" + "" + "</option>");
 
-        for (var i = 0; i < timeslotTimes.length; i++) {
-            var startTime = timeslotTimes[i].start;
-            var endTime = timeslotTimes[i].end;
-            var startSelected = "";
-            if (startTime.getTime() === calEvent.start.getTime()) {
-                startSelected = "selected=\"selected\"";
+            for (var i = 0; i < recieved.length; i++) {
+                var htmlString = "<option value='" + recieved[i].EmployeeId + "'>" + recieved[i].Name + "</option>";
+                employeeDDL.append(htmlString);
             }
-            var endSelected = "";
-            if (endTime.getTime() === calEvent.end.getTime()) {
-                endSelected = "selected=\"selected\"";
-            }
-            $startTimeField.append("<option value=\"" + startTime + "\" " + startSelected + ">" + timeslotTimes[i].startFormatted + "</option>");
-            $endTimeField.append("<option value=\"" + endTime + "\" " + endSelected + ">" + timeslotTimes[i].endFormatted + "</option>");
-
-        }
-        $endTimeOptions = $endTimeField.find("option");
-        $startTimeField.trigger("change");
-    }
-
-    var $endTimeField = $("select[name='end']");
-    var $endTimeOptions = $endTimeField.find("option");
-
-    //reduces the end time options to be only after the start time options.
-    $("select[name='start']").change(function () {
-        var startTime = $(this).find(":selected").val();
-        var currentEndTime = $endTimeField.find("option:selected").val();
-        $endTimeField.html(
-              $endTimeOptions.filter(function () {
-                  return startTime < $(this).val();
-              })
-              );
-
-        var endTimeSelected = false;
-        $endTimeField.find("option").each(function () {
-            if ($(this).val() === currentEndTime) {
-                $(this).attr("selected", "selected");
-                endTimeSelected = true;
-                return false;
-            }
-        });
-
-        if (!endTimeSelected) {
-            //automatically select an end date 2 slots away.
-            $endTimeField.find("option:eq(1)").attr("selected", "selected");
-        }
-
-    });
-
-    $("input[name=activityType]:radio").change(function () { rdbSelectionChanged(); });
-
-    $("select[name='client']").change(function () {
-        if (selectClientValue() !== "-1") {
-            populateProjectDropDownList(selectClientValue());
-        } else {
-
+        },
+        error: function (errMsg) {
+            alert(errMsg.error);
+            return;
         }
     });
+}
 
-    populateActivityDropDownList(true);
-    populateClientDropDownList();
-});
+function btnAcceptClicked() {
+    var employeeId = $("#hdnEmployeeId").val();
 
-function populateActivityDropDownList(activeOnes) {
-    var $dialogContent = $("#event_edit_container");
+    $.ajax({
+        type: "POST",
+        async: false,
+        data: JSON.stringify({ employeeId: employeeId }),
+        dataType: "json",
+        url: "/DeptManagerTimesheet/AproveTimesheet",
+        contentType: "application/json; charset=utf-8",
+    });
 
-    if (typeof activities == "undefined") {
-        $.ajax({
-            type: "POST",
-            async: false,
-            dataType: "json",
-            url: "/EmployeeTimesheet/GetActivities",
-            contentType: "application/json; charset=utf-8",
-            success: function (activitiesList) {
-                activities = activitiesList;
+    $('#calendar').weekCalendar("today");
+    $('#calendar').weekCalendar("refresh");
+}
+function btnRejectClicked() {
+    var employeeId = $("#hdnEmployeeId").val();
+
+    var $dialogContent = $("#reject_pop_up");
+    $dialogContent.dialog({
+        modal: true,
+        title: "Reason for rejecting",
+        close: function () {
+            $dialogContent.dialog("destroy");
+            $dialogContent.hide();
+        },
+        buttons: {
+            send: function () {
+                var message = $('#txtMessage').text();
+
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    data: JSON.stringify({ employeeId: employeeId, message: message }),
+                    dataType: "json",
+                    url: "/DeptManagerTimesheet/RejectTimesheet",
+                    contentType: "application/json; charset=utf-8",
+                });
+
+                $('#calendar').weekCalendar("today");
+                $('#calendar').weekCalendar("refresh");
+                $dialogContent.dialog("close");
             },
-            failure: function (errMsg) {
-                alert(errMsg);
-            },
-        });
-    }
-    var activityField = $dialogContent.find("select[name='activity']");
-
-    activityField.empty();
-    activityField.append("<option value='" + "-1" + "'>" + "" + "</option>");
-
-    for (var i = 0; i < activities.length; i++) {
-        if (activities[i].IsActive == activeOnes) {
-            var htmlString = "<option value='" + activities[i].ActivityId + "'>" + activities[i].Name + "</option>";
-            activityField.append(htmlString);
+            cancel: function () {
+                $dialogContent.dialog("close");
+            }
         }
-    }
-}
-
-function populateClientDropDownList() {
-    var $dialogContent = $("#event_edit_container");
-
-    if (typeof clients == "undefined") {
-        $.ajax({
-            type: "POST",
-            async: false,
-            dataType: "json",
-            url: "/EmployeeTimesheet/GetClients",
-            contentType: "application/json; charset=utf-8",
-            success: function (clientList) {
-                clients = clientList;
-            },
-            failure: function (errMsg) {
-                alert(errMsg);
-            },
-        });
-    }
-
-    var clientField = $dialogContent.find("select[name='client']");
-
-    clientField.empty();
-    clientField.append("<option value='" + "-1" + "'>" + "" + "</option>");
-
-    for (var i = 0; i < clients.length; i++) {
-        var htmlString = "<option value='" + clients[i].ClientId + "'>" + clients[i].Name + "</option>";
-        clientField.append(htmlString);
-    }
-}
-
-function populateProjectDropDownList(clientID) {
-    var $dialogContent = $("#event_edit_container");
-   
-    
-        $.ajax({
-            type: "POST",
-            async: false,
-            data: JSON.stringify({ clientId: clientID }),
-            dataType: "json",
-            url: "/EmployeeTimesheet/GetProjects",
-            contentType: "application/json; charset=utf-8",
-            success: function (projectList) {
-                projects = projectList;
-            },
-            failure: function (errMsg) {
-                alert(errMsg);
-            },
-        });
-    var projectField = $dialogContent.find("select[name='project']");
-
-    projectField.empty();
-    projectField.append("<option value='" + "-1" + "'>" + "" + "</option>");
-
-    for (var i = 0; i < projects.length; i++) {
-        var htmlString = "<option value='" + projects[i].ProjectId + "'>" + projects[i].Name + "</option>";
-        projectField.append(htmlString);
-    }
-}
-
-function validate() {
-    if ($('input:radio:checked').attr('id') === "rdb1") {
-        if (selectActivityValue() != "-1"
-            && selectClientValue() != "-1"
-            && selectProjectValue() != "-1") {
-            return true;
-        }
-    } else {
-        if (selectActivityValue() != "-1") {
-            return true;
-        }
-    }
-    return false;
-}
-
-function setDropDownListValues(calEvent) {
-    if (calEvent.activityId > 3) {
-        jQuery("#rdb1").attr('checked', 'checked');
-        $("select[name='client']").val(calEvent.clientId);
-        populateProjectDropDownList(calEvent.clientId);
-        $("select[name='project']").val(calEvent.projectId);
-        rdbSelectionChanged();
-        $("select[name='activity']").val(calEvent.activityId);
-    }
-    else
-    {
-        jQuery("#rdb2").attr('checked', 'checked');
-        rdbSelectionChanged();
-        $("select[name='activity']").val(calEvent.activityId);
-    }
-}
-
-function resetDropDownListValues(){
-    $("select[name='activity']").val('-1');
-    $("select[name='project']").val('-1');
-    $("select[name='client']").val('-1');
-}
-
-$(function () {
-    $("#datepicker").datepicker({ firstDay: 1, autoSize: true, defaultDate: -1, showOtherMonths: true, dateFormat: "dd/mm/yy" });
-    $("#datepicker").datepicker("setDate", "-1");
-
-});
-
-function rdbSelectionChanged () {
-    if ($('input:radio:checked').attr('id') === "rdb1") {
-        $("#clientLi").show();
-        $("#projectLi").show();
-        populateActivityDropDownList(true);
-    } else {
-        $("#clientLi").hide();
-        $("#projectLi").hide();
-        populateActivityDropDownList(false);
-    }
+    }).show();
 }
 
 function computeBackgroundColor(calEvent) {

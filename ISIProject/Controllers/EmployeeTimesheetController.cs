@@ -32,7 +32,6 @@ namespace ISIProject.Controllers
         {
             var text = string.Empty;
 
-            SendEmail();
             ChangeTimesheetState();
 
             var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
@@ -61,7 +60,7 @@ namespace ISIProject.Controllers
                             id = tm.TimesheetId,
                             start = tm.StartTime.ToString("MMMM dd, yyyy HH:mm:ss", new CultureInfo("en-US")),
                             end = tm.EndTime.ToString("MMMM dd, yyyy HH:mm:ss", new CultureInfo("en-US")),
-                            title = tm.Activity.Name,
+                            title = (tm.Client != null ? tm.Client.Name + "<br/>" + tm.Project.Name + "<br/>" : "") + tm.Activity.Name,
                             body = tm.ProjectId.HasValue ? tm.Project.Name : string.Empty,
                             activityId = tm.ActivityId,
                             projectId = tm.ProjectId,
@@ -77,7 +76,7 @@ namespace ISIProject.Controllers
         [HttpPost]
         public int AddEvent(CalendarEvent NewEvent)
         {
-            
+
             var timeSheet = new Timesheet
             {
                 StartTime = NewEvent.start,
@@ -89,7 +88,7 @@ namespace ISIProject.Controllers
                 State = TimesheetState.Open,
             };
 
-            if (!String.IsNullOrWhiteSpace(NewEvent.projectId))
+            if (!String.IsNullOrWhiteSpace(NewEvent.projectId) && NewEvent.clientId != "-1")
             {
                 timeSheet.ProjectId = Convert.ToInt32(NewEvent.projectId);
                 timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
@@ -158,7 +157,7 @@ namespace ISIProject.Controllers
         [HttpPost]
         public void UpdateEvent(CalendarEvent NewEvent)
         {
- 
+
 
             var timeSheet = db.Timesheets.Where(tm => tm.TimesheetId == NewEvent.id).FirstOrDefault();
 
@@ -305,8 +304,8 @@ namespace ISIProject.Controllers
                 timeSheets.ForEach(t =>
                 {
                     t.Date = DateTime.Now.Date;
-                    TimeSpan ts = new TimeSpan(t.StartTime.Hour,t.StartTime.Minute,t.StartTime.Second);
-                    t.StartTime= DateTime.Now.Date + ts;
+                    TimeSpan ts = new TimeSpan(t.StartTime.Hour, t.StartTime.Minute, t.StartTime.Second);
+                    t.StartTime = DateTime.Now.Date + ts;
                     ts = new TimeSpan(t.EndTime.Hour, t.EndTime.Minute, t.EndTime.Second);
                     t.EndTime = DateTime.Now.Date + ts;
                     db.Timesheets.Add(t);
@@ -344,10 +343,31 @@ namespace ISIProject.Controllers
 
         private void ChangeTimesheetState()
         {
-            var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
-            var month = DateTime.Now.Month == 1 ? 12 : DateTime.Now.Month - 1;
-            db.Timesheets.Where(t => t.EmployeeId == employee.EmployeeId && t.Date.Month == month).ToList().
-                ForEach(t => t.State = TimesheetState.Submitted);
+            var employeeId = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).EmployeeId;
+            var employeeTimesheets = db.Timesheets.Where(t => t.EmployeeId == employeeId).ToList();
+            var timesheetsToBeModified = employeeTimesheets.Where(t =>
+               t.StartTime > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(-1) &&
+               t.EndTime < new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59) &&
+               (t.State == TimesheetState.Open || t.State==TimesheetState.Rejected)
+               ).ToList();
+
+            if (timesheetsToBeModified.Count() > 0)
+            {
+                timesheetsToBeModified.ForEach(t => t.State = TimesheetState.Submitted);
+
+                db.SaveChanges();
+                SendEmail();
+            }
+            
+        }
+
+        [HttpPost]
+        public void SaveTimesheets()
+        {
+            var employeeId = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).EmployeeId;
+
+            db.Timesheets.Where(tm => tm.EmployeeId == employeeId).ToList().ForEach(t => t.State = TimesheetState.Aproved);
+
             db.SaveChanges();
         }
     }

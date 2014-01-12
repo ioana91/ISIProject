@@ -13,12 +13,15 @@
 
     <script src="~/Scripts/TimeSheet%20Dept%20Mangager.js"></script>
 }
+
+<input type="hidden" id="hdnEmployeeId" value="-1" />
 <h2>Check Timesheet</h2>
 @using (Html.BeginForm())
 {
-    if (Roles.IsUserInRole("Employee"))
+    if (Roles.IsUserInRole("Department Manager"))
     {
-    <input type="submit" name="submitButton" value="Send" />
+    <input type="button" id="btnAccept" value="Aprove" />
+    <input type="button" id="btnReject" value="Reject" />    
     }
 }
 
@@ -29,13 +32,11 @@
     <input type="button" id="btnSelectEmployee" value="Select Employee" />
 </p>
 <div id='calendar'></div>
-<div id="event_edit_container">
+<div id="reject_pop_up">
     <form>
         <input type="hidden" />
-        <ul>
-            <label>Message:</label>
-            <input id="txtMessage" type="text" style="min-height: 100px" />
-        </ul>
+        <label>Message:</label>
+        <textarea id="txtMessage" rows="10" style="width: 100%; height: 100%"></textarea>
     </form>
 </div>
 

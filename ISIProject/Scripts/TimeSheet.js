@@ -17,6 +17,8 @@ $(document).ready(function () {
     var id = 10;
     var $calendar = $('#calendar');
 
+    $('#btnSave').click(btnSaveClicked);
+
     $("#btnDuplicate").click(function () {
         var date = $("#datepicker").datepicker("getDate");
 
@@ -93,7 +95,7 @@ $(document).ready(function () {
                         id++;
                         calEvent.start = new Date(startField.val());
                         calEvent.end = new Date(endField.val());
-                        calEvent.title = selectActivityText();
+                        calEvent.title = computeTitle(selectActivityText(),selectClientText(),selectProjectText());
                         calEvent.body = selectProjectText();
                         calEvent.activityId = selectActivityValue();
                         calEvent.clientId = selectClientValue();
@@ -225,7 +227,7 @@ $(document).ready(function () {
 
                         calEvent.start = new Date(startField.val());
                         calEvent.end = new Date(endField.val());
-                        calEvent.title = selectActivityText();
+                        calEvent.title = computeTitle(selectActivityText(), selectClientText(), selectProjectText());
                         calEvent.body = selectProjectText();
                         calEvent.activityId = selectActivityValue();
                         calEvent.projectId = selectProjectValue();
@@ -593,4 +595,29 @@ function computeTitleColor(calEvent) {
     if (calEvent.state == 3) {
         return "#993a3e"
     }
+}
+
+function computeTitle (activityText,clientText,projectText){
+    var text = "";
+    if (clientText != "") {
+        text = clientText + "<br/>" + projectText + "<br/>" + activityText;
+    } else {
+        text = activityText;
+    }
+    return text;
+}
+
+function btnSaveClicked() {
+    $.ajax({
+        type: "POST",
+        async: false,
+        dataType: "json",
+        url: "/EmployeeTimesheet/SaveTimesheets",
+        contentType: "application/json; charset=utf-8",
+        failure: function (errMsg) {
+            alert(errMsg);
+        },
+    });
+    $('#calendar').weekCalendar("today");
+    $('#calendar').weekCalendar("refresh");
 }

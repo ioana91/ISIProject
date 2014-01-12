@@ -62,7 +62,6 @@ namespace ISIProject.Controllers
                 var employee = new Employee()
                 {
                     UserName = model.UserName,
-                    DepartmentId = model.DepartmentId,
                     Email = model.Email,
                     Name = model.Name,
                     IsRegular = true,
@@ -102,12 +101,12 @@ namespace ISIProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Employee employee)
         {
-            String[] nameParts = employee.Name.Split(' ');
-            employee.UserName = nameParts[0].ToLower()[0] + nameParts[nameParts.Length - 1].ToLower();
 
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
+                var editedEmployee = db.Employees.FirstOrDefault(e => e.EmployeeId == employee.EmployeeId);
+                editedEmployee.Email = employee.Email;
+                editedEmployee.Name = employee.Name;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
