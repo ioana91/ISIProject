@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section AddToHead{
+    <link rel='stylesheet' type='text/css' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css' />
+    <link href="~/Content/themes/base/jquery.weekcalendar.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/TimeSheet.css" rel="stylesheet" />
+
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js'></script>
+    <script type='text/javascript' src="~/Scripts/jquery.weekcalendar.js"></script>
+
+    <script src="~/Scripts/TimeSheet%20Dept%20Mangager.js"></script>
+}
+<h2>Check Timesheet</h2>
+@using (Html.BeginForm())
+{
+    if (Roles.IsUserInRole("Employee"))
+    {
+    <input type="submit" name="submitButton" value="Send" />
+    }
+}
+
+<p>
+    <label for="Employee">Employee: </label>
+    <select name="employee">
+    </select>
+    <input type="button" id="btnSelectEmployee" value="Select Employee" />
+</p>
+<div id='calendar'></div>
+<div id="event_edit_container">
+    <form>
+        <input type="hidden" />
+        <ul>
+            <label>Message:</label>
+            <input id="txtMessage" type="text" style="min-height: 100px" />
+        </ul>
+    </form>
+</div>
+

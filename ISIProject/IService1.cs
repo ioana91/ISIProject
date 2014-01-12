@@ -12,6 +12,15 @@ namespace ISIProject
     public interface IService1
     {
         [OperationContract]
-        void DoWork();
+        double getNumberOfHoursWorked(int EmployeeId, DateTime startDate,DateTime EndDate);
+
+        [OperationContract]
+        double getNumberOfExtraHoursWorked(int EmployeeId, DateTime startDate, DateTime EndDate);
+
+        [OperationContract]
+        double getNumberOfVacationHours(int EmployeeId, DateTime startDate, DateTime EndDate);
+
+        [OperationContract]
+        double getNumberOfMedicalLeaveHours(int EmployeeId, DateTime startDate, DateTime EndDate);
     }
 }

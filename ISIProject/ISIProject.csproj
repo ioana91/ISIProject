@@ -191,12 +191,13 @@
     <Compile Include="Controllers\DepartmentManagerController.cs" />
     <Compile Include="Controllers\DeptManagerEmployeeController.cs" />
     <Compile Include="Controllers\DeptManagerProjectsController.cs" />
+    <Compile Include="Controllers\DeptManagerTimesheetController.cs" />
     <Compile Include="Controllers\DirectorManagerController.cs" />
     <Compile Include="Controllers\DivisionManagerController.cs" />
     <Compile Include="Controllers\EmployeeManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectManagerController.cs" />
-    <Compile Include="Controllers\TimesheetController.cs" />
+    <Compile Include="Controllers\EmployeeTimesheetController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -289,6 +290,9 @@
     <Content Include="Images\TimeManagementLogo.jpg" />
     <Content Include="Images\TimeManagementLogo1.jpg" />
     <Content Include="Images\TimeManagementLogo2.jpg" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\TimeSheet Dept Mangager.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
@@ -362,7 +366,7 @@
     <Content Include="Views\EmployeeManager\Create.cshtml" />
     <Content Include="Views\EmployeeManager\Edit.cshtml" />
     <Content Include="Views\EmployeeManager\Delete.cshtml" />
-    <Content Include="Views\Timesheet\Index.cshtml" />
+    <Content Include="Views\EmployeeTimesheet\Index.cshtml" />
     <Content Include="Views\DeptManagerEmployee\Index.cshtml" />
     <Content Include="Views\DirectorManager\Index.cshtml" />
     <Content Include="Views\DirectorManager\Details.cshtml" />
@@ -376,6 +380,7 @@
     <Content Include="Views\ProjectManager\Delete.cshtml" />
     <Content Include="Views\DeptManagerProjects\Index.cshtml" />
     <Content Include="Views\Audit\Index.cshtml" />
+    <Content Include="Views\DeptManagerTimesheet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

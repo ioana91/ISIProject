@@ -33,7 +33,7 @@
                             @if (Request.IsAuthenticated && !Roles.IsUserInRole("Administrator"))
                             {
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li>@Html.ActionLink("Timesheet", "Index", "Timesheet")</li>
+                                <li>@Html.ActionLink("Timesheet", "Index", "EmployeeTimesheet")</li>
                             }
                             @if (Roles.IsUserInRole("Administrator"))                        
                             {

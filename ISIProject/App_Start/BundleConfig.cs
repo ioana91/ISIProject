@@ -15,6 +15,7 @@ namespace ISIProject
                         "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery-migrate-1.2.1.min.js",
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
             

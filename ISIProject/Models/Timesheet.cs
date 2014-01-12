@@ -10,10 +10,10 @@ namespace ISIProject.Models
 {
     public enum TimesheetState
     {
-        Open,
-        Submitted,
-        Aproved,
-        Rejected
+        Open = 0,
+        Submitted = 1,
+        Aproved = 2,
+        Rejected = 3
     }
 
     [Table("Timesheet")]
@@ -27,7 +27,7 @@ namespace ISIProject.Models
         public DateTime EndTime { get; set; }
         public int EmployeeId { get; set; }
         public int ActivityId { get; set; }
-        public bool ExtraHours { get; set; }
+        public double ExtraHours { get; set; }
         public TimesheetState State { get; set;}
         public int? ProjectId { get; set; }
         public int? ClientId { get; set; }

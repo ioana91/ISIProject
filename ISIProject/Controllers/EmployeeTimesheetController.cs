@@ -16,7 +16,7 @@ using System.Data.Objects;
 namespace ISIProject.Controllers
 {
     [Authorize(Roles = "Manager, Employee, Division Manager, Department Manager")]
-    public class TimesheetController : Controller
+    public class EmployeeTimesheetController : Controller
     {
         //
         // GET: /Timesheet/
@@ -85,7 +85,7 @@ namespace ISIProject.Controllers
                 Date = NewEvent.start.Date,
                 EmployeeId = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).EmployeeId,
                 ActivityId = Convert.ToInt32(NewEvent.activityId),
-                ExtraHours = false,
+                ExtraHours = 0,
                 State = TimesheetState.Open,
             };
 
@@ -96,6 +96,7 @@ namespace ISIProject.Controllers
             }
 
             var text = logForAddEvent(timeSheet);
+            computeExtraHours(timeSheet);
 
             db.Timesheets.Add(timeSheet);
             db.SaveChanges();
@@ -106,6 +107,36 @@ namespace ISIProject.Controllers
             }
 
             return timeSheet.TimesheetId;
+        }
+
+        private static void computeExtraHours(Timesheet timeSheet)
+        {
+            timeSheet.ExtraHours = 0;
+
+            if (timeSheet.StartTime.Hour < 9)
+            {
+                if (timeSheet.EndTime.Hour > 9)
+                {
+                    timeSheet.ExtraHours += 9 * 60 - timeSheet.StartTime.TimeOfDay.TotalMinutes;
+                }
+                else
+                {
+                    timeSheet.ExtraHours += timeSheet.EndTime.TimeOfDay.TotalMinutes - timeSheet.StartTime.TimeOfDay.TotalMinutes;
+                }
+            }
+            if (timeSheet.EndTime.Hour >= 18)
+            {
+                if (timeSheet.StartTime.Hour < 18)
+                {
+                    timeSheet.ExtraHours += timeSheet.EndTime.TimeOfDay.TotalMinutes - 18 * 60;
+                }
+                else
+                {
+                    timeSheet.ExtraHours += timeSheet.EndTime.TimeOfDay.TotalMinutes - timeSheet.StartTime.TimeOfDay.TotalMinutes;
+                }
+            }
+
+            timeSheet.ExtraHours /= 60;
         }
 
         private string logForAddEvent(Timesheet timeSheet)
@@ -160,6 +191,8 @@ namespace ISIProject.Controllers
                 {
                     timeSheet.ProjectId = null;
                     timeSheet.ClientId = null;
+                    NewEvent.projectId = null;
+                    NewEvent.clientId = null;
                 }
 
                 text += " Activity modified (" + db.Activities.FirstOrDefault(a => a.ActivityId == timeSheet.ActivityId).Name +
@@ -180,7 +213,6 @@ namespace ISIProject.Controllers
                 }
                 timeSheet.ClientId = Convert.ToInt32(NewEvent.clientId);
             }
-            timeSheet.ExtraHours = false;
             timeSheet.State = (TimesheetState)NewEvent.state;
 
             text += System.Environment.NewLine;
@@ -188,7 +220,7 @@ namespace ISIProject.Controllers
             {
                 LogAction(text);
             }
-
+            computeExtraHours(timeSheet);
             //db.Timesheets.Add(timeSheet);
             db.SaveChanges();
         }
@@ -252,7 +284,9 @@ namespace ISIProject.Controllers
         public JsonResult GetProjects(string clientId)
         {
             int ClientID = Convert.ToInt32(clientId);
-            var projects = db.Projects.Where(p => p.ClientId == ClientID).Select(p =>
+            int deptID = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).DepartmentId.Value;
+
+            var projects = db.Projects.Where(p => p.ClientId == ClientID && p.Departments.Any(d => d.DepartmentId == deptID)).Select(p =>
                 new
                 {
                     p.ProjectId,
