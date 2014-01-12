@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="875341e7-d610-4ddf-85ea-dc278c6b7c14"
   name="ModelingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -2172,6 +2172,446 @@
         name="Interface3"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+        name="Timesheet Management"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="47cbbc4d-b872-49d8-bbc1-42e76c0ff40c"
+        name="Departament  Manager"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="21dca03e-b34a-4a7c-8377-f68006b1d5cb"
+            isDerived="false"
+            sourceEndRoleName="Departament  Manager"
+            targetEndRoleName="Login"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="bba96da7-d21d-4d9a-8cb4-d87600540b24"
+              LastKnownName="Login"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="437bd0af-d4c4-4075-b550-251404139f16"
+                  name="Departament  Manager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5664f884-2296-48d6-b49f-0cde1d31c717"
+                  name="Login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bba96da7-d21d-4d9a-8cb4-d87600540b24"
+        name="Login"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="7edd3af4-33ae-40fa-a56f-cb880e9843d2"
+            isDerived="false"
+            sourceEndRoleName="Login"
+            targetEndRoleName="Completes timesheet"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1e89a73e-229c-4390-92cb-f720fe02eb27"
+              LastKnownName="Completes timesheet"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e756a3cd-5ff2-4db2-afc1-05465a3e3ac3"
+                  name="Login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5c4928d9-22e1-4512-ba50-df79df263023"
+                  name="Completes timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3523f2b9-5bc7-4248-a59a-eb8fddbaaa2a"
+            isDerived="false"
+            sourceEndRoleName="Login"
+            targetEndRoleName="Checks timesheet"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6e5006e7-579b-49a3-a3aa-c087a9bf479a"
+              LastKnownName="Checks timesheet"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ab29a9dc-d14f-49e2-a586-ca840bba65f3"
+                  name="Login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a817cf01-a1df-4033-a6bd-fc33f15402a4"
+                  name="Checks timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="cef3de30-fce8-49f5-9d25-ee36c1b581b8"
+            isDerived="false"
+            sourceEndRoleName="Login"
+            targetEndRoleName="Manages employees for own department"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1d49bae8-f936-4088-b3be-0249455e180f"
+              LastKnownName="Manages employees for own department"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6d03762d-c712-4cc8-939f-004fdac2418d"
+                  name="Login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="39541673-0736-4a0a-b2fe-0000e6afe0c1"
+                  name="Manages employees for own department"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a500073a-ded8-4b8c-94b3-962e3a61a4f4"
+            isDerived="false"
+            sourceEndRoleName="Login"
+            targetEndRoleName="Manages projects for own department"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="74944cce-bd19-4631-b8c4-4e93ac2e624b"
+              LastKnownName="Manages projects for own department"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c2e2c39c-ddd9-4986-b022-bb90c991ddf3"
+                  name="Login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f10c05ee-bac6-4625-b354-b6320f7ec30c"
+                  name="Manages projects for own department"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6f516236-3380-4bce-a1ae-7f2207e4b945"
+            isDerived="false"
+            sourceEndRoleName="Login"
+            targetEndRoleName="Sees Reports"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4ecf83cd-aa6a-474e-bd1c-5d9927e14844"
+              LastKnownName="Sees Reports"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fb56a6ee-9f9d-419f-b9fb-a2f1c1aee4a1"
+                  name="Login"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fcc3b60b-259c-44a3-8109-363bf5e4f87a"
+                  name="Sees Reports"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1e89a73e-229c-4390-92cb-f720fe02eb27"
+        name="Completes timesheet"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+            LastKnownName="Timesheet Management"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6e5006e7-579b-49a3-a3aa-c087a9bf479a"
+        name="Checks timesheet"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="dcbe1dd8-1a6f-443b-afa2-cea3ad205eb9"
+            isDerived="false"
+            sourceEndRoleName="Checks timesheet"
+            targetEndRoleName="Rejects timesheet"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="660b2b5b-0fed-4b8f-ab5a-3193cec93bda"
+              LastKnownName="Rejects timesheet"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="40a4ccf0-b614-4b08-beaf-6f5f9ac4fb64"
+                  name="Checks timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f642cc8b-9fbe-43e5-98ab-de9097bb7855"
+                  name="Rejects timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9f8ec69a-4adc-4b59-b3d7-3ba58bd07d4c"
+            isDerived="false"
+            sourceEndRoleName="Checks timesheet"
+            targetEndRoleName="Aproves timesheet"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="186b1fbc-8a4f-4ee6-8608-32f5fe5fb394"
+              LastKnownName="Aproves timesheet"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a6fee5d6-db7b-4d88-b541-8cbec98b9c6e"
+                  name="Checks timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="db821092-33e6-4ff0-ae5d-b0c3e3cbd1ae"
+                  name="Aproves timesheet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+            LastKnownName="Timesheet Management"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="660b2b5b-0fed-4b8f-ab5a-3193cec93bda"
+        name="Rejects timesheet"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+            LastKnownName="Timesheet Management"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="186b1fbc-8a4f-4ee6-8608-32f5fe5fb394"
+        name="Aproves timesheet"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+            LastKnownName="Timesheet Management"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="74944cce-bd19-4631-b8c4-4e93ac2e624b"
+        name="Manages projects for own department"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+            LastKnownName="Timesheet Management"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4ecf83cd-aa6a-474e-bd1c-5d9927e14844"
+        name="Sees Reports"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+            LastKnownName="Timesheet Management"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1d49bae8-f936-4088-b3be-0249455e180f"
+        name="Manages employees for own department"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="5c9f0669-a53c-4fb8-a5c5-d4ec7bcc1cb7"
+            LastKnownName="Timesheet Management"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
