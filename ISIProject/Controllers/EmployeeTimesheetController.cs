@@ -364,9 +364,18 @@ namespace ISIProject.Controllers
         [HttpPost]
         public void SaveTimesheets()
         {
-            var employeeId = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name).EmployeeId;
+            var text = "";
+            var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
 
-            db.Timesheets.Where(tm => tm.EmployeeId == employeeId).ToList().ForEach(t => t.State = TimesheetState.Aproved);
+            db.Timesheets.Where(tm => tm.EmployeeId == employee.EmployeeId).ToList().ForEach(t => t.State = TimesheetState.Aproved);
+
+            if (employee.IsAudited)
+            {
+                text = DateTime.Now + " " + Roles.GetRolesForUser()[0] + " " + employee.Name + " has saved the timesheets for " +
+                    CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month == 1 ? 12 : 
+                    DateTime.Now.Month - 1) + System.Environment.NewLine;
+                LogAction(text);
+            }
 
             db.SaveChanges();
         }

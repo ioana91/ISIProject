@@ -22,7 +22,8 @@ namespace ISIProject.Controllers
         [HttpPost]
         public JsonResult SelectOptions(DateTime startDate, DateTime endDate)
         {
-            var projects = db.Projects.OrderBy(p => p.ProjectId).ToList();
+            var projects = db.Projects.OrderBy(p => p.Client.ClientId).ToList();
+            var timesheets = db.Timesheets.ToList();
 
             string[][] data = new string[projects.Count + 1][];
             for (int i = 0; i < projects.Count + 1; i++)
@@ -33,7 +34,14 @@ namespace ISIProject.Controllers
             data[0][0] = "Clients";
             data[0][1] = "Hours worked";
 
+            for (int i = 0; i < projects.Count; i++)
+            {
+                var timeWorked = timesheets.Where(t => t.ProjectId == projects[i].ProjectId && t.StartTime.Date >= startDate &&
+                    t.StartTime.Date <= endDate).Sum(t => t.EndTime.TimeOfDay.TotalMinutes - t.StartTime.TimeOfDay.TotalMinutes);
 
+                data[i + 1][0] = projects[i].Client.Name + " - " + projects[i].Name;
+                data[i + 1][1] = (timeWorked / 60).ToString();
+            }
 
             return Json(data);
         }

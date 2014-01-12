@@ -77,6 +77,7 @@ namespace ISIProject.Controllers
         [HttpPost]
         public void AproveTimesheet(int employeeId)
         {
+            var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
             var employeeTimesheets = db.Timesheets.Where(t => t.EmployeeId == employeeId).ToList();
             var timesheetsToBeModified = employeeTimesheets.Where(t =>
                t.StartTime > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(-1) &&
@@ -90,11 +91,22 @@ namespace ISIProject.Controllers
 
                 db.SaveChanges();
             }
+
+            if (employee.IsAudited)
+            {
+                var text = System.DateTime.Now + " " + Roles.GetRolesForUser()[0] + " " + employee.Name +
+                    "has aproved the timesheets for " + CultureInfo.CurrentCulture.DateTimeFormat.
+                    GetMonthName(DateTime.Now.Month == 1 ? 12 : DateTime.Now.Month - 1) + " for employee " +
+                    db.Employees.FirstOrDefault(e => e.EmployeeId == employeeId).Name + System.Environment.NewLine;
+
+                LogAction(text);
+            }
         }
 
         [HttpPost]
         public void RejectTimesheet(int employeeId, string message)
         {
+            var employee = db.Employees.FirstOrDefault(e => e.UserName == User.Identity.Name);
             var employeeTimesheets = db.Timesheets.Where(t => t.EmployeeId == employeeId).ToList();
             var timesheetsToBeModified = employeeTimesheets.Where(t =>
                t.StartTime > new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(-1) &&
@@ -109,6 +121,16 @@ namespace ISIProject.Controllers
                 db.SaveChanges();
 
                 SendEmail(employeeId, message);
+            }
+
+            if (employee.IsAudited)
+            {
+                var text = System.DateTime.Now + " " + Roles.GetRolesForUser()[0] + " " + employee.Name +
+                    "has rejected the timesheets for " + CultureInfo.CurrentCulture.DateTimeFormat.
+                    GetMonthName(DateTime.Now.Month == 1 ? 12 : DateTime.Now.Month - 1) + " for employee " +
+                    db.Employees.FirstOrDefault(e => e.EmployeeId == employeeId).Name + System.Environment.NewLine;
+
+                LogAction(text);
             }
         }
 
@@ -126,6 +148,11 @@ namespace ISIProject.Controllers
             var subject = "Timesheet rejected";
             var body = message;
             client.Send(from, to, subject, body);
+        }
+
+        private void LogAction(string text)
+        {
+            System.IO.File.AppendAllText(@"C:\Users\Public\audit.txt", text);
         }
     }
 }
